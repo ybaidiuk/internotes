@@ -17,11 +17,9 @@ export async function insertString(key, data) {
 export async function readString(key) {
   try {
     const value = await AsyncStorage.getItem(key);
-    if (value !== null) {
-      // console.log("read successful");
-      // console.log(value);
+      console.log("read successful");
+      console.log(value);
       return value;
-    }
   } catch (error) {
     console.log(error);
     console.warn('error while READ data with key ' + key);
@@ -31,27 +29,11 @@ export async function readString(key) {
 
 // exemple:  insertJson('test', {age: 25}');
 export async function insertJson(key, data) {
-  try {
-    await AsyncStorage.setItem(key, JSON.stringify(data));
-    console.log('write data successful')
-  } catch (error) {
-    console.log(error);
-    console.warn('error while WRITHING data with key ' + key);
-  }
-
+  await readString(key, JSON.stringify(data));
 }
 
 
 export async function readJson(key) {
-  try {
-    const value = await AsyncStorage.getItem(key);
-    if (value !== null) {
-      // console.log("read successful");
-      // console.log(value);
-      return JSON.parse(value);
-    }
-  } catch (error) {
-    console.log(error);
-    console.warn('error while READ data with key ' + key);
-  }
+  let res = await readString(key);
+  return JSON.parse(res);
 }

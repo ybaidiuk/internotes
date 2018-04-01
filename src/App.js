@@ -19,14 +19,20 @@ export default class App extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {};
+    this.m();
   }
 
-   ifUserExist() {
+  async m() {
+    const data = await readJson(authData);
+    // if (data == null) todo
+  }
+
+  ifUserExist() {
 
     // show checkUser (fingerPrint...Or Pass)
     //! show RegisterPage (Ask email , pass)
 
-     //todo async functions not working
+    //todo async functions not working
     // const data = await readJson(authData);
     // console.log(data);
 
