@@ -11,6 +11,8 @@ import {
   View
 } from 'react-native';
 import Greeting from "./components/Greeting";
+import {readJson} from "./utils/FileUtils";
+import {authData} from "./utils/Const";
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -19,12 +21,20 @@ export default class App extends Component<Props> {
     this.state = {};
   }
 
-  ifUserExist = () => {
+   ifUserExist() {
+
     // show checkUser (fingerPrint...Or Pass)
     //! show RegisterPage (Ask email , pass)
+
+     //todo async functions not working
+    // const data = await readJson(authData);
+    // console.log(data);
+
     return false;
   };
-  checkUser = () => {};
+
+  checkUser = () => {
+  };
 
   render() {
     return (
@@ -32,7 +42,7 @@ export default class App extends Component<Props> {
         <StatusBar
           barStyle={"light-content"}
         />
-        {this.ifUserExist()?
+        {this.ifUserExist() ?
           <Text>JA</Text>
           :
           <Greeting/>}

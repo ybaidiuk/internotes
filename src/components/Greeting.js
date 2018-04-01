@@ -6,7 +6,9 @@ import {
   View, AsyncStorage
 } from 'react-native';
 
-import {readData, writeData} from "../utils/FileUtils";
+import {insertJson} from "../utils/FileUtils";
+import {sha256, sha256x2, sha256x2v2} from "../utils/CryptoUtils";
+import {authData} from "../utils/Const";
 
 // type Props = {};
 export default class Greeting extends Component<Props> {
@@ -16,9 +18,7 @@ export default class Greeting extends Component<Props> {
   }
 
 
-  async onPressLogin (){
-
-    console.log(val);
+  async onPressLogin() {
     const isPassValid = this.isPassValid();
     const isLoginValid = this.isLoginValid();
 
@@ -27,10 +27,15 @@ export default class Greeting extends Component<Props> {
 
 
     if (isLoginValid && isPassValid) {
-      // writeData();
-      // readData();
+      const dataToSave = {
+        login: this.state.login,
+        password: this.state.password,
+        privateKey: sha256(this.state.login + this.state.password),
+        id: sha256x2(this.state.login + this.state.password)
+      };
+      await insertJson(authData, dataToSave);
+      // todo go to setUp FingerPrint or Password Layout
     }
-
   };
 
   isPassValid = () => {
