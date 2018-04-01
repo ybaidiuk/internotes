@@ -3,8 +3,10 @@ import {
   Button,
   StyleSheet,
   Text, TextInput,
-  View
+  View, AsyncStorage
 } from 'react-native';
+
+import {readData, writeData} from "../utils/FileUtils";
 
 // type Props = {};
 export default class Greeting extends Component<Props> {
@@ -14,7 +16,9 @@ export default class Greeting extends Component<Props> {
   }
 
 
-  onPressLogin = () => {
+  async onPressLogin (){
+
+    console.log(val);
     const isPassValid = this.isPassValid();
     const isLoginValid = this.isLoginValid();
 
@@ -23,8 +27,8 @@ export default class Greeting extends Component<Props> {
 
 
     if (isLoginValid && isPassValid) {
-      console.log('Save Data In File');
-      console.log('go to MainLayout');
+      // writeData();
+      // readData();
     }
 
   };
@@ -88,7 +92,7 @@ export default class Greeting extends Component<Props> {
 
         {/*Button*/}
         <Button
-          onPress={this.onPressLogin}
+          onPress={this.onPressLogin.bind(this)}
           title="LOGIN"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
