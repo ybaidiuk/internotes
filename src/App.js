@@ -8,13 +8,13 @@ import {
   ActivityIndicator,
   StatusBar,
   StyleSheet,
-  Text,
   View
 } from 'react-native';
-import Greeting from "./components/Greeting";
+import Login from "./components/Login";
 import {readJson} from "./utils/FileUtils";
 import {authData} from "./utils/Const";
 import colors from "./utils/Colors";
+import Auth from "./components/Auth";
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -38,9 +38,9 @@ export default class App extends Component<Props> {
       case undefined:
         return <ActivityIndicator size={50} color={colors.lightBlue}/>; // animaiton
       case null:
-        return <Greeting/>;
+        return <Login/>;
       default:
-        return null;
+        return <Auth/>;
 
     }
   };
@@ -62,6 +62,6 @@ const s = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.blue,
+    backgroundColor: colors.barkBlue,
   }
 });

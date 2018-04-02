@@ -3,19 +3,31 @@ import {
   Button,
   StyleSheet,
   Text, TextInput,
-  View, AsyncStorage
+  View
 } from 'react-native';
 
 import {insertJson} from "../utils/FileUtils";
 import {sha256, sha256x2, sha256x2v2} from "../utils/CryptoUtils";
 import {authData} from "../utils/Const";
 import colors from "../utils/Colors";
+import Auth from "./Auth";
 
 // type Props = {};
-export default class Greeting extends Component<Props> {
+/**
+ * on this Page user can LOGIN and BACKUP his notes as well.
+ */
+export default class Login extends Component<Props> {
   constructor(props) {
     super(props);
-    this.state = {login: '', password: '', password2: '', showLoginWarning: false, showPassWarning: false};
+    this.state = {
+      login: '',
+      password: '',
+      password2: '',
+
+      showLoginWarning: false,
+      showPassWarning: false,
+      loginSuccess: false
+    };
   }
 
 
@@ -35,7 +47,7 @@ export default class Greeting extends Component<Props> {
         id: sha256x2(this.state.login + this.state.password)
       };
       await insertJson(authData, dataToSave);
-      // todo go to setUp FingerPrint or Password Layout
+      this.setState({loginSuccess: true})
     }
   };
 
@@ -50,12 +62,17 @@ export default class Greeting extends Component<Props> {
   };
 
   render() {
+    if (this.state.loginSuccess)
+      return (<Auth/>);
     return (
       <View style={s.container}>
 
         <Text style={s.greeting}>
-          Welcome to Internotes{'\n\n'}
-          Create new account
+          Welcome to Internotes
+        </Text>
+
+        <Text style={s.greetingSmall}>
+          Create new account or backup old
         </Text>
 
         {/*Login*/}
@@ -97,12 +114,16 @@ export default class Greeting extends Component<Props> {
           }}/>
 
         {/*Button*/}
-        <Button
-          onPress={this.onPressLogin.bind(this)}
-          title="LOGIN"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
+        {/*<View><View/>*/}
+        <View style={s.button}>
+          <Button
+            onPress={this.onPressLogin.bind(this)}
+            title="LOGIN"
+            color={colors.lightBlue}
+            accessibilityLabel="Learn more about this purple button"
+          />
+        </View>
+
 
       </View>
     );
@@ -118,7 +139,13 @@ const s = StyleSheet.create({
   greeting: {
     maxWidth: '80%',
     fontSize: 30,
-    textAlign: 'center',
+    textAlign: 'left',
+    color: colors.white,
+  },
+  greetingSmall: {
+    maxWidth: '80%',
+    fontSize: 20,
+    textAlign: 'left',
     color: colors.white,
     marginBottom: 50,
   },
@@ -135,4 +162,7 @@ const s = StyleSheet.create({
     fontSize: 15,
     color: colors.red
   },
+  button: {
+    marginTop: 30,
+  }
 });
