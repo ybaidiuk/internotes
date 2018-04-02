@@ -9,6 +9,7 @@ import {
 import {insertJson} from "../utils/FileUtils";
 import {sha256, sha256x2, sha256x2v2} from "../utils/CryptoUtils";
 import {authData} from "../utils/Const";
+import colors from "../utils/Colors";
 
 // type Props = {};
 export default class Greeting extends Component<Props> {
@@ -118,20 +119,20 @@ const s = StyleSheet.create({
     maxWidth: '80%',
     fontSize: 30,
     textAlign: 'center',
-    color: 'white',
+    color: colors.white,
     marginBottom: 50,
   },
   description: {
     fontSize: 15,
-    color: 'white'
+    color: colors.white
   },
   textInput: {
     fontSize: 15,
-    color: 'white'
+    color: colors.white
   },
   warning: {
     maxWidth: '80%',
     fontSize: 15,
-    color: 'red'
+    color: colors.red
   },
 });

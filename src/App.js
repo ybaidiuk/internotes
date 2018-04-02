@@ -5,6 +5,7 @@
  */
 import React, {Component} from 'react';
 import {
+  ActivityIndicator,
   StatusBar,
   StyleSheet,
   Text,
@@ -13,33 +14,35 @@ import {
 import Greeting from "./components/Greeting";
 import {readJson} from "./utils/FileUtils";
 import {authData} from "./utils/Const";
+import colors from "./utils/Colors";
 
 type Props = {};
 export default class App extends Component<Props> {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.m();
+    this.state = {authData: undefined};
   }
 
-  async m() {
+  componentDidMount() {
+    this.loadUserData();
+  }
+
+
+  async loadUserData() {
     const data = await readJson(authData);
-    // if (data == null) todo
+    this.setState({authData: data})
   }
 
-  ifUserExist() {
+  getContent = () => {
+    switch (this.state.authData){
+      case undefined:
+        return <ActivityIndicator size={50} color={colors.lightBlue}/>; // animaiton
+      case null:
+        return <Greeting/>;
+      default:
+        return null;
 
-    // show checkUser (fingerPrint...Or Pass)
-    //! show RegisterPage (Ask email , pass)
-
-    //todo async functions not working
-    // const data = await readJson(authData);
-    // console.log(data);
-
-    return false;
-  };
-
-  checkUser = () => {
+    }
   };
 
   render() {
@@ -48,10 +51,7 @@ export default class App extends Component<Props> {
         <StatusBar
           barStyle={"light-content"}
         />
-        {this.ifUserExist() ?
-          <Text>JA</Text>
-          :
-          <Greeting/>}
+        {this.getContent()}
       </View>
     );
   }
@@ -62,6 +62,6 @@ const s = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#242176',
+    backgroundColor: colors.blue,
   }
 });

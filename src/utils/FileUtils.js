@@ -5,7 +5,8 @@ import {AsyncStorage} from 'react-native';
 export async function insertString(key, data) {
   try {
     await AsyncStorage.setItem(key, data);
-    console.log('write data successful')
+    console.log('write data successful');
+    console.log(data);
   } catch (error) {
     console.log(error);
     console.warn('error while WRITHING data with key ' + key);
@@ -29,7 +30,7 @@ export async function readString(key) {
 
 // exemple:  insertJson('test', {age: 25}');
 export async function insertJson(key, data) {
-  await readString(key, JSON.stringify(data));
+  await insertString(key, JSON.stringify(data));
 }
 
 

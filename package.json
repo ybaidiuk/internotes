@@ -10,6 +10,7 @@
     "log-android": " react-native log-android"
   },
   "dependencies": {
+    "crypto-js": "^3.1.9-1",
     "react": "16.3.0-rc.0",
     "react-native": "0.54.3"
   },
