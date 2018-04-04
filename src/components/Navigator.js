@@ -4,7 +4,7 @@ import {
   View
 } from 'react-native';
 
-export default class Main extends Component<Props> {
+export default class Navigator extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {};
@@ -13,7 +13,7 @@ export default class Main extends Component<Props> {
   render() {// todo make Draver
     return (
       <View>
-        <Text>Main</Text>
+        <Text>Navigator</Text>
       </View>
     );
   }

@@ -11,6 +11,7 @@ import {sha256, sha256x2, sha256x2v2} from "../utils/CryptoUtils";
 import {authData} from "../utils/Const";
 import colors from "../utils/Colors";
 import Auth from "./Auth";
+import AuthSetUp from "./AuthSetUp";
 
 // type Props = {};
 /**
@@ -63,7 +64,7 @@ export default class Login extends Component<Props> {
 
   render() {
     if (this.state.loginSuccess)
-      return (<Auth/>);
+      return (<AuthSetUp/>);
     return (
       <View style={s.container}>
 
