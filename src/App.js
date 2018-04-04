@@ -15,8 +15,13 @@ import {readJson} from "./utils/FileUtils";
 import {authData} from "./utils/Const";
 import colors from "./utils/Colors";
 import Auth from "./components/Auth";
+import {Platform} from "react-native";
 
 type Props = {};
+const buzyIndicatorSize = Platform.select({
+  ios: 'large',
+  android: 50
+});
 export default class App extends Component<Props> {
   constructor(props) {
     super(props);
@@ -34,9 +39,10 @@ export default class App extends Component<Props> {
   }
 
   getContent = () => {
-    switch (this.state.authData){
-      case undefined:
-        return <ActivityIndicator size={50} color={colors.lightBlue}/>; // animaiton
+    switch (this.state.authData) {
+      case undefined: // animaiton
+        return <ActivityIndicator size={buzyIndicatorSize} color={colors.lightBlue}/>;
+
       case null:
         return <Login/>;
       default:
