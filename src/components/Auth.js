@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {
+  Text,
   View
 } from 'react-native';
-import Navigator from "./Navigator";
 
 /**
  * todo later here should be fingerPrint or Password or FaceId Authentication
@@ -16,7 +16,7 @@ export default class Auth extends Component<Props> {
   render() {
     return (
       <View>
-        <Navigator/>
+        <Text>Auth</Text>
       </View>
     );
   }

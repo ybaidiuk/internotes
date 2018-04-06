@@ -10,7 +10,6 @@ import {insertJson} from "../utils/FileUtils";
 import {sha256, sha256x2, sha256x2v2} from "../utils/CryptoUtils";
 import {authData} from "../utils/Const";
 import colors from "../utils/Colors";
-import Auth from "./Auth";
 import AuthSetUp from "./AuthSetUp";
 
 // type Props = {};
@@ -27,7 +26,6 @@ export default class Login extends Component<Props> {
 
       showLoginWarning: false,
       showPassWarning: false,
-      loginSuccess: false
     };
   }
 
@@ -48,23 +46,28 @@ export default class Login extends Component<Props> {
         id: sha256x2(this.state.login + this.state.password)
       };
       await insertJson(authData, dataToSave);
-      this.setState({loginSuccess: true})
+      this.props.navigation.navigate('AuthSetUp');
     }
   };
 
   isPassValid = () => {
-    if (this.state.password.length < 3) return false;
-    return this.state.password === this.state.password2;
+    let res = false;
+    const password = this.state.password;
+    if (password.length >= 3 && password.indexOf(' ') === -1 && this.state.password === this.state.password2)
+      res = true;
+    return res;
   };
 
 
   isLoginValid = () => {
-    return this.state.login.length >= 3;
+    let res = false;
+    const login = this.state.login;
+    if (login.length >= 3 && login.indexOf(' ') === -1)
+      res = true;
+    return res;
   };
 
   render() {
-    if (this.state.loginSuccess)
-      return (<AuthSetUp/>);
     return (
       <View style={s.container}>
 
@@ -78,7 +81,7 @@ export default class Login extends Component<Props> {
 
         {/*Login*/}
         {this.state.showLoginWarning &&
-        <Text style={s.warning}>Login should have minimum 3</Text>}
+        <Text style={s.warning}>Login should have minimum 3 letter without spaces</Text>}
         <Text style={s.description}>
           Login:
         </Text>
@@ -133,9 +136,14 @@ export default class Login extends Component<Props> {
 
 }
 
+
 const s = StyleSheet.create({
   container: {
-    marginBottom: 100,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.barkBlue,
+
   },
   greeting: {
     maxWidth: '80%',
@@ -151,19 +159,22 @@ const s = StyleSheet.create({
     marginBottom: 50,
   },
   description: {
+    width: '80%',
     fontSize: 15,
     color: colors.white
   },
   textInput: {
+    width: '80%',
     fontSize: 15,
     color: colors.white
   },
   warning: {
-    maxWidth: '80%',
+    width: '80%',
     fontSize: 15,
     color: colors.red
   },
   button: {
+    width: '25%',
     marginTop: 30,
   }
 });

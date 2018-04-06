@@ -10,7 +10,7 @@ export default class Main extends Component<Props> {
     this.state = {};
   }
 
-  render() {// todo make Draver
+  render() {// todo make Draver and setUp Main view
     return (
       <View>
         <Text>Main</Text>

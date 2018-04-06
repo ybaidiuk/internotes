@@ -17,10 +17,11 @@ export async function insertString(key, data) {
 // exemple: const val = await readData('test');
 export async function readString(key) {
   try {
+    console.log("start reading");
     const value = await AsyncStorage.getItem(key);
-      console.log("read successful");
-      console.log(value);
-      return value;
+    console.log("read successful");
+    console.log(value);
+    return value;
   } catch (error) {
     console.log(error);
     console.warn('error while READ data with key ' + key);
