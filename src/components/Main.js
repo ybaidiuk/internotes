@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 import {
+  StatusBar, StyleSheet,
   Text,
   View
 } from 'react-native';
+import Toolbar from "./Toolbar";
+import colors from "../utils/Colors";
 
 export default class Main extends Component<Props> {
   constructor(props) {
@@ -10,13 +13,24 @@ export default class Main extends Component<Props> {
     this.state = {};
   }
 
-  render() {// todo make Draver and setUp Main view 
+  render() {
     return (
-      <View>
+      <View style={s.container}>
+        <StatusBar barStyle={"light-content"}/>
+        <Toolbar/>
         <Text>Main</Text>
       </View>
     );
   }
 
 
+
 }
+const s = StyleSheet.create({
+  container: {
+    flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    backgroundColor: colors.barkBlue,
+  },
+});
