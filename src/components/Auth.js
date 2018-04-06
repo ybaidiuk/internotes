@@ -11,6 +11,7 @@ export default class Auth extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {};
+    this.props.navigation.navigate('Main');
   }
 
   render() {
