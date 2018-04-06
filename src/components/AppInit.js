@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {ActivityIndicator, StatusBar, Text, View} from "react-native";
 import colors from "../utils/Colors";
-import {Platform,StyleSheet} from "react-native";
-import {readJson} from "../utils/FileUtils";
+import {Platform, StyleSheet} from "react-native";
+import {readJson} from "../utils/DbUtils";
 import {authData} from "../utils/Const";
+import {sha256, sha256x2} from "../utils/CryptoUtils";
+import {verifyUserData} from "../utils/UserDataUtils";
 
 
 const busyIndicatorSize = Platform.select({
@@ -15,12 +17,15 @@ export default class AppInit extends Component<Props> {
     super(props);
     this.loadUserData()
   }
+
   async loadUserData() {
     console.log("loadUserData");
-    const data = await readJson('a');//todo authData
+    const data = await readJson(authData);
     console.log(data);
-    this.props.navigation.navigate(data ? 'Auth' : 'Login');
+    const dataIsValid = verifyUserData(data);
+    this.props.navigation.navigate(dataIsValid ? 'Auth' : 'Login');
   }
+
 
   render() {
     return (
@@ -30,6 +35,8 @@ export default class AppInit extends Component<Props> {
       </View>
     );
   }
+
+
 }
 
 const s = StyleSheet.create({

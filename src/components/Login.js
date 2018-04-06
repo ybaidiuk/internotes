@@ -5,12 +5,9 @@ import {
   Text, TextInput,
   View
 } from 'react-native';
-
-import {insertJson} from "../utils/FileUtils";
-import {sha256, sha256x2, sha256x2v2} from "../utils/CryptoUtils";
-import {authData} from "../utils/Const";
 import colors from "../utils/Colors";
 import AuthSetUp from "./AuthSetUp";
+import {isLoginValid, isPassValid, saveUserData} from "../utils/UserDataUtils";
 
 // type Props = {};
 /**
@@ -31,40 +28,17 @@ export default class Login extends Component<Props> {
 
 
   async onPressLogin() {
-    const isPassValid = this.isPassValid();
-    const isLoginValid = this.isLoginValid();
+    const isLoginValid = isLoginValid(this.state.login);
+    const isPassValid = isPassValid(this.state.password, this.state.password2);
 
     isPassValid ? this.setState({showPassWarning: false}) : this.setState({showPassWarning: true});
     isLoginValid ? this.setState({showLoginWarning: false}) : this.setState({showLoginWarning: true});
 
 
     if (isLoginValid && isPassValid) {
-      const dataToSave = {
-        login: this.state.login,
-        password: this.state.password,
-        privateKey: sha256(this.state.login + this.state.password),
-        id: sha256x2(this.state.login + this.state.password)
-      };
-      await insertJson(authData, dataToSave);
+      await saveUserData(this.state.login, this.state.password);
       this.props.navigation.navigate('AuthSetUp');
     }
-  };
-
-  isPassValid = () => {
-    let res = false;
-    const password = this.state.password;
-    if (password.length >= 3 && password.indexOf(' ') === -1 && this.state.password === this.state.password2)
-      res = true;
-    return res;
-  };
-
-
-  isLoginValid = () => {
-    let res = false;
-    const login = this.state.login;
-    if (login.length >= 3 && login.indexOf(' ') === -1)
-      res = true;
-    return res;
   };
 
   render() {
