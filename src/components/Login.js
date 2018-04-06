@@ -28,14 +28,13 @@ export default class Login extends Component<Props> {
 
 
   async onPressLogin() {
-    const isLoginValid = isLoginValid(this.state.login);
-    const isPassValid = isPassValid(this.state.password, this.state.password2);
+    const loginValid = isLoginValid(this.state.login);
+    const passValid = isPassValid(this.state.password, this.state.password2);
 
-    isPassValid ? this.setState({showPassWarning: false}) : this.setState({showPassWarning: true});
-    isLoginValid ? this.setState({showLoginWarning: false}) : this.setState({showLoginWarning: true});
+    passValid ? this.setState({showPassWarning: false}) : this.setState({showPassWarning: true});
+    loginValid ? this.setState({showLoginWarning: false}) : this.setState({showLoginWarning: true});
 
-
-    if (isLoginValid && isPassValid) {
+    if (loginValid && passValid) {
       await saveUserData(this.state.login, this.state.password);
       this.props.navigation.navigate('AuthSetUp');
     }
