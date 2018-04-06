@@ -3,7 +3,8 @@ import {authData} from "./Const";
 import {insertJson} from "./DbUtils";
 
 export function verifyUserData(data) {
-  if (!data.hasOwnProperty('login') ||
+  if (!data ||
+    !data.hasOwnProperty('login') ||
     !data.hasOwnProperty('password') ||
     !data.hasOwnProperty('privateKey') ||
     !data.hasOwnProperty('id'))
