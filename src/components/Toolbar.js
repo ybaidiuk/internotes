@@ -19,16 +19,16 @@ export default class Toolbar extends Component<Props> {
   render() {
     return (
       <View style={s.container}>
-        <TouchableHighlight onPress={this.toggleDrawer}>
+        <TouchableHighlight onPress={this.toggleDrawer} underlayColor="rgba(253,138,94,0.2)">
           <Image
-            style={s.menuBtn}
+            style={s.btn}
             source={require('../res/ic_menu_black_48dp_1x.png')}
           />
         </TouchableHighlight>
-        <Text>Internotes</Text>
-        <TouchableHighlight onPress={this.createNote}>
+        <Text style={s.logo}>Internotes</Text>
+        <TouchableHighlight onPress={this.createNote} underlayColor="rgba(253,138,94,0.2)">
           <Image
-            style={s.menuBtn}
+            style={s.btn}
             source={require('../res/ic_add_black_48dp_1x.png')}
           />
         </TouchableHighlight>
@@ -49,8 +49,14 @@ const s = StyleSheet.create({
     height: 55,
     padding: 15,
   },
-  menuBtn: {
+  btn: {
     height: 30,
     width: 30,
+  },
+  logo:{
+    color: 'black',
+    fontSize: 20,
+    fontWeight: 'bold'
+
   }
 });

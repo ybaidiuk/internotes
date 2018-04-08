@@ -18,7 +18,7 @@ export default class Auth extends Component<Props> {
   render() {
     return (
       <View>
-        <StatusBar barStyle={"light-content"}/>
+       <StatusBar backgroundColor={'black'}/>
         <Text>Auth</Text>
       </View>
     );

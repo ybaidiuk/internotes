@@ -18,7 +18,7 @@ export default class Main extends Component<Props> {
   render() {
     return (
       <View style={s.container}>
-        <StatusBar barStyle={"light-content"}/>
+       <StatusBar backgroundColor={'black'}/>
         <Toolbar navigation={this.props.navigation}/>
         <Text>Main</Text>
       </View>
