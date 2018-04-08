@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {
+  Image,
   StatusBar, StyleSheet,
-  Text,
+  Text, TouchableHighlight,
   View
 } from 'react-native';
 import Toolbar from "../components/Toolbar";
@@ -13,11 +14,12 @@ export default class Main extends Component<Props> {
     this.state = {};
   }
 
+
   render() {
     return (
       <View style={s.container}>
         <StatusBar barStyle={"light-content"}/>
-        <Toolbar/>
+        <Toolbar navigation={this.props.navigation}/>
         <Text>Main</Text>
       </View>
     );
@@ -31,6 +33,6 @@ const s = StyleSheet.create({
     flex: 1,
     // justifyContent: 'center',
     // alignItems: 'center',
-    backgroundColor: colors.barkBlue,
+    backgroundColor: colors.gray,
   },
 });

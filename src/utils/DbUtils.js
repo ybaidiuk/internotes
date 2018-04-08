@@ -18,8 +18,8 @@ export async function insertString(key, data) {
 export async function readString(key) {
   try {
     console.log("start reading");
+    // await AsyncStorage.clear();
     const value = await AsyncStorage.getItem(key);
-      // await AsyncStorage.clear();
     console.log("read successful");
     console.log(value);
     return value;
