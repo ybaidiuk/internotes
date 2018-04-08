@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {ActivityIndicator, StatusBar, Text, View} from "react-native";
-import colors from "../utils/Colors";
+import colors from "../Colors";
 import {Platform, StyleSheet} from "react-native";
 import {readJson} from "../utils/DbUtils";
-import {authData} from "../utils/Const";
+import {authData} from "../Const";
 import {sha256, sha256x2} from "../utils/CryptoUtils";
 import {verifyUserData} from "../utils/UserDataUtils";
 

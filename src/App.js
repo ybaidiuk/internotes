@@ -1,12 +1,12 @@
 import React from 'react';
 
-import AppInit from "./components/AppInit";
-import Login from "./components/Login";
-import AuthSetUp from "./components/AuthSetUp";
-import Auth from "./components/Auth";
-import Main from "./components/Main";
+import AppInit from "./pages/AppInit";
+import Login from "./pages/Login";
+import AuthSetUp from "./pages/AuthSetUp";
+import Auth from "./pages/Auth";
+import Main from "./pages/Main";
 import {DrawerNavigator, StackNavigator, SwitchNavigator} from "react-navigation";
-import Exemple from "./components/Exemple";
+import Exemple from "./pages/Exemple";
 
 
 

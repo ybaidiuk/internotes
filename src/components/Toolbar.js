@@ -4,7 +4,7 @@ import {
   Text,
   View
 } from 'react-native';
-import colors from "../utils/Colors";
+import colors from "../Colors";
 
 export default class Toolbar extends Component<Props> {
 

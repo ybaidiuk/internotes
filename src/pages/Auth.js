@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {
+  StatusBar,
   Text,
   View
 } from 'react-native';
 
 /**
- * todo later here should be fingerPrint or Password or FaceId Authentication SetUp
+ * todo later here should be fingerPrint or Password or FaceId Authentication
  */
-export default class AuthSetUp extends Component<Props> {
+export default class Auth extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {};
@@ -17,7 +18,8 @@ export default class AuthSetUp extends Component<Props> {
   render() {
     return (
       <View>
-        <Text>AuthSetUp</Text>
+        <StatusBar barStyle={"light-content"}/>
+        <Text>Auth</Text>
       </View>
     );
   }

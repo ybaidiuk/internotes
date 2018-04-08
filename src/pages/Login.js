@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {
-  Button,
+  Button, StatusBar,
   StyleSheet,
   Text, TextInput,
   View
 } from 'react-native';
-import colors from "../utils/Colors";
+import colors from "../Colors";
 import AuthSetUp from "./AuthSetUp";
 import {isLoginValid, isPassValid, saveUserData} from "../utils/UserDataUtils";
 
@@ -43,6 +43,7 @@ export default class Login extends Component<Props> {
   render() {
     return (
       <View style={s.container}>
+        <StatusBar barStyle={"light-content"}/>
 
         <Text style={s.greeting}>
           Welcome to Internotes

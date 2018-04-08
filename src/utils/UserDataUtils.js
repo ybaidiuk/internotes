@@ -1,5 +1,5 @@
 import {sha256} from "./CryptoUtils";
-import {authData} from "./Const";
+import {authData} from "../Const";
 import {insertJson} from "./DbUtils";
 
 export function verifyUserData(data) {
