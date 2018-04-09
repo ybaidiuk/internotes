@@ -20,7 +20,7 @@ export default class Main extends Component<Props> {
       <View style={s.container}>
        <StatusBar backgroundColor={'black'}/>
         <Toolbar navigation={this.props.navigation}/>
-        <Text>Main</Text>
+        <Text>Maind</Text>
       </View>
     );
   }

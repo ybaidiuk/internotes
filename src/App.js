@@ -7,7 +7,7 @@ import Auth from "./pages/Auth";
 import Main from "./pages/Main";
 import {DrawerNavigator, StackNavigator, SwitchNavigator} from "react-navigation";
 import Exemple from "./pages/Exemple";
-
+import NoteEditor from "./pages/NoteEditor";
 
 
 const Draver = DrawerNavigator({
@@ -28,8 +28,9 @@ export default SwitchNavigator(
 
     Auth: Auth,
     Main: Draver,
+    NoteEditor: NoteEditor,
 
-    // Auth: StackNavigator({Auth: Auth}),
+    // NoteEditor: StackNavigator({NoteEditor: NoteEditor})
   },
   {
     initialRouteName: 'AppInit',

@@ -13,15 +13,15 @@
   },
   "dependencies": {
     "crypto-js": "^3.1.9-1",
-    "react": "16.3.0-rc.0",
-    "react-native": "0.54.3",
-    "react-navigation": "^1.5.9"
+    "react": "16.3.1",
+    "react-native": "0.55.2",
+    "react-navigation": "1.5.11"
   },
   "devDependencies": {
     "babel-jest": "22.4.3",
     "babel-preset-react-native": "4.0.0",
     "jest": "22.4.3",
-    "react-test-renderer": "16.3.0-rc.0"
+    "react-test-renderer": "16.3.1"
   },
   "jest": {
     "preset": "react-native"
