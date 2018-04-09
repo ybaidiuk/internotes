@@ -1,9 +1,19 @@
 import React, {Component} from 'react';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
-import Toolbar from "../components/Toolbar";
+import {Image, StatusBar, StyleSheet, Text, View} from 'react-native';
+import ToolbarForMain from "../components/ToolbarForMain";
 import colors from "../Colors";
 
 export default class Main extends Component<Props> {
+  static navigationOptions = {
+    drawerLabel: 'Main',
+    drawerIcon: ({tintColor}) => (
+      <Image
+        source={require('../res/ic_home_black_24dp_1x.png')}
+        style={{tintColor: tintColor}}
+      />
+    ),
+  };
+
   constructor(props) {
     super(props);
     this.state = {};
@@ -13,13 +23,12 @@ export default class Main extends Component<Props> {
   render() {
     return (
       <View style={s.container}>
-       <StatusBar backgroundColor={colors.orange}/>
-        <Toolbar navigation={this.props.navigation}/>
+        <StatusBar backgroundColor={colors.orange}/>
+        <ToolbarForMain/>
         <Text>Main</Text>
       </View>
     );
   }
-
 
 
 }
@@ -28,6 +37,6 @@ const s = StyleSheet.create({
     flex: 1,
     // justifyContent: 'center',
     // alignItems: 'center',
-    backgroundColor: colors.gray,
+    backgroundColor: colors.lightGray,
   },
 });

@@ -8,6 +8,7 @@ import Main from "./pages/Main";
 import {DrawerNavigator, StackNavigator, SwitchNavigator} from "react-navigation";
 import Exemple from "./pages/Exemple";
 import NoteEditor from "./pages/NoteEditor";
+import colors from "./Colors";
 
 
 const Draver = DrawerNavigator({
@@ -17,6 +18,8 @@ const Draver = DrawerNavigator({
   Exemple: {
     screen: Exemple,
   }
+},{
+  drawerBackgroundColor: colors.lightGray
 });
 
 export default SwitchNavigator(

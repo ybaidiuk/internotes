@@ -1,15 +1,38 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, BackHandler} from 'react-native';
+import {withNavigation} from "react-navigation";
+import ToolbarForEditor from "../components/ToolbarForEditor";
 
-export default class NoteEditor extends Component<Props> {
+class NoteEditor extends Component<Props> {
 
-  render() {// todo make Draver
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.saveAndGoToMain);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.saveAndGoToMain);
+  }
+
+  saveAndGoToMain=()=> {
+    console.log("saveAndGoToMain");
+    //saveFunc
+    this.props.navigation.navigate('Main');
+    return true;
+  };
+
+  render() {
     return (
       <View>
-        <Text>NoteEditor</Text>
+        <ToolbarForEditor onPressBack={this.saveAndGoToMain}/>
+        {/*<Text>NoteEditor</Text>*/}
       </View>
     );
   }
 
 
 }
+export default withNavigation(NoteEditor);

@@ -2,14 +2,17 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import colors from "../Colors";
 import Button from "./Button";
+import NoteEditor from "../pages/NoteEditor";
+import {withNavigation} from "react-navigation";
 
-export default class Toolbar extends Component<Props> {
+class ToolbarForMain extends Component<Props> {
   toggleDrawer = () => {
     this.props.navigation.navigate('DrawerToggle');
   };
 
   createNote = () => {
-    console.log("createNote");
+    console.log("goToNoteEditor");
+    this.props.navigation.navigate('NoteEditor');
   };
 
 
@@ -56,3 +59,5 @@ const s = StyleSheet.create({
     fontWeight: '400'
   }
 });
+
+export default withNavigation(ToolbarForMain);
