@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-import {
-  Image,
-  Text,
-  View
-} from 'react-native';
+import {Text, View} from 'react-native';
 
 export default class NoteEditor extends Component<Props> {
 

@@ -43,7 +43,7 @@ export default class Login extends Component<Props> {
   render() {
     return (
       <View style={s.container}>
-       <StatusBar backgroundColor={'black'}/>
+       <StatusBar backgroundColor={colors.orange}/>
 
         <Text style={s.greeting}>
           Welcome to Internotes

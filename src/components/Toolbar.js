@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-import {
-  Image, StyleSheet,
-  Text, TouchableHighlight,
-  View
-} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import colors from "../Colors";
 import Button from "./Button";
 
@@ -21,12 +17,12 @@ export default class Toolbar extends Component<Props> {
     return (
       <View style={s.container}>
         <Button onPress={this.toggleDrawer}
-                image={require('../res/ic_menu_black_48dp_1x.png')}/>
+                image={require('../res/ic_menu_white_24dp_1x.png')}/>
 
         <Text style={s.logo}>Internotes</Text>
 
         <Button onPress={this.createNote}
-                image={require('../res/ic_add_black_48dp_1x.png')}/>
+                image={require('../res/ic_add_white_24dp_1x.png')}/>
       </View>
     );
   }
@@ -55,8 +51,8 @@ const s = StyleSheet.create({
     width: 30,
   },
   logo: {
-    color: 'black',
+    color: 'white',
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: '400'
   }
 });

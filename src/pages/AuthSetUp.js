@@ -18,7 +18,7 @@ export default class AuthSetUp extends Component<Props> {
   render() {
     return (
       <View>
-       <StatusBar backgroundColor={'black'}/>
+       <StatusBar backgroundColor={colors.orange}/>
         <Text>AuthSetUp</Text>
       </View>
     );
