@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 import colors from "../Colors";
 import Button from "./Button";
 import NoteEditor from "../pages/NoteEditor";
@@ -42,6 +42,11 @@ const s = StyleSheet.create({
     backgroundColor: colors.yellow,
     height: 55,
     padding: 7,
+    paddingTop:
+      Platform.select({ // todo fix bug bay land orientation . ios. probably turn off land layaut.
+        ios: 22,
+        // android: 0
+      })
   },
   btn: {
     height: 40,

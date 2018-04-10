@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, TouchableHighlight} from 'react-native';
+import {Image, StyleSheet, Text, TouchableHighlight} from 'react-native';
 import PropTypes from 'prop-types';
 
 export default class Button extends Component<Props> {
@@ -9,13 +9,12 @@ export default class Button extends Component<Props> {
   }
 
   render() {
-    return (
+    return (//todo try TouchableOpacity
       <TouchableHighlight style={s.container} onPress={this.props.onPress}
                           underlayColor="rgba(0,0,0,0.15)" // tmp solution because activeOpacity not working
         // activeOpacity={0.50} todo not working (buggy)
       >
-        <Image style={s.img}
-               source={this.props.image}/>
+        <Image source={this.props.image}/>
       </TouchableHighlight>
     );
   }
@@ -32,9 +31,5 @@ const s = StyleSheet.create({
     alignItems: 'center',
     height: 40,
     width: 40,
-  },
-  img: {
-    // height: 30,
-    // width: 30,
   },
 });
