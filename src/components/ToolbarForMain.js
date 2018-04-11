@@ -4,8 +4,16 @@ import colors from "../Colors";
 import Button from "./Button";
 import NoteEditor from "../pages/NoteEditor";
 import {withNavigation} from "react-navigation";
+import {isPortrait} from "../utils/ScreenUtils";
 
 class ToolbarForMain extends Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isPortrait: true,
+    }
+  }
+
   toggleDrawer = () => {
     this.props.navigation.navigate('DrawerToggle');
   };
@@ -15,10 +23,17 @@ class ToolbarForMain extends Component<Props> {
     this.props.navigation.navigate('NoteEditor');
   };
 
+  onLayout = () => {
+    this.setState({isPortrait: isPortrait()});
+  };
+  getPaddingTop = () => {
+    if (Platform.OS === 'ios' && this.state.isPortrait)
+      return 25;
+  };
 
   render() {
     return (
-      <View style={s.container}>
+      <View style={[s.container, {paddingTop: this.getPaddingTop()}]} onLayout={this.onLayout}>
         <Button onPress={this.toggleDrawer}
                 image={require('../res/ic_menu_white_24dp_1x.png')}/>
 
@@ -40,13 +55,8 @@ const s = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: colors.yellow,
-    height: 55,
+    height: 50,
     padding: 7,
-    paddingTop:
-      Platform.select({ // todo fix bug bay land orientation . ios. probably turn off land layaut.
-        ios: 22,
-        // android: 0
-      })
   },
   btn: {
     height: 40,

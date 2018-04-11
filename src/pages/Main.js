@@ -22,7 +22,7 @@ export default class Main extends Component<Props> {
 
   render() {
     return (
-      <View style={s.container}>
+      <View style={s.container} >
         <StatusBar backgroundColor={colors.orange}/>
         <ToolbarForMain/>
         <Text>Main</Text>
