@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import {Text, View, BackHandler, TextInput, StatusBar, StyleSheet} from 'react-native';
 import {withNavigation} from "react-navigation";
-import ToolbarForEditor from "../components/ToolbarForEditor";
 import colors from "../Colors";
+import Toolbar from "../components/Toolbar";
+import Button from "../components/Button";
 
-class NoteEditor extends Component<Props> {
+
+export default  class NoteEditor extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,7 +33,10 @@ class NoteEditor extends Component<Props> {
     return (// todo continue
       <View>
         <StatusBar backgroundColor={colors.orange}/>
-        <ToolbarForEditor onPressBack={this.saveAndGoToMain}/>
+        <Toolbar>
+          <Button onPress={this.saveAndGoToMain}
+                  image={require('../res/ic_arrow_back_white_24dp_1x.png')}/>
+        </Toolbar>
         {/*<TextInput*/}
           {/*multiline*/}
           {/*style={s.container}*/}
@@ -56,5 +61,4 @@ const s = StyleSheet.create({
     // padding: 7,
   },
 });
-
-export default withNavigation(NoteEditor);
+//withNavigation(NoteEditor);
