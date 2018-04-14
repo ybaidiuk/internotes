@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
-import {
-  Text, View, BackHandler, TextInput, StatusBar, StyleSheet, ScrollView,
-  KeyboardAvoidingView, Keyboard, Animated
-} from 'react-native';
+import {View, BackHandler, TextInput, StatusBar, StyleSheet, ScrollView,} from 'react-native';
 import colors from "../Colors";
 import Toolbar from "../components/Toolbar";
 import Button from "../components/Button";
 import {maxNoteLength} from "../Const";
+import {saveNewNote} from "../utils/UserDataUtils";
 
 
 export default class NoteEditor extends Component<Props> {
@@ -14,40 +12,24 @@ export default class NoteEditor extends Component<Props> {
     super(props);
     this.state = {
       text: '',
-      keyboardHide: 0,
     };
   }
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.saveAndGoToMain);
-
-
-    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
-    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
   }
 
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.saveAndGoToMain);
-    this.keyboardDidShowListener.remove();
-    this.keyboardDidHideListener.remove();
   }
-
-  _keyboardDidShow = (e) => {
-    console.log("Keyboard Shown");
-    console.log(e.endCoordinates.height);
-    // this.setState({keyboardHide: e.endCoordinates.height})
-  };
-
-  _keyboardDidHide = () => {
-    console.log('Keyboard Hidden');
-  };
 
 
   saveAndGoToMain = () => {
     console.log("saveAndGoToMain");
     //saveFunc
+    // saveNewNote(this.state.text); todo
     this.props.navigation.navigate('Main');
-    return true;
+    return true; // need for back button working correctly
   };
 
   render() {
@@ -85,7 +67,6 @@ const s = StyleSheet.create({
     fontSize: 15,
     marginLeft: 15,
     marginRight: 15,
-
-    //todo minHeight: '100%', screen View
+    flex: 1
   }
 });
