@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import {Text, View, BackHandler, TextInput, StatusBar, StyleSheet, ScrollView} from 'react-native';
+import {
+  Text, View, BackHandler, TextInput, StatusBar, StyleSheet, ScrollView,
+  KeyboardAvoidingView, Keyboard, Animated
+} from 'react-native';
 import colors from "../Colors";
 import Toolbar from "../components/Toolbar";
 import Button from "../components/Button";
@@ -10,17 +13,35 @@ export default class NoteEditor extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      text: '',
+      keyboardHide: 0,
     };
   }
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this.saveAndGoToMain);
+
+
+    this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow);
+    this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide);
   }
 
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.saveAndGoToMain);
+    this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener.remove();
   }
+
+  _keyboardDidShow = (e) => {
+    console.log("Keyboard Shown");
+    console.log(e.endCoordinates.height);
+    // this.setState({keyboardHide: e.endCoordinates.height})
+  };
+
+  _keyboardDidHide = () => {
+    console.log('Keyboard Hidden');
+  };
+
 
   saveAndGoToMain = () => {
     console.log("saveAndGoToMain");
@@ -31,27 +52,21 @@ export default class NoteEditor extends Component<Props> {
 
   render() {
     return (
-      <View onContentSizeChange={() => {
-        console.log("aaa")
-      }}>
+      <View style={s.container}>
         <StatusBar backgroundColor={colors.orange}/>
         <Toolbar>
           <Button onPress={this.saveAndGoToMain}
                   image={require('../res/ic_arrow_back_white_24dp_1x.png')}/>
         </Toolbar>
-
         <ScrollView>
           <TextInput
             value={this.state.text}
-            onChangeText={(text) => {this.setState({text});
-            console.log(this.state)
-            }}
-            style={s.container}
+            onChangeText={(text) => this.setState({text})}
+            style={s.text}
             multiline={true}
             autoCorrect={true}
             maxLength={maxNoteLength}
             placeholder={'Please write you note...'}
-            numberOfLines={40} // todo continue (text hide of keyboard height)
           />
         </ScrollView>
       </View>
@@ -62,14 +77,15 @@ export default class NoteEditor extends Component<Props> {
 
 const s = StyleSheet.create({
   container: {
-    textAlignVertical: 'top',//only android (ios work default)
-    // display: 'flex',
-    // flexDirection: 'row',
-    // justifyContent: 'space-between',
-    // alignItems: 'center',
-    // backgroundColor: colors.yellow,
-    height: '100%',
-    padding: 10,
+    flex: 1,
+    backgroundColor: colors.lightGray
   },
+  text: {
+    textAlignVertical: 'top',//only android (ios work default)
+    fontSize: 15,
+    marginLeft: 15,
+    marginRight: 15,
+
+    //todo minHeight: '100%', screen View
+  }
 });
-//withNavigation(NoteEditor);

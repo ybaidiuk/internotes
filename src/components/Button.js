@@ -9,10 +9,9 @@ export default class Button extends Component<Props> {
   }
 
   render() {
-    return (//todo try TouchableOpacity
+    return (
       <TouchableHighlight style={s.container} onPress={this.props.onPress}
-                          underlayColor="rgba(0,0,0,0.15)" // tmp solution because activeOpacity not working
-        // activeOpacity={0.50} todo not working (buggy)
+                          underlayColor="rgba(0,0,0,0.15)"
       >
         <Image source={this.props.image}/>
       </TouchableHighlight>
