@@ -37,28 +37,3 @@ export function isPassValid(password, password2) {
     password.indexOf(' ') === -1 &&
     password === password2;
 }
-
-
-export async function saveNewNote(text) {
-  // if (text === '') return;
-  // const newNote = {
-  //   text: text,
-  //   lastUpdate: new Date().getTime()
-  // };
-  // console.log(newNote);
-  // const notes = await readJson(notes);
-  //
-  // console.log("read DOne")
-  // if (notes == null) {
-  //   console.log("NotesArrNotExist(")
-  //   await insertJson(notes, [newNote]);
-  //   console.log("saved note in new Array")
-  //   console.log([newNote])
-  // } else {
-  //   console.log("NotesArray Exist)")
-  //   notes.push(newNote);
-  //   await insertJson(notes, notes);
-  //   console.log("saved succes in old array")
-  //   console.log(notes)
-  // }
-}

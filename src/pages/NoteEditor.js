@@ -4,7 +4,7 @@ import colors from "../Colors";
 import Toolbar from "../components/Toolbar";
 import Button from "../components/Button";
 import {maxNoteLength} from "../Const";
-import {saveNewNote} from "../utils/UserDataUtils";
+import {insertNote} from "../utils/NoteCrudUtils";
 
 
 export default class NoteEditor extends Component<Props> {
@@ -24,10 +24,19 @@ export default class NoteEditor extends Component<Props> {
   }
 
 
-  saveAndGoToMain = () => {
+  async saveAndGoToMain() {
     console.log("saveAndGoToMain");
     //saveFunc
-    // saveNewNote(this.state.text); todo
+
+
+    if (this.props.navigation.state.params && this.props.navigation.state.params.noteId) {
+      console.log("Update")//todo
+    }
+    else {
+      await insertNote(this.state.text);
+    }
+
+
     this.props.navigation.navigate('Main');
     return true; // need for back button working correctly
   };
@@ -37,7 +46,7 @@ export default class NoteEditor extends Component<Props> {
       <View style={s.container}>
         <StatusBar backgroundColor={colors.orange}/>
         <Toolbar>
-          <Button onPress={this.saveAndGoToMain}
+          <Button onPress={this.saveAndGoToMain.bind(this)}
                   image={require('../res/ic_arrow_back_white_24dp_1x.png')}/>
         </Toolbar>
         <ScrollView>
