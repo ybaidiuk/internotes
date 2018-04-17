@@ -26,9 +26,6 @@ export async function insertNote(text) {
   notes.push(timestampId);
 
 
-  console.log('notesList: ');
-  console.log(notes);
-
 
   insertJson(notesIdsArr, notes);
 

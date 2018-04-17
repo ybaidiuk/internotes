@@ -38,6 +38,5 @@ export async function insertJson(key, data) {
 
 export async function readJson(key) {
   let res = await readString(key);
-  console.log(res);
   return JSON.parse(res);
 }

@@ -117,30 +117,25 @@ const s = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.lightGray,
-
   },
   greeting: {
     maxWidth: '80%',
     fontSize: 30,
     textAlign: 'left',
-    color: colors.white,
   },
   greetingSmall: {
     maxWidth: '80%',
     fontSize: 20,
     textAlign: 'left',
-    color: colors.white,
     marginBottom: 50,
   },
   description: {
     width: '80%',
     fontSize: 15,
-    color: colors.white
   },
   textInput: {
     width: '80%',
     fontSize: 15,
-    color: colors.white
   },
   warning: {
     width: '80%',

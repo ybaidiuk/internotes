@@ -36,7 +36,7 @@ export default SwitchNavigator(
     // NoteEditor: StackNavigator({NoteEditor: NoteEditor})
   },
   {
-    initialRouteName: 'AppInit',
+    initialRouteName: 'Main',
   }
 );
 

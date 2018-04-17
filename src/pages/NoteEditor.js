@@ -5,6 +5,7 @@ import Toolbar from "../components/Toolbar";
 import Button from "../components/Button";
 import {maxNoteLength} from "../Const";
 import {insertNote} from "../utils/NoteCrudUtils";
+import {withNavigation} from "react-navigation";
 
 
 export default class NoteEditor extends Component<Props> {
@@ -16,7 +17,7 @@ export default class NoteEditor extends Component<Props> {
   }
 
   componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.saveAndGoToMain);
+    BackHandler.addEventListener('hardwareBackPress', this.saveAndGoToMain.bind(this));
   }
 
   componentWillUnmount() {
@@ -26,12 +27,10 @@ export default class NoteEditor extends Component<Props> {
 
   async saveAndGoToMain() {
     console.log("saveAndGoToMain");
+
     //saveFunc
-
-
-    if (this.props.navigation.state.params && this.props.navigation.state.params.noteId) {
-      console.log("Update")//todo
-    }
+    if (this.props.navigation.state.params && this.props.navigation.state.params.noteId)
+      console.log("Update"); //todo
     else {
       await insertNote(this.state.text);
     }
