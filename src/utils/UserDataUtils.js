@@ -1,5 +1,5 @@
 import {sha256} from "./CryptoUtils";
-import {authData, notes} from "../Const";
+import {AUTH_DATA, notes} from "../Const";
 import {insertJson, readJson} from "./DbUtils";
 
 export function verifyUserData(data) {
@@ -24,7 +24,7 @@ export async function saveUserData(login, password) {
     privateKey: privateKey,
     id: id
   };
-  await insertJson(authData, dataToSave);
+  await insertJson(AUTH_DATA, dataToSave);
 }
 
 export function isLoginValid(login) {

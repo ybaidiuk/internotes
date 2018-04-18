@@ -3,7 +3,7 @@ import {View, BackHandler, TextInput, StatusBar, StyleSheet, ScrollView,} from '
 import colors from "../Colors";
 import Toolbar from "../components/Toolbar";
 import Button from "../components/Button";
-import {maxNoteLength} from "../Const";
+import {NOTE_MAX_LENGTH} from "../Const";
 import {insertNote} from "../utils/NoteCrudUtils";
 import {withNavigation} from "react-navigation";
 
@@ -55,7 +55,7 @@ export default class NoteEditor extends Component<Props> {
             style={s.text}
             multiline={true}
             autoCorrect={true}
-            maxLength={maxNoteLength}
+            maxLength={NOTE_MAX_LENGTH}
             placeholder={'Please write you note...'}
           />
         </ScrollView>

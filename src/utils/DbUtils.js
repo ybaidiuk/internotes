@@ -5,11 +5,11 @@ import {AsyncStorage} from 'react-native';
 export async function insertString(key, data) {
   try {
     await AsyncStorage.setItem(key, data);
-    console.log('write data successful');
+    console.log(`write data successful  '${key}'`);
     console.log(data);
   } catch (error) {
     console.log(error);
-    console.warn('error while WRITHING data with key ' + key);
+    console.warn(`error while WRITHING data with '${key}'`);
   }
 
 }
@@ -17,15 +17,14 @@ export async function insertString(key, data) {
 // exemple: const val = await readData('test');
 export async function readString(key) {
   try {
-    console.log("start reading");
     // await AsyncStorage.clear();
     const value = await AsyncStorage.getItem(key);
-    console.log("read successful");
+    console.log(`read successful '${key}'`);
     console.log(value);
     return value;
   } catch (error) {
     console.log(error);
-    console.warn('error while READ data with key ' + key);
+    console.warn(`error while READ data with '${key}'`);
   }
 }
 
@@ -37,6 +36,6 @@ export async function insertJson(key, data) {
 
 
 export async function readJson(key) {
-  let res = await readString(key);
+  let res = await readString(key.toString());
   return JSON.parse(res);
 }

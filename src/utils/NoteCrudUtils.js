@@ -1,4 +1,4 @@
-import {notesIdsArr, noteTitleLenght} from "../Const";
+import {NOTE_ID_ARR, NOTE_TITLE_LENGTH} from "../Const";
 import {insertJson, readJson} from "./DbUtils";
 
 
@@ -12,22 +12,22 @@ export async function insertNote(text) {
 
   const timestampId = new Date().getTime();
   const newNote = {
-    // id: timestamp,
+    id: timestampId,
     lastUpdate: timestampId,
-    title: text.substring(0, noteTitleLenght),
+    title: text.substring(0, NOTE_TITLE_LENGTH),
     text: text
   };
 
   console.log(newNote);
 
   //save id to array
-  let notes = await readJson(notesIdsArr);
+  let notes = await readJson(NOTE_ID_ARR);
   if (notes == null) notes = [];
   notes.push(timestampId);
 
 
 
-  insertJson(notesIdsArr, notes);
+  insertJson(NOTE_ID_ARR, notes);
 
   //save note
   insertJson(timestampId.toString(), newNote);

@@ -3,7 +3,7 @@ import {ActivityIndicator, StatusBar, Text, View} from "react-native";
 import colors from "../Colors";
 import {Platform, StyleSheet} from "react-native";
 import {readJson} from "../utils/DbUtils";
-import {authData} from "../Const";
+import {AUTH_DATA} from "../Const";
 import {sha256, sha256x2} from "../utils/CryptoUtils";
 import {verifyUserData} from "../utils/UserDataUtils";
 
@@ -20,7 +20,7 @@ export default class AppInit extends Component<Props> {
 
   async loadUserData() {
     console.log("loadUserData");
-    const data = await readJson(authData);
+    const data = await readJson(AUTH_DATA);
     console.log(data);
     const dataIsValid = verifyUserData(data);
     this.props.navigation.navigate(dataIsValid ? 'Auth' : 'Login');

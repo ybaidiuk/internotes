@@ -1,4 +1,4 @@
-export const authData = 'authData';
-export const notesIdsArr = 'notesArr';
-export const noteTitleLenght = 20;
-export const maxNoteLength = 10000;
+export const AUTH_DATA = 'authData';
+export const NOTE_ID_ARR = 'noteIdArr';
+export const NOTE_TITLE_LENGTH = 20;
+export const NOTE_MAX_LENGTH = 10000;
