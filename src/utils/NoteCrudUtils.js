@@ -14,7 +14,7 @@ export async function insertNote(text) {
   const newNote = {
     id: timestampId,
     lastUpdate: timestampId,
-    title: text.substring(0, NOTE_TITLE_LENGTH),
+    title: text.substring(0, NOTE_TITLE_LENGTH),// todo first line 30-70 letters  till '\n
     text: text
   };
 

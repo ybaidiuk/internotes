@@ -30,7 +30,7 @@ export default class AppInit extends Component<Props> {
   render() {
     return (
       <View style={s.container}>
-       <StatusBar backgroundColor={colors.orange}/>
+        <StatusBar backgroundColor={colors.orange}/>
         <ActivityIndicator size={busyIndicatorSize} color={colors.orange}/>
       </View>
     );

@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import NoteEditor from "../pages/NoteEditor";
 import {readJson} from "../utils/DbUtils";
 import {NOTE_ID_ARR} from "../Const";
+import ListItem from "../components/ListItem";
 
 export default class Main extends Component<Props> {
   static navigationOptions = {
@@ -21,22 +22,21 @@ export default class Main extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {noteArr: []};
-    console.log("asd!")
-    this.loadNoteList();//.bind(this);
+    this.loadNoteList();
   }
 
 
   async loadNoteList() {
     const noteArr = [];
-    const noteIdArr = await readJson(NOTE_ID_ARR);
+    let noteIdArr = await readJson(NOTE_ID_ARR);
+    if (noteIdArr == null) return;
 
-    noteIdArr.forEach(async id => {
-      const note = await readJson(id);
+
+    for (let id of noteIdArr) {
+      const note = await readJson(id.toString());
       noteArr.push(note);
-    });
-    //  todo console.log('arr', noteArr);
-    // this.setState({noteArr: noteArr})
-
+    }
+    this.setState({noteArr: noteArr})
   }
 
   toggleDrawer = () => {
@@ -44,7 +44,6 @@ export default class Main extends Component<Props> {
   };
 
   createNote = () => {
-    console.log("goToNoteEditor");
     this.props.navigation.navigate('NoteEditor');
   };
 
@@ -64,11 +63,10 @@ export default class Main extends Component<Props> {
         </Toolbar>
 
         <SectionList
-          renderItem={({item, index}) => {
-            return <Text key={index}>{item}</Text>}}
+          renderItem={({item: note, index}) => <ListItem key={index} title={note.title} lastUpdate={note.lastUpdate}/>}
           ItemSeparatorComponent={() => <View style={s.separator}/>}
           sections={[
-            {data: [1,2,3,4]},
+            {data: this.state.noteArr},
           ]}
           keyExtractor={(item, index) => item + index}
         />
