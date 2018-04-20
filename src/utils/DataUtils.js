@@ -4,6 +4,11 @@ export function timeStampToFormatedData(timestamp) {
     (date.getMonth() + 1) + '/' +
     date.getFullYear() + ' ' +
 
-    date.getHours() + ':' +
-    date.getMinutes();
+    addZero(date.getHours()) + ':' +
+    addZero(date.getMinutes());
+}
+
+function addZero(int) {
+  if (int < 10)
+    return '0' + int;
 }

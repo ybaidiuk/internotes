@@ -1,16 +1,23 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import colors from "../Colors";
 import {timeStampToFormatedData} from "../utils/DataUtils";
+import withNavigation from "react-navigation/src/views/withNavigation";
 
-export default class ListItem extends Component<Props> {
+class ListItem extends Component<Props> {
+  goToNoteEditor() {
+    this.props.navigation.navigate('NoteEditor', {note: this.props.note});
+  }
 
   render() {
     return (
-      <View style={s.container}>
-        <Text style={s.title}>{this.props.title}</Text>
-        <Text style={s.text}>{timeStampToFormatedData(this.props.lastUpdate)}</Text>
-      </View>
+      <TouchableHighlight onPress={this.goToNoteEditor.bind(this)} underlayColor={colors.gray}>
+        <View style={s.container}>
+          <Text style={s.title}>{this.props.note.title}</Text>
+          <Text style={s.text}>{timeStampToFormatedData(this.props.note.lastUpdate)}</Text>
+        </View>
+      </TouchableHighlight>
+
     );
   }
 
@@ -25,3 +32,6 @@ const s = StyleSheet.create({
     fontSize: 30
   }
 });
+
+
+export default withNavigation(ListItem);

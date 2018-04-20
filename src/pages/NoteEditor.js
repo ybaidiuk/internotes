@@ -17,7 +17,16 @@ export default class NoteEditor extends Component<Props> {
   }
 
   componentDidMount() {
+    if (this.props.navigation.state.params)
+      this.fillUotField(this.props.navigation.state.params.note);
+
+
     BackHandler.addEventListener('hardwareBackPress', this.saveAndGoToMain.bind(this));
+  }
+
+  fillUotField(note) {
+    console.log(note);
+    this.setState({text: note.text });
   }
 
   componentWillUnmount() {

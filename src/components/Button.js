@@ -11,8 +11,7 @@ export default class Button extends Component<Props> {
   render() {
     return (
       <TouchableHighlight style={s.container} onPress={this.props.onPress}
-                          underlayColor="rgba(0,0,0,0.15)"
-      >
+                          underlayColor="rgba(0,0,0,0.15)">
         <Image source={this.props.image}/>
       </TouchableHighlight>
     );

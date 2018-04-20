@@ -63,7 +63,7 @@ export default class Main extends Component<Props> {
         </Toolbar>
 
         <SectionList
-          renderItem={({item: note, index}) => <ListItem key={index} title={note.title} lastUpdate={note.lastUpdate}/>}
+          renderItem={({item: note, index}) => <ListItem key={index} note={note}/>}
           ItemSeparatorComponent={() => <View style={s.separator}/>}
           sections={[
             {data: this.state.noteArr},
@@ -87,7 +87,7 @@ const s = StyleSheet.create({
     fontWeight: '400'
   },
   separator: {
-    height: 2,
+    height: 1,
     backgroundColor: colors.gray
   }
 });
