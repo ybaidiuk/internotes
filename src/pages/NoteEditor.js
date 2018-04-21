@@ -50,6 +50,10 @@ export default class NoteEditor extends Component<Props> {
     return true; // need for back button working correctly
   };
 
+  showOptions() {
+    //todo
+  }
+
   render() {
     return (
       <View style={s.container}>
@@ -57,6 +61,8 @@ export default class NoteEditor extends Component<Props> {
         <Toolbar>
           <Button onPress={this.saveAndGoToMain.bind(this)}
                   image={require('../res/ic_arrow_back_white_24dp_1x.png')}/>
+          <Button onPress={this.showOptions.bind(this)}
+                  image={require('../res/ic_more_vert_white_24dp_1x.png')}/>
         </Toolbar>
         <ScrollView>
           <TextInput

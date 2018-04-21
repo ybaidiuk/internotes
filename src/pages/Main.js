@@ -87,6 +87,8 @@ const s = StyleSheet.create({
   },
   separator: {
     height: 1,
+    marginRight: 15,
+    marginLeft: 15,
     backgroundColor: colors.gray
   }
 });
