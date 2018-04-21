@@ -1,0 +1,26 @@
+
+            Global
+
+1. improve color politic .
+
+
+            MainPage
+
+1. Modal Window on main page. if user hold on note show popUp window  like in instagram masseger with button delete...
+
+2. sort notes on main page . new note to top.
+
+
+            EditorPage
+
+1. on Note EditorPage (at toolbar middle ) show back and forward buttons .should do  like  Ctrl Z, Ctrl Y.
+
+2. Note Editor Not show underline for input field . or show it at bottom. schould also work wenn keyboard open.
+
+3. show modal window for button from NoteEditor. with delete posibility.
+
+
+            LoginPage
+
+
+
