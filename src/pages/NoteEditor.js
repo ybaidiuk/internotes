@@ -33,17 +33,17 @@ export default class NoteEditor extends Component<Props> {
   }
 
 
-  saveAndGoToMain() {
+  async saveAndGoToMain() {
     console.log("saveAndGoToMain");
     const noteFromProps = this.props.navigation.state.params && this.props.navigation.state.params.note;
 
 
     if (noteFromProps && this.state.text.length === 0)//if updatedText empty remove
-      deleteNote(noteFromProps);
+      await deleteNote(noteFromProps);
     else if (noteFromProps) //if update
-      updateNote(this.state.text, noteFromProps);
+      await updateNote(this.state.text, noteFromProps);
     else //if create new
-      insertNote(this.state.text);
+      await insertNote(this.state.text);
 
 
     this.props.navigation.navigate('Main');

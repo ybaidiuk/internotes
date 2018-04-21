@@ -5,11 +5,11 @@ import {AsyncStorage} from 'react-native';
 export async function insert(key, data) {
   try {
     await AsyncStorage.setItem(key, data);
-    console.log(`write data successful  '${key}'`);
+    console.log(`write data successful  \'${key}\'`);
     console.log(data);
   } catch (error) {
     console.log(error);
-    console.warn(`error while WRITHING data with '${key}'`);
+    console.warn(`error while WRITHING data with \'${key}\'`);
   }
 
 }
@@ -19,18 +19,21 @@ export async function read(key) {
   try {
     // await AsyncStorage.clear();
     const value = await AsyncStorage.getItem(key);
-    console.log(`read successful '${key}'`);
+    console.log(`read successful \'${key}\'`);
     console.log(value);
     return value;
   } catch (error) {
     console.log(error);
-    console.warn(`error while READ data with '${key}'`);
+    console.warn(`error while READ data with \'${key}\'`);
   }
 }
 
 export function remove(key) {
   AsyncStorage.removeItem(key, err => {
-    console.warn(`error while REMOVING data with '${key}'`, err)
+    if (err)
+      console.warn(`error while REMOVING data with \'${key}\'`, err)
+    else
+      console.log(`remove successful \'${key}\'`);
   });
 }
 

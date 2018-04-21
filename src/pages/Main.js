@@ -31,7 +31,6 @@ export default class Main extends Component<Props> {
     let noteIdArr = await readJson(NOTE_IDS_ARR);
     if (noteIdArr == null) return;
 
-
     for (let id of noteIdArr) {
       const note = await readJson(id.toString());
       noteArr.push(note);
