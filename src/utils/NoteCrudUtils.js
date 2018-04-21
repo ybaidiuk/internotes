@@ -26,7 +26,7 @@ export async function insertNote(text) {
   insertJson(NOTE_IDS_ARR, notes);
 
   //save note
-  insertJson(timestampId.toString(), newNote);
+  insertJson(timestampId, newNote);
 }
 
 
@@ -44,13 +44,13 @@ export async function updateNote(newText, note) {
   note.lastUpdate = new Date().getTime();
 
   //update in db
-  insertJson(note.id.toString(), note)
+  insertJson(note.id, note)
 }
 
 export async function deleteNote(note) {
   console.log('deleteNote');
   //remove note
-  remove(note.id.toString());
+  remove(note.id);
 
   //remove note id from noteIdsArray
   let notes = await readJson(NOTE_IDS_ARR);

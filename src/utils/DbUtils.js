@@ -4,7 +4,7 @@ import {AsyncStorage} from 'react-native';
 // exemple:  insertDaata('test', 'YEVHEN');
 export async function insert(key, data) {
   try {
-    await AsyncStorage.setItem(key, data);
+    await AsyncStorage.setItem(key.toString(), data);
     console.log(`write data successful  \'${key}\'`);
     console.log(data);
   } catch (error) {
@@ -18,7 +18,7 @@ export async function insert(key, data) {
 export async function read(key) {
   try {
     // await AsyncStorage.clear();
-    const value = await AsyncStorage.getItem(key);
+    const value = await AsyncStorage.getItem(key.toString());
     console.log(`read successful \'${key}\'`);
     console.log(value);
     return value;
@@ -29,7 +29,7 @@ export async function read(key) {
 }
 
 export function remove(key) {
-  AsyncStorage.removeItem(key, err => {
+  AsyncStorage.removeItem(key.toString(), err => {
     if (err)
       console.warn(`error while REMOVING data with \'${key}\'`, err)
     else

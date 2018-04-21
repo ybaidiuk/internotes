@@ -32,7 +32,7 @@ export default class Main extends Component<Props> {
     if (noteIdArr == null) return;
 
     for (let id of noteIdArr) {
-      const note = await readJson(id.toString());
+      const note = await readJson(id);
       noteArr.push(note);
     }
     this.setState({noteArr: noteArr})
