@@ -4,8 +4,7 @@ import colors from "../Colors";
 import Toolbar from "../components/Toolbar";
 import Button from "../components/Button";
 import {NOTE_MAX_LENGTH} from "../Const";
-import {insertNote} from "../utils/NoteCrudUtils";
-import {withNavigation} from "react-navigation";
+import {insertNote, updateNote, deleteNote} from "../utils/NoteCrudUtils";
 
 
 export default class NoteEditor extends Component<Props> {
@@ -18,15 +17,15 @@ export default class NoteEditor extends Component<Props> {
 
   componentDidMount() {
     if (this.props.navigation.state.params)
-      this.fillUotField(this.props.navigation.state.params.note);
+      this.fillUpField(this.props.navigation.state.params.note);
 
 
     BackHandler.addEventListener('hardwareBackPress', this.saveAndGoToMain.bind(this));
   }
 
-  fillUotField(note) {
+  fillUpField(note) {
     console.log(note);
-    this.setState({text: note.text });
+    this.setState({text: note.text});
   }
 
   componentWillUnmount() {
@@ -34,15 +33,17 @@ export default class NoteEditor extends Component<Props> {
   }
 
 
-  async saveAndGoToMain() {
+  saveAndGoToMain() {
     console.log("saveAndGoToMain");
+    const noteFromProps = this.props.navigation.state.params && this.props.navigation.state.params.note;
 
-    //saveFunc
-    if (this.props.navigation.state.params && this.props.navigation.state.params.noteId)
-      console.log("Update"); //todo
-    else {
-      await insertNote(this.state.text);
-    }
+
+    if (noteFromProps && this.state.text.length === 0)//if updatedText empty remove
+      deleteNote(noteFromProps);
+    else if (noteFromProps) //if update
+      updateNote(this.state.text, noteFromProps);
+    else //if create new
+      insertNote(this.state.text);
 
 
     this.props.navigation.navigate('Main');

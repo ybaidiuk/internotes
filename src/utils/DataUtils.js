@@ -9,6 +9,5 @@ export function timeStampToFormatedData(timestamp) {
 }
 
 function addZero(int) {
-  if (int < 10)
-    return '0' + int;
+  return int < 10 ? '0' + int : int;
 }

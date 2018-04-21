@@ -4,8 +4,8 @@ import Toolbar from "../components/Toolbar";
 import colors from "../Colors";
 import Button from "../components/Button";
 import NoteEditor from "../pages/NoteEditor";
-import {readJson} from "../utils/DbUtils";
-import {NOTE_ID_ARR} from "../Const";
+import {insertJson, readJson, remove} from "../utils/DbUtils";
+import {NOTE_IDS_ARR} from "../Const";
 import ListItem from "../components/ListItem";
 
 export default class Main extends Component<Props> {
@@ -28,7 +28,7 @@ export default class Main extends Component<Props> {
 
   async loadNoteList() {
     const noteArr = [];
-    let noteIdArr = await readJson(NOTE_ID_ARR);
+    let noteIdArr = await readJson(NOTE_IDS_ARR);
     if (noteIdArr == null) return;
 
 
