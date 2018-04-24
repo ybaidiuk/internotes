@@ -35,6 +35,7 @@ export default class Main extends Component<Props> {
       const note = await readJson(id);
       noteArr.push(note);
     }
+    await noteArr.sort((a,b)=> b.lastUpdate-a.lastUpdate);
     this.setState({noteArr: noteArr})
   }
 
