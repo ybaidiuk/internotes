@@ -18,7 +18,12 @@ const Draver = DrawerNavigator({
     screen: Exemple,
   }
 }, {
-  drawerBackgroundColor: colors.lightGray
+  drawerBackgroundColor: colors.blue,
+  drawerWidth: 250,
+  contentOptions: {
+    activeTintColor: colors.white,
+    //https://reactnavigation.org/docs/drawer-navigator.html#drawernavigatorconfig
+  }
 });
 
 export default SwitchNavigator(

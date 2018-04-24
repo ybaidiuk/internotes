@@ -4,6 +4,7 @@ import {
   Text,
   View
 } from 'react-native';
+import colors from '../Colors'
 
 /**
  * todo later here should be fingerPrint or Password or FaceId Authentication
@@ -18,7 +19,7 @@ export default class Auth extends Component<Props> {
   render() {
     return (
       <View>
-       <StatusBar backgroundColor={colors.orange}/>
+       <StatusBar backgroundColor={colors.darkBlue}/>
         <Text>Auth</Text>
       </View>
     );

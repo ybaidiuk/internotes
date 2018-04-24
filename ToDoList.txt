@@ -19,7 +19,7 @@
 
 3. show modal window for button from NoteEditor. with delete posibility.
 
-
+4. add swipe left (behavior like button back)
             LoginPage
 
 

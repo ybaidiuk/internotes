@@ -30,8 +30,8 @@ export default class AppInit extends Component<Props> {
   render() {
     return (
       <View style={s.container}>
-        <StatusBar backgroundColor={colors.orange}/>
-        <ActivityIndicator size={busyIndicatorSize} color={colors.orange}/>
+        <StatusBar backgroundColor={colors.darkBlue}/>
+        <ActivityIndicator size={busyIndicatorSize} color={colors.lightBlue}/>
       </View>
     );
   }
@@ -44,6 +44,6 @@ const s = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.lightGray,
+    backgroundColor: colors.black,
   }
 });

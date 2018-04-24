@@ -43,7 +43,7 @@ export default class Login extends Component<Props> {
   render() {
     return (
       <View style={s.container}>
-       <StatusBar backgroundColor={colors.orange}/>
+       <StatusBar backgroundColor={colors.darkBlue}/>
 
         <Text style={s.greeting}>
           Welcome to Internotes
@@ -60,8 +60,10 @@ export default class Login extends Component<Props> {
           Login:
         </Text>
         <TextInput
+          underlineColorAndroid={colors.lightBlue}
           style={s.textInput}
-          placeholder="could be your email"
+          placeholder="Could be your email"
+          placeholderTextColor={colors.lightBlue}
           onChangeText={(text) => {
             this.setState({login: text})
           }}/>
@@ -74,6 +76,7 @@ export default class Login extends Component<Props> {
           Password:
         </Text>
         <TextInput
+          underlineColorAndroid={colors.lightBlue}
           style={s.textInput}
           secureTextEntry={true}
           onChangeText={(text) => {
@@ -85,6 +88,7 @@ export default class Login extends Component<Props> {
           Repeat Password:
         </Text>
         <TextInput
+          underlineColorAndroid={colors.lightBlue}
           style={s.textInput}
           secureTextEntry={true}
           onChangeText={(text) => {
@@ -116,26 +120,30 @@ const s = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.lightGray,
+    backgroundColor: colors.black,
   },
   greeting: {
     maxWidth: '80%',
     fontSize: 30,
     textAlign: 'left',
+    color: colors.white
   },
   greetingSmall: {
     maxWidth: '80%',
     fontSize: 20,
     textAlign: 'left',
     marginBottom: 50,
+    color: colors.white
   },
   description: {
     width: '80%',
     fontSize: 15,
+    color: colors.white
   },
   textInput: {
     width: '80%',
     fontSize: 15,
+    color: colors.white
   },
   warning: {
     width: '80%',

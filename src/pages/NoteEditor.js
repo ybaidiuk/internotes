@@ -57,7 +57,7 @@ export default class NoteEditor extends Component<Props> {
   render() {
     return (
       <View style={s.container}>
-        <StatusBar backgroundColor={colors.orange}/>
+        <StatusBar backgroundColor={colors.darkBlue}/>
         <Toolbar>
           <Button onPress={this.saveAndGoToMain.bind(this)}
                   image={require('../res/ic_arrow_back_white_24dp_1x.png')}/>
@@ -66,6 +66,7 @@ export default class NoteEditor extends Component<Props> {
         </Toolbar>
         <ScrollView>
           <TextInput
+            underlineColorAndroid={colors.lightBlue}
             value={this.state.text}
             onChangeText={(text) => this.setState({text})}
             style={s.text}
@@ -73,6 +74,7 @@ export default class NoteEditor extends Component<Props> {
             autoCorrect={true}
             maxLength={NOTE_MAX_LENGTH}
             placeholder={'Please write you note...'}
+            placeholderTextColor={colors.lightBlue}
           />
         </ScrollView>
       </View>
@@ -84,13 +86,14 @@ export default class NoteEditor extends Component<Props> {
 const s = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.lightGray
+    backgroundColor: colors.black
   },
   text: {
     textAlignVertical: 'top',//only android (ios work default)
     fontSize: 15,
     marginLeft: 15,
     marginRight: 15,
-    flex: 1
+    flex: 1,
+    color: colors.white
   }
 });

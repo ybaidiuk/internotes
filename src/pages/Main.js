@@ -50,7 +50,7 @@ export default class Main extends Component<Props> {
   render() {
     return (
       <View style={s.container}>
-        <StatusBar backgroundColor={colors.orange}/>
+        <StatusBar backgroundColor={colors.darkBlue}/>
         <Toolbar>
           <Button onPress={this.toggleDrawer}
                   image={require('../res/ic_menu_white_24dp_1x.png')}/>
@@ -78,7 +78,7 @@ export default class Main extends Component<Props> {
 const s = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.lightGray,
+    backgroundColor: colors.black,
   },
   logo: {
     color: 'white',
@@ -86,9 +86,9 @@ const s = StyleSheet.create({
     fontWeight: '400'
   },
   separator: {
-    height: 1,
+    height: 2,
     marginRight: 15,
     marginLeft: 15,
-    backgroundColor: colors.gray
+    backgroundColor: colors.darkBlue
   }
 });

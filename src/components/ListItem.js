@@ -35,7 +35,7 @@ class ListItem extends Component<Props> {
       <TouchableHighlight
         onPress={this.goToNoteEditor.bind(this)}
         onLongPress={this.onLongPress.bind(this)}
-        underlayColor={colors.gray}>
+        underlayColor={colors.lightBlue}>
         <View style={s.container}>
           {/*<Modal*/}
             {/*animationType="slide"*/}
@@ -46,7 +46,7 @@ class ListItem extends Component<Props> {
               {/*alert('Modal has been closed.');*/}
             {/*}}/>*/}
           <Text style={s.title} numberOfLines={1}>{ListItem.makeTitle(this.props.note.text)}</Text>
-          <Text style={s.text}>{timeStampToFormatedData(this.props.note.lastUpdate)}</Text>
+          <Text style={s.lastUpdate}>{timeStampToFormatedData(this.props.note.lastUpdate)}</Text>
         </View>
       </TouchableHighlight>
 
@@ -61,8 +61,11 @@ const s = StyleSheet.create({
     paddingRight: 15,
   },
   title: {
-    color: colors.black,
+    color: colors.white,
     fontSize: 30
+  },
+  lastUpdate: {
+    color: colors.white,
   }
 });
 
