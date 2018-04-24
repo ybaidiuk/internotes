@@ -9,5 +9,5 @@ export default colors = {
   green: '#00E800',
   gray: '#a8a8a8',
   lightGray: '#e6e6e6',
-  white: '#FFFFFF',
+  white: '#FFFFFF'
 };
