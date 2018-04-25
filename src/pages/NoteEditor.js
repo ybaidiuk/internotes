@@ -1,5 +1,14 @@
 import React, {Component} from 'react';
-import {View, BackHandler, TextInput, StatusBar, StyleSheet, ScrollView,} from 'react-native';
+import {
+  View,
+  BackHandler,
+  TextInput,
+  StatusBar,
+  StyleSheet,
+  ScrollView,
+  TouchableHighlight,
+  Modal, Text,
+} from 'react-native';
 import colors from "../Colors";
 import Toolbar from "../components/Toolbar";
 import Button from "../components/Button";
@@ -12,6 +21,7 @@ export default class NoteEditor extends Component<Props> {
     super(props);
     this.state = {
       text: '',
+      modalVisible: false,
     };
   }
 
@@ -50,18 +60,32 @@ export default class NoteEditor extends Component<Props> {
     return true; // need for back button working correctly
   };
 
-  showOptions() {
-    //todo
+  showOptions(bool) {
+    console.log(bool);
+    this.setState({modalVisible: bool});
   }
 
+//todo
   render() {
     return (
       <View style={s.container}>
         <StatusBar backgroundColor={colors.darkBlue}/>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {alert('Modal has been closed.  ');}}
+
+
+        >
+          <Text style={s.modal} onPress={()=> this.setState({modalVisible: false})}>
+            close Modal
+          </Text>
+        </Modal>
         <Toolbar>
           <Button onPress={this.saveAndGoToMain.bind(this)}
                   image={require('../res/ic_arrow_back_white_24dp_1x.png')}/>
-          <Button onPress={this.showOptions.bind(this)}
+          <Button onPress={this.showOptions.bind(this, true)}
                   image={require('../res/ic_more_vert_white_24dp_1x.png')}/>
         </Toolbar>
         <ScrollView>
@@ -95,5 +119,10 @@ const s = StyleSheet.create({
     marginRight: 15,
     flex: 1,
     color: colors.white
+  },
+  modal: {
+    backgroundColor: colors.white,
+    width: 100,
+    height: 100,
   }
 });
