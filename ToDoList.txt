@@ -1,14 +1,16 @@
 
             Global
 
-1. improve color politic .
+=> done 1. improve color politic .
+
+2. scrollIndicator (line on right site) on black backgroung not visible
 
 
             MainPage
 
 1. Modal Window on main page. if user hold on note show popUp window  like in instagram masseger with button delete...
 
-2. sort notes on main page . new note to top.
+=> done 2. sort notes on main page . new note to top.
 
 
             EditorPage

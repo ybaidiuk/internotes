@@ -1,7 +1,20 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import Button from "../components/Button";
+import PropTypes from 'prop-types';
 
 export default class Exemple extends Component<Props> {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: '',
+      modalVisible: false,
+    };
+  }
+
+  componentDidMount() {
+  }
 
   render() {
     return (
@@ -13,3 +26,22 @@ export default class Exemple extends Component<Props> {
 
 
 }
+
+Button.propTypes = {
+  onPress: PropTypes.func,
+  image: PropTypes.node,
+};
+
+
+const s = StyleSheet.create({
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    width: 40,
+  },
+});
+
+
+// export default withNavigation(Example);
