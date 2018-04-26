@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import {Modal, StyleSheet, Text, TouchableHighlight, View} from 'react-native';
+import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import colors from "../Colors";
 import {timeStampToFormatedData} from "../utils/DataUtils";
 import withNavigation from "react-navigation/src/views/withNavigation";
 
 class ListItem extends Component<Props> {
   state = {
-    modalVisible: false,
   };
 
   goToNoteEditor() {

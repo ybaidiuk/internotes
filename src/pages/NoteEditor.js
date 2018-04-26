@@ -7,7 +7,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableHighlight,
-  Modal, Text,
+  Modal, Text, TouchableOpacity, TouchableWithoutFeedback,
 } from 'react-native';
 import colors from "../Colors";
 import Toolbar from "../components/Toolbar";
@@ -21,7 +21,7 @@ export default class NoteEditor extends Component<Props> {
     super(props);
     this.state = {
       text: '',
-      modalVisible: false,
+      showOptions: false,
     };
   }
 
@@ -61,8 +61,7 @@ export default class NoteEditor extends Component<Props> {
   };
 
   showOptions(bool) {
-    console.log(bool);
-    this.setState({modalVisible: bool});
+    this.setState({showOptions: bool});
   }
 
 //todo
@@ -73,15 +72,27 @@ export default class NoteEditor extends Component<Props> {
         <Modal
           animationType="fade"
           transparent={true}
-          visible={this.state.modalVisible}
-          onRequestClose={() => {alert('Modal has been closed.  ');}}
+          visible={this.state.showOptions}
+          onRequestClose={() => {
+            this.setState({showOptions: false})
+          }}>
 
 
-        >
-          <Text style={s.modal} onPress={()=> this.setState({modalVisible: false})}>
-            close Modal
-          </Text>
+          {/*//() => this.setState({showOptions: false})*/}
+          <TouchableWithoutFeedback onPress={() => this.setState({showOptions: false})}>
+            <View>
+              <View style={s.modalWrapper}>
+
+              </View>
+              <Text style={s.modal} onPress={() => console.log("bum")}>
+                close Modal
+              </Text>
+            </View>
+          </TouchableWithoutFeedback>
+
         </Modal>
+
+
         <Toolbar>
           <Button onPress={this.saveAndGoToMain.bind(this)}
                   image={require('../res/ic_arrow_back_white_24dp_1x.png')}/>
@@ -110,7 +121,8 @@ export default class NoteEditor extends Component<Props> {
 const s = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.black
+    backgroundColor: colors.black,
+    // opacity: 0.1  // this.state.showOptions ?  : null ,
   },
   text: {
     textAlignVertical: 'top',//only android (ios work default)
@@ -120,8 +132,23 @@ const s = StyleSheet.create({
     flex: 1,
     color: colors.white
   },
+  modalWrapper: {
+    // backgroundColor: 'blue',
+    opacity: 0.8,
+    backgroundColor: colors.black,
+    height: '100%',
+    // display: 'flex',
+    // alignItems: 'flex-end',
+    // justifyContent: 'center',
+  },
   modal: {
-    backgroundColor: colors.white,
+
+    // marginRight: 20,
+    // marginTop  : 20,
+    position: 'absolute',
+    right: 10,
+    top: 10,
+    backgroundColor: colors.lightBlue,
     width: 100,
     height: 100,
   }

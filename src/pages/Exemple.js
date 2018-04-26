@@ -9,7 +9,7 @@ export default class Exemple extends Component<Props> {
     super(props);
     this.state = {
       text: '',
-      modalVisible: false,
+      showOptions: false,
     };
   }
 

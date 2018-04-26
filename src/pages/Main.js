@@ -4,7 +4,7 @@ import Toolbar from "../components/Toolbar";
 import colors from "../Colors";
 import Button from "../components/Button";
 import NoteEditor from "../pages/NoteEditor";
-import {insertJson, readJson, remove} from "../utils/DbUtils";
+import {readJson} from "../utils/DbUtils";
 import {NOTE_IDS_ARR} from "../Const";
 import ListItem from "../components/ListItem";
 
