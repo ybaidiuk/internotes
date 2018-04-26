@@ -16,8 +16,7 @@ export default class Toolbar extends Component<Props> {
   };
 
   getPaddingTop = () => {
-    if (Platform.OS === 'ios' && this.state.isPortrait)
-      return 25;
+    return Platform.OS === 'ios' && this.state.isPortrait ? 25 : 0;
   };
 
   render() {

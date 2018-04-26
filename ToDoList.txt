@@ -3,8 +3,12 @@
 
 => done 1. improve color politic .
 
-2. scrollIndicator (line on right site) on black backgroung not visible
+2. scrollIndicator (line on right site) on black backgroung not visible on Android (indicatorStyle='white' only for IOS)
+   waiting till react-native will fix this 'bug' https://github.com/facebook/react-native/issues/19007
 
+
+            ToolBar
+1 setUp for IOS css at portrait and landscape mode. padding... height
 
             MainPage
 

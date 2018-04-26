@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 import Button from "../components/Button";
 import PropTypes from 'prop-types';
 
@@ -39,7 +39,10 @@ const s = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 40,
-    width: 40,
+    width: Platform.select({
+      ios: 70,
+      android: 50
+    })
   },
 });
 

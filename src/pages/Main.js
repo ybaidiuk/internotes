@@ -63,6 +63,7 @@ export default class Main extends Component<Props> {
         </Toolbar>
 
         <SectionList
+          indicatorStyle='white'
           renderItem={({item: note, index}) => <ListItem key={index} note={note}/>}
           ItemSeparatorComponent={() => <View style={s.separator}/>}
           sections={[

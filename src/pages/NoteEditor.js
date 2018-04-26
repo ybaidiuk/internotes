@@ -7,7 +7,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableHighlight,
-  Modal, Text, TouchableOpacity, TouchableWithoutFeedback,
+  Modal, Text, TouchableOpacity, TouchableWithoutFeedback, Platform,
 } from 'react-native';
 import colors from "../Colors";
 import Toolbar from "../components/Toolbar";
@@ -78,7 +78,6 @@ export default class NoteEditor extends Component<Props> {
           }}>
 
 
-          {/*//() => this.setState({showOptions: false})*/}
           <TouchableWithoutFeedback onPress={() => this.setState({showOptions: false})}>
             <View>
               <View style={s.modalWrapper}>
@@ -89,7 +88,6 @@ export default class NoteEditor extends Component<Props> {
               </Text>
             </View>
           </TouchableWithoutFeedback>
-
         </Modal>
 
 
@@ -99,7 +97,7 @@ export default class NoteEditor extends Component<Props> {
           <Button onPress={this.showOptions.bind(this, true)}
                   image={require('../res/ic_more_vert_white_24dp_1x.png')}/>
         </Toolbar>
-        <ScrollView>
+        <ScrollView indicatorStyle='white'>
           <TextInput
             underlineColorAndroid={colors.lightBlue}
             value={this.state.text}
@@ -122,7 +120,6 @@ const s = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.black,
-    // opacity: 0.1  // this.state.showOptions ?  : null ,
   },
   text: {
     textAlignVertical: 'top',//only android (ios work default)
@@ -133,21 +130,17 @@ const s = StyleSheet.create({
     color: colors.white
   },
   modalWrapper: {
-    // backgroundColor: 'blue',
     opacity: 0.8,
     backgroundColor: colors.black,
     height: '100%',
-    // display: 'flex',
-    // alignItems: 'flex-end',
-    // justifyContent: 'center',
   },
   modal: {
-
-    // marginRight: 20,
-    // marginTop  : 20,
     position: 'absolute',
     right: 10,
-    top: 10,
+    top: Platform.select({
+      ios: 25,
+      android: 10
+    }),
     backgroundColor: colors.lightBlue,
     width: 100,
     height: 100,
