@@ -1,6 +1,7 @@
 import {NOTE_IDS_ARR, NOTE_TITLE_LENGTH} from "../Const";
 import {insertJson, readJson, remove} from "./DbUtils";
 
+// export default class NoteCrudUtils {
 
 export async function insertNote(text) {
   console.log("insert  Note");

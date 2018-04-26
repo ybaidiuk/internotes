@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Image, StyleSheet, TouchableHighlight} from 'react-native';
 import PropTypes from 'prop-types';
 
-export default class Button extends Component<Props> {
+export default class RoundButton extends Component<Props> {
 
   constructor(props) {
     super(props);
@@ -17,7 +17,7 @@ export default class Button extends Component<Props> {
     );
   }
 }
-Button.propTypes = {
+RoundButton.propTypes = {
   onPress: PropTypes.func,
   image: PropTypes.node,
 };

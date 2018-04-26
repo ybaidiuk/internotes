@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Image, SectionList, StatusBar, StyleSheet, Text, View} from 'react-native';
 import Toolbar from "../components/Toolbar";
 import colors from "../Colors";
-import Button from "../components/Button";
+import RoundButton from "../components/RoundButton";
 import NoteEditor from "../pages/NoteEditor";
 import {readJson} from "../utils/DbUtils";
 import {NOTE_IDS_ARR} from "../Const";
@@ -53,13 +53,13 @@ export default class Main extends Component<Props> {
       <View style={s.container}>
         <StatusBar backgroundColor={colors.darkBlue}/>
         <Toolbar>
-          <Button onPress={this.toggleDrawer}
-                  image={require('../res/ic_menu_white_24dp_1x.png')}/>
+          <RoundButton onPress={this.toggleDrawer}
+                       image={require('../res/ic_menu_white_24dp_1x.png')}/>
 
           <Text style={s.logo}>Internotes</Text>
 
-          <Button onPress={this.createNote}
-                  image={require('../res/ic_add_white_24dp_1x.png')}/>
+          <RoundButton onPress={this.createNote}
+                       image={require('../res/ic_add_white_24dp_1x.png')}/>
         </Toolbar>
 
         <SectionList

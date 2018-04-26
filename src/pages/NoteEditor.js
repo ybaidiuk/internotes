@@ -11,10 +11,11 @@ import {
 } from 'react-native';
 import colors from "../Colors";
 import Toolbar from "../components/Toolbar";
-import Button from "../components/Button";
+import RoundButton from "../components/RoundButton";
 import {NOTE_MAX_LENGTH} from "../Const";
-import {insertNote, updateNote, deleteNote} from "../utils/NoteCrudUtils";
-
+import SquareButton from "../components/SquareButton";
+// import NoteCrudUtils from "../utils/NoteCrudUtils";
+import  {insertNote, updateNote, deleteNote} from "../utils/NoteCrudUtils";
 
 export default class NoteEditor extends Component<Props> {
   constructor(props) {
@@ -30,7 +31,7 @@ export default class NoteEditor extends Component<Props> {
       this.fillUpField(this.props.navigation.state.params.note);
 
 
-    BackHandler.addEventListener('hardwareBackPress', this.saveAndGoToMain.bind(this));
+    BackHandler.addEventListener('hardwareBackPress', this.saveOrDeleteAndGoToMain.bind(this));
   }
 
   fillUpField(note) {
@@ -39,12 +40,11 @@ export default class NoteEditor extends Component<Props> {
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.saveAndGoToMain);
+    BackHandler.removeEventListener('hardwareBackPress', this.saveOrDeleteAndGoToMain);
   }
 
-
-  async saveAndGoToMain() {
-    console.log("saveAndGoToMain");
+  async saveOrDeleteAndGoToMain() {
+    console.log("saveOrDeleteAndGoToMain");
     const noteFromProps = this.props.navigation.state.params && this.props.navigation.state.params.note;
 
 
@@ -61,10 +61,14 @@ export default class NoteEditor extends Component<Props> {
   };
 
   showOptions(bool) {
+    console.log("showOptions", bool);
     this.setState({showOptions: bool});
   }
 
-//todo
+  deleteNote() { // if state.text is empty note will be removed;
+    this.setState({showOptions: false, text: ''}, this.saveOrDeleteAndGoToMain.bind(this));
+  }
+
   render() {
     return (
       <View style={s.container}>
@@ -73,29 +77,25 @@ export default class NoteEditor extends Component<Props> {
           animationType="fade"
           transparent={true}
           visible={this.state.showOptions}
-          onRequestClose={() => {
-            this.setState({showOptions: false})
-          }}>
+          onRequestClose={this.showOptions.bind(this, false)}>
 
 
-          <TouchableWithoutFeedback onPress={() => this.setState({showOptions: false})}>
+          <TouchableWithoutFeedback onPress={this.showOptions.bind(this, false)}>
             <View>
-              <View style={s.modalWrapper}>
-
+              <View style={s.modalWrapper}/>
+              <View style={s.modal}>
+                <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)}/>
               </View>
-              <Text style={s.modal} onPress={() => console.log("bum")}>
-                close Modal
-              </Text>
             </View>
           </TouchableWithoutFeedback>
         </Modal>
 
 
         <Toolbar>
-          <Button onPress={this.saveAndGoToMain.bind(this)}
-                  image={require('../res/ic_arrow_back_white_24dp_1x.png')}/>
-          <Button onPress={this.showOptions.bind(this, true)}
-                  image={require('../res/ic_more_vert_white_24dp_1x.png')}/>
+          <RoundButton onPress={this.saveOrDeleteAndGoToMain.bind(this)}
+                       image={require('../res/ic_arrow_back_white_24dp_1x.png')}/>
+          <RoundButton onPress={this.showOptions.bind(this, true)}
+                       image={require('../res/ic_more_vert_white_24dp_1x.png')}/>
         </Toolbar>
         <ScrollView indicatorStyle='white'>
           <TextInput
@@ -141,8 +141,6 @@ const s = StyleSheet.create({
       ios: 25,
       android: 10
     }),
-    backgroundColor: colors.lightBlue,
-    width: 100,
-    height: 100,
+    width: '50%',
   }
 });
