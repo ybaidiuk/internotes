@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, StyleSheet, Text, TouchableHighlight} from 'react-native';
+import {Image, StyleSheet, TouchableHighlight} from 'react-native';
 import PropTypes from 'prop-types';
 
 export default class Button extends Component<Props> {
@@ -11,7 +11,7 @@ export default class Button extends Component<Props> {
   render() {
     return (
       <TouchableHighlight style={s.container} onPress={this.props.onPress}
-                          underlayColor="rgba(0,0,0,0.15)">
+                          underlayColor='rgba(0,0,0,0.15)'>
         <Image source={this.props.image}/>
       </TouchableHighlight>
     );
@@ -27,7 +27,8 @@ const s = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 40,
-    width: 40,
+    height: 45,
+    width: 45,
+    borderRadius: 50,
   },
 });

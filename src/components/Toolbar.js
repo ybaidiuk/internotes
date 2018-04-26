@@ -16,12 +16,23 @@ export default class Toolbar extends Component<Props> {
   };
 
   getPaddingTop = () => {
-    return Platform.OS === 'ios' && this.state.isPortrait ? 25 : 0;
+    return Platform.select({
+      ios: this.state.isPortrait ? 25 : null,
+      android: null
+    });
+  };
+
+  getHeight = () => {
+    return Platform.select({
+      ios: this.state.isPortrait ? 60 : 50,
+      android: 50
+    });
   };
 
   render() {
     return (
-      <View style={[s.container, {paddingTop: this.getPaddingTop()}]} onLayout={this.onLayout}>
+      <View style={[s.container, {paddingTop: this.getPaddingTop(), height: this.getHeight()}]}
+            onLayout={this.onLayout}>
         {this.props.children}
 
       </View>
@@ -38,7 +49,6 @@ const s = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: colors.blue,
-    height: 50,
     padding: 7,
   }
 });
