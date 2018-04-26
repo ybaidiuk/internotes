@@ -6,8 +6,7 @@ import {
   StatusBar,
   StyleSheet,
   ScrollView,
-  TouchableHighlight,
-  Modal, Text, TouchableOpacity, TouchableWithoutFeedback, Platform,
+  Platform,
 } from 'react-native';
 import colors from "../Colors";
 import Toolbar from "../components/Toolbar";
@@ -15,7 +14,7 @@ import RoundButton from "../components/RoundButton";
 import {NOTE_MAX_LENGTH} from "../Const";
 import SquareButton from "../components/SquareButton";
 import NoteDaoUtils from "../utils/NoteDaoUtils";
-// import  {insertNote, updateNote, deleteNote} from "../utils/NoteCrudUtils";
+import PopUp from "../components/PopUp";
 
 export default class NoteEditor extends Component<Props> {
   constructor(props) {
@@ -73,22 +72,11 @@ export default class NoteEditor extends Component<Props> {
     return (
       <View style={s.container}>
         <StatusBar backgroundColor={colors.darkBlue}/>
-        <Modal
-          animationType="fade"
-          transparent={true}
-          visible={this.state.showOptions}
-          onRequestClose={this.showOptions.bind(this, false)}>
-
-
-          <TouchableWithoutFeedback onPress={this.showOptions.bind(this, false)}>
-            <View>
-              <View style={s.modalWrapper}/>
-              <View style={s.modal}>
-                <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)}/>
-              </View>
-            </View>
-          </TouchableWithoutFeedback>
-        </Modal>
+        <PopUp onRequestClose={this.showOptions.bind(this, false)}
+               visible={this.state.showOptions}
+               style={s.modal}>
+          <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)}/>
+        </PopUp>
 
 
         <Toolbar>
@@ -129,11 +117,6 @@ const s = StyleSheet.create({
     flex: 1,
     color: colors.white
   },
-  modalWrapper: {
-    opacity: 0.8,
-    backgroundColor: colors.black,
-    height: '100%',
-  },
   modal: {
     position: 'absolute',
     right: 10,
@@ -141,6 +124,6 @@ const s = StyleSheet.create({
       ios: 25,
       android: 10
     }),
-    width: '50%',
+    width: 200,
   }
 });
