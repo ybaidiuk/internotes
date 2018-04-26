@@ -14,8 +14,8 @@ import Toolbar from "../components/Toolbar";
 import RoundButton from "../components/RoundButton";
 import {NOTE_MAX_LENGTH} from "../Const";
 import SquareButton from "../components/SquareButton";
-// import NoteCrudUtils from "../utils/NoteCrudUtils";
-import  {insertNote, updateNote, deleteNote} from "../utils/NoteCrudUtils";
+import NoteDaoUtils from "../utils/NoteDaoUtils";
+// import  {insertNote, updateNote, deleteNote} from "../utils/NoteCrudUtils";
 
 export default class NoteEditor extends Component<Props> {
   constructor(props) {
@@ -49,11 +49,11 @@ export default class NoteEditor extends Component<Props> {
 
 
     if (noteFromProps && this.state.text.length === 0)//if updatedText empty remove
-      await deleteNote(noteFromProps);
+      await NoteDaoUtils.deleteNote(noteFromProps);
     else if (noteFromProps) //if update
-      await updateNote(this.state.text, noteFromProps);
+      await NoteDaoUtils.updateNote(this.state.text, noteFromProps);
     else //if create new
-      await insertNote(this.state.text);
+      await NoteDaoUtils.insertNote(this.state.text);
 
 
     this.props.navigation.navigate('Main');
