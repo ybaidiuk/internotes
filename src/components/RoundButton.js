@@ -11,7 +11,7 @@ export default class RoundButton extends Component<Props> {
   render() {
     return (
       <TouchableHighlight style={s.container} onPress={this.props.onPress}
-                          underlayColor='rgba(0,0,0,0.15)'>
+                          underlayColor='rgba(0,0,0,0.2)'>
         <Image source={this.props.image}/>
       </TouchableHighlight>
     );

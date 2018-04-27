@@ -24,7 +24,7 @@ export default class Toolbar extends Component<Props> {
 
   getHeight = () => {
     return Platform.select({
-      ios: this.state.isPortrait ? 60 : 50,
+      ios: this.state.isPortrait ? 65 : 50,
       android: 50
     });
   };

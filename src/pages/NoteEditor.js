@@ -76,6 +76,7 @@ export default class NoteEditor extends Component<Props> {
                visible={this.state.showOptions}
                style={s.modal}>
           <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)}/>
+          <SquareButton title={'Share'} />
         </PopUp>
 
 
