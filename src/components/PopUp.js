@@ -17,9 +17,11 @@ export default class PopUp extends Component<Props> {
 
         <TouchableWithoutFeedback onPress={this.props.onRequestClose}>
           <View>
-            <View style={s.container}/>
-            <View style={this.props.style}>
-              {this.props.children}
+            <View style={s.fillDarkBackGround}/>
+            <View style={s.absoluteFill}>
+              <View style={this.props.style}>
+                {this.props.children}
+              </View>
             </View>
           </View>
         </TouchableWithoutFeedback>
@@ -38,9 +40,14 @@ RoundButton.propTypes = {
 
 
 const s = StyleSheet.create({
-  container: {
+  fillDarkBackGround: {
     opacity: 0.8,
     backgroundColor: colors.black,
     height: '100%',
   },
+  absoluteFill: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%'
+  }
 });

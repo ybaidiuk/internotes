@@ -118,12 +118,12 @@ const s = StyleSheet.create({
     color: colors.white
   },
   modal: {
-    position: 'absolute',
-    right: 10,
-    top: Platform.select({
+    display: 'flex',
+    alignItems: 'flex-end',
+    marginRight: 10,
+    marginTop: Platform.select({
       ios: 25,
       android: 10
-    }),
-    width: 200,
+    })
   }
 });

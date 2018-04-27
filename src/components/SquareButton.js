@@ -29,11 +29,13 @@ const s = StyleSheet.create({
   container: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'flex-start',
+    padding: 10,
     height: 45,
+    width: '40%',
     backgroundColor: colors.darkBlue
   },
-  text:{
+  text: {
     fontSize: 15,
     color: colors.white,
   }

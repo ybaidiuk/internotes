@@ -5,8 +5,7 @@ import {timeStampToFormatedData} from "../utils/DataUtils";
 import withNavigation from "react-navigation/src/views/withNavigation";
 
 class ListItem extends Component<Props> {
-  state = {
-  };
+  state = {};
 
   goToNoteEditor() {
     console.log("go to note editor to edit note")
@@ -22,28 +21,13 @@ class ListItem extends Component<Props> {
     return text;
   }
 
-  onLongPress() {
-    //todo modal or just 3dot buttons
-    // console.log('onLongPress')
-    // this.setState({modalVisible: true});
-  }
-
-
   render() {
     return (
       <TouchableHighlight
         onPress={this.goToNoteEditor.bind(this)}
-        onLongPress={this.onLongPress.bind(this)}
+        onLongPress={this.props.onLongPress.bind(this, this.props.note)}
         underlayColor={colors.lightBlue}>
         <View style={s.container}>
-          {/*<Modal*/}
-            {/*animationType="slide"*/}
-            {/*presentationStyle='overFullScreen'*/}
-            {/*transparent={false}*/}
-            {/*visible={this.state.modalVisible}*/}
-            {/*onRequestClose={() => {*/}
-              {/*alert('Modal has been closed.');*/}
-            {/*}}/>*/}
           <Text style={s.title} numberOfLines={1}>{ListItem.makeTitle(this.props.note.text)}</Text>
           <Text style={s.lastUpdate}>{timeStampToFormatedData(this.props.note.lastUpdate)}</Text>
         </View>
