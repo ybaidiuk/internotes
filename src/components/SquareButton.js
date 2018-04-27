@@ -40,7 +40,7 @@ const s = StyleSheet.create({
     alignItems: 'flex-start',
     padding: 10,
     height: 45,
-    width: 150,
+    width: 200,
     backgroundColor: colors.darkBlue
   },
   text: {

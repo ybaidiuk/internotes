@@ -2,6 +2,7 @@ import {sha256} from "./CryptoUtils";
 import {AUTH_DATA, notes} from "../Const";
 import {insertJson, readJson} from "./DbUtils";
 
+//tested
 export function verifyUserData(data) {
   if (!data ||
     !data.hasOwnProperty('login') ||

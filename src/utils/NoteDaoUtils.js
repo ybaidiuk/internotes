@@ -1,8 +1,8 @@
 import {NOTE_IDS_ARR} from "../Const";
 import {insertJson, readJson, remove} from "./DbUtils";
 
+// should be also tested but i don't know how
 export default class NoteDaoUtils {
-
 
   static async insertNote(text) {
     console.log("insert  Note");
@@ -37,7 +37,7 @@ export default class NoteDaoUtils {
 
     //check changes
     if (note.text === newText) {
-      console.log('note will not updated. Has no changes.')
+      console.log('note will not updated. Has no changes.');
       return;
     }
 

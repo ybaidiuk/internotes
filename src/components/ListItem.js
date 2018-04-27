@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
 import colors from "../Colors";
-import {timeStampToFormatedData} from "../utils/DataUtils";
+import DataUtils from "../utils/DataUtils";
 import withNavigation from "react-navigation/src/views/withNavigation";
 
 class ListItem extends Component<Props> {
@@ -30,7 +30,7 @@ class ListItem extends Component<Props> {
         underlayColor={colors.lightBlue}>
         <View style={s.container}>
           <Text style={s.title} numberOfLines={1}>{ListItem.makeTitle(this.props.note.text)}</Text>
-          <Text style={s.lastUpdate}>{timeStampToFormatedData(this.props.note.lastUpdate)}</Text>
+          <Text style={s.lastUpdate}>{DataUtils.timeStampToFormatedData(this.props.note.lastUpdate)}</Text>
         </View>
       </TouchableHighlight>
 
@@ -49,7 +49,8 @@ const s = StyleSheet.create({
     fontSize: 30
   },
   lastUpdate: {
-    color: colors.white,
+    color: colors.lightBlue,
+    fontSize: 12
   }
 });
 

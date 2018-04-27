@@ -1,5 +1,8 @@
 import {AsyncStorage} from 'react-native';
 
+// should be also tested but i don't know how
+
+
 
 // exemple:  insertDaata('test', 'YEVHEN');
 export async function insert(key, data) {

@@ -1,13 +1,17 @@
-export function timeStampToFormatedData(timestamp) {
-  const date = new Date(timestamp);
-  return date.getDate() + '/' +
-    (date.getMonth() + 1) + '/' +
-    date.getFullYear() + ' ' +
+//tested todo
+export default class DataUtils {
 
-    addZero(date.getHours()) + ':' +
-    addZero(date.getMinutes());
-}
+  static timeStampToFormatedData(timestamp) {
+    const date = new Date(timestamp);
+    return date.getDate() + '/' +
+      (date.getMonth() + 1) + '/' +
+      date.getFullYear() + ' ' +
 
-function addZero(int) {
-  return int < 10 ? '0' + int : int;
+      this.addZero(date.getHours()) + ':' +
+      this.addZero(date.getMinutes());
+  }
+
+  static addZero(int) {
+    return int < 10 ? '0' + int : int;
+  }
 }

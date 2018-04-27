@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import colors from "../Colors";
-import {isPortrait} from "../utils/ScreenUtils";
+import ScreenUtils from "../utils/ScreenUtils";
 
 export default class Toolbar extends Component<Props> {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class Toolbar extends Component<Props> {
   }
 
   onLayout = () => {
-    this.setState({isPortrait: isPortrait()});
+    this.setState({isPortrait: ScreenUtils.isPortrait()});
   };
 
   getPaddingTop = () => {
