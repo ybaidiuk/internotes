@@ -1,8 +1,8 @@
 import {sha256} from "../src/utils/CryptoUtils";
-import {verifyUserData} from "../src/utils/UserDataUtils";
+import UserDataUtils from "../src/utils/UserDataUtils";
 
 it('verifyUserData', () => {
-  expect(verifyUserData({})).toBe(false);
+  expect(UserDataUtils.verifyUserData({})).toBe(false);
 
   const privateKey = sha256('testLogin' + 'testPassword');
   const id = sha256(privateKey);
@@ -12,12 +12,12 @@ it('verifyUserData', () => {
     privateKey: privateKey,
     id: id
   };
-  expect(verifyUserData(testUserData)).toBe(true);
+  expect(UserDataUtils.verifyUserData(testUserData)).toBe(true);
 
   testUserData.privateKey = id;
-  expect(verifyUserData(testUserData)).toBe(false);
+  expect(UserDataUtils.verifyUserData(testUserData)).toBe(false);
 
   testUserData.privateKey = privateKey;
   testUserData.id = privateKey;
-  expect(verifyUserData(testUserData)).toBe(false);
+  expect(UserDataUtils.verifyUserData(testUserData)).toBe(false);
 });

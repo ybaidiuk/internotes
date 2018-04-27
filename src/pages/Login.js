@@ -7,9 +7,8 @@ import {
 } from 'react-native';
 import colors from "../Colors";
 import AuthSetUp from "./AuthSetUp";
-import {isLoginValid, isPassValid, saveUserData} from "../utils/UserDataUtils";
+import UserDataUtils from "../utils/UserDataUtils";
 
-// type Props = {};
 /**
  * on this Page user can LOGIN and BACKUP his notes as well.
  */
@@ -28,14 +27,14 @@ export default class Login extends Component<Props> {
 
 
   async onPressLogin() {
-    const loginValid = isLoginValid(this.state.login);
-    const passValid = isPassValid(this.state.password, this.state.password2);
+    const loginValid = UserDataUtils.isLoginValid(this.state.login);
+    const passValid = UserDataUtils.isPassValid(this.state.password, this.state.password2);
 
     passValid ? this.setState({showPassWarning: false}) : this.setState({showPassWarning: true});
     loginValid ? this.setState({showLoginWarning: false}) : this.setState({showLoginWarning: true});
 
     if (loginValid && passValid) {
-      await saveUserData(this.state.login, this.state.password);
+      await  UserDataUtils.saveUserData(this.state.login, this.state.password);
       this.props.navigation.navigate('AuthSetUp');
     }
   };

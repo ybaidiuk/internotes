@@ -4,8 +4,7 @@ import colors from "../Colors";
 import {Platform, StyleSheet} from "react-native";
 import {readJson} from "../utils/DbUtils";
 import {AUTH_DATA} from "../Const";
-import {sha256, sha256x2} from "../utils/CryptoUtils";
-import {verifyUserData} from "../utils/UserDataUtils";
+import UserDataUtils from "../utils/UserDataUtils";
 
 
 const busyIndicatorSize = Platform.select({
@@ -22,7 +21,7 @@ export default class AppInit extends Component<Props> {
     console.log("loadUserData");
     const data = await readJson(AUTH_DATA);
     console.log(data);
-    const dataIsValid = verifyUserData(data);
+    const dataIsValid = UserDataUtils.verifyUserData(data);
     this.props.navigation.navigate(dataIsValid ? 'Auth' : 'Login');
   }
 

@@ -3,6 +3,10 @@
 
 => done 1. improve color politic .
 
+2. add title to noteIdsArr till 30 symbols. (refactor Main , NoteEditor Pages for This  )
+
+3. refactor Utils classes for ES6. (add test wo it needed)
+
 2. scrollIndicator (line on right site) on black backgroung not visible on Android (indicatorStyle='white' only for IOS)
    waiting till react-native will fix this 'bug' https://github.com/facebook/react-native/issues/19007
 

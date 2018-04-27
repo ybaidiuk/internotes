@@ -1,4 +1,4 @@
-//tested todo
+//tested
 export default class DataUtils {
 
   static timeStampToFormatedData(timestamp) {
