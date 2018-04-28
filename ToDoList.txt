@@ -1,39 +1,66 @@
+Spring: 1
+                Global
 
-            Global
+    => done 1. improve color politic .
 
-=> done 1. improve color politic .
+    => done 3. refactor Utils classes for ES6. (add test wo it needed)
 
-2. add title to noteIdsArr till 30 symbols. (refactor Main , NoteEditor Pages for This  )
+                ToolBar
+    => done 1 setUp for IOS css at portrait and landscape mode. padding... height
 
-3. refactor Utils classes for ES6. (add test wo it needed)
+                MainPage
 
-2. scrollIndicator (line on right site) on black backgroung not visible on Android (indicatorStyle='white' only for IOS)
-   waiting till react-native will fix this 'bug' https://github.com/facebook/react-native/issues/19007
+    => done 1. Modal Window on main page. if user hold on note show popUp window  like in instagram masseger with button delete...
 
-3. make functionality for Share Button on NoteEditor and Main Pages.
-
-
-            ToolBar
-=> done 1 setUp for IOS css at portrait and landscape mode. padding... height
-
-            MainPage
-
-=> done 1. Modal Window on main page. if user hold on note show popUp window  like in instagram masseger with button delete...
-
-=> done 2. sort notes on main page . new note to top.
+    => done 2. sort notes on main page . new note to top.
 
 
-            EditorPage
+                NoteEditor
 
-1. on Note EditorPage (at toolbar middle ) show back and forward buttons .should do  like  Ctrl Z, Ctrl Y.
+    => done 3. show modal window for button from NoteEditor. with delete posibility.
 
-=> to be discuss 2. Note Editor Not show underline for input field . or show it at bottom. schould also work wenn keyboard open.
+    => done 4. add swipe left (behavior like button back)
 
-=> done 3. show modal window for button from NoteEditor. with delete posibility.
-
-=> done 4. add swipe left (behavior like button back)
-
-            LoginPage
+                LoginPage
 
 
 
+Spring 2:
+                Global
+    => wait for ReactSupporting it  2. scrollIndicator (line on right site) on black backgroung not visible on Android (indicatorStyle='white' only for IOS)
+            waiting till react-native will fix this 'bug' https://github.com/facebook/react-native/issues/19007
+
+    1. make functionality for Share Button on NoteEditor and Main Pages.
+
+    2. add title to noteIdsArr till 30 symbols. (refactor Main , NoteEditor Pages for This  )
+
+    3. add QR Code Generator on Left Side that can show/read ip of Device.
+
+    4. EncryptionUtil
+
+                EditorPage
+
+    1. on Note EditorPage (at toolbar middle ) show back and forward buttons .should do  like  Ctrl Z, Ctrl Y.
+
+
+
+
+
+
+
+
+
+
+
+
+For Feature:
+
+                Auth
+
+    1 do Auth with code or FingerPring.
+    2 do Auth SetUp (like if user not has FingerScaner.
+
+                Decentralized Network
+
+
+                Cloud Function
