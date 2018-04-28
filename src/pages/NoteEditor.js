@@ -15,6 +15,7 @@ import {NOTE_MAX_LENGTH} from "../Const";
 import SquareButton from "../components/SquareButton";
 import NoteDaoUtils from "../utils/NoteDaoUtils";
 import PopUp from "../components/PopUp";
+import GestureRecognizer from "react-native-swipe-gestures";
 
 export default class NoteEditor extends Component<Props> {
   constructor(props) {
@@ -70,36 +71,46 @@ export default class NoteEditor extends Component<Props> {
 
   render() {
     return (
-      <View style={s.container}>
-        <StatusBar backgroundColor={colors.darkBlue}/>
-        <PopUp onRequestClose={this.showOptions.bind(this, false)}
-               visible={this.state.showOptions}
-               style={s.modal}>
-          <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)}/>
-          <SquareButton title={'Share'} />
-        </PopUp>
+      <GestureRecognizer
+        onSwipeRight={this.saveOrDeleteAndGoToMain.bind(this)}
+        config={{
+          velocityThreshold: 0.3,
+          directionalOffsetThreshold: 80
+        }}
+        style={{
+          flex: 1,
+        }}>
+        <View style={s.container}>
+          <StatusBar backgroundColor={colors.darkBlue}/>
+          <PopUp onRequestClose={this.showOptions.bind(this, false)}
+                 visible={this.state.showOptions}
+                 style={s.modal}>
+            <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)}/>
+            <SquareButton title={'Share'}/>
+          </PopUp>
 
 
-        <Toolbar>
-          <RoundButton onPress={this.saveOrDeleteAndGoToMain.bind(this)}
-                       image={require('../res/ic_arrow_back_white_24dp_1x.png')}/>
-          <RoundButton onPress={this.showOptions.bind(this, true)}
-                       image={require('../res/ic_more_vert_white_24dp_1x.png')}/>
-        </Toolbar>
-        <ScrollView indicatorStyle='white'>
-          <TextInput
-            underlineColorAndroid={colors.lightBlue}
-            value={this.state.text}
-            onChangeText={(text) => this.setState({text})}
-            style={s.text}
-            multiline={true}
-            autoCorrect={true}
-            maxLength={NOTE_MAX_LENGTH}
-            placeholder={'Please write you note...'}
-            placeholderTextColor={colors.lightBlue}
-          />
-        </ScrollView>
-      </View>
+          <Toolbar>
+            <RoundButton onPress={this.saveOrDeleteAndGoToMain.bind(this)}
+                         image={require('../res/ic_arrow_back_white_24dp_1x.png')}/>
+            <RoundButton onPress={this.showOptions.bind(this, true)}
+                         image={require('../res/ic_more_vert_white_24dp_1x.png')}/>
+          </Toolbar>
+          <ScrollView indicatorStyle='white'>
+            <TextInput
+              underlineColorAndroid={colors.lightBlue}
+              value={this.state.text}
+              onChangeText={(text) => this.setState({text})}
+              style={s.text}
+              multiline={true}
+              autoCorrect={true}
+              maxLength={NOTE_MAX_LENGTH}
+              placeholder={'Please write you note...'}
+              placeholderTextColor={colors.lightBlue}
+            />
+          </ScrollView>
+        </View>
+      </GestureRecognizer>
     );
   }
 }

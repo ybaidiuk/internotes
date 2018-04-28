@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, Platform, SectionList, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {Image, Vibration, SectionList, StatusBar, StyleSheet, Text, View} from 'react-native';
 import Toolbar from "../components/Toolbar";
 import colors from "../Colors";
 import RoundButton from "../components/RoundButton";
@@ -51,7 +51,7 @@ export default class Main extends Component<Props> {
   };
 
   showPopUp(note) {
-    //todo add vibration
+    Vibration.vibrate(15);
     this.setState({showPopUp: true, selectedNote: note})
   }
 
