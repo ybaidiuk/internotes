@@ -1,6 +1,6 @@
-import {sha256} from "./CryptoUtils";
-import {AUTH_DATA, notes} from "../Const";
-import {insertJson, readJson} from "./DbUtils";
+import CryptoUtils from "./CryptoUtils";
+import {AUTH_DATA} from "../Const";
+import DbUtils from "./DbUtils";
 
 export default class UserDataUtils {
 //tested
@@ -12,21 +12,21 @@ export default class UserDataUtils {
       !data.hasOwnProperty('id'))
       return false;
 
-    const privateKey = sha256(data.login + data.password);
-    const id = sha256(privateKey);
+    const privateKey = CryptoUtils.sha256(data.login + data.password);
+    const id = CryptoUtils.sha256(privateKey);
     return data.privateKey === privateKey && data.id === id;
   }
 
   static async saveUserData(login, password) {
-    const privateKey = sha256(login + password);
-    const id = sha256(privateKey);
+    const privateKey = CryptoUtils.sha256(login + password);
+    const id = CryptoUtils.sha256(privateKey);
     const dataToSave = {
       login: login,
       password: password,
       privateKey: privateKey,
       id: id
     };
-    await insertJson(AUTH_DATA, dataToSave);
+    await DbUtils.insertJson(AUTH_DATA, dataToSave);
   }
 
   static isLoginValid(login) {

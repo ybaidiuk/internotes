@@ -1,11 +1,11 @@
-import {sha256} from "../src/utils/CryptoUtils";
 import UserDataUtils from "../src/utils/UserDataUtils";
+import CryptoUtils from "../src/utils/CryptoUtils";
 
 it('verifyUserData', () => {
   expect(UserDataUtils.verifyUserData({})).toBe(false);
 
-  const privateKey = sha256('testLogin' + 'testPassword');
-  const id = sha256(privateKey);
+  const privateKey = CryptoUtils.sha256('testLogin' + 'testPassword');
+  const id = CryptoUtils.sha256(privateKey);
   let testUserData = {
     login: 'testLogin',
     password: 'testPassword',

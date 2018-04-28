@@ -1,5 +1,5 @@
 import {NOTE_IDS_ARR} from "../Const";
-import {insertJson, readJson, remove} from "./DbUtils";
+import DbUtils from "./DbUtils";
 
 // should be also tested but i don't know how
 export default class NoteDaoUtils {
@@ -22,13 +22,13 @@ export default class NoteDaoUtils {
 
     //save id to array
     let notes = await
-      readJson(NOTE_IDS_ARR);
+      DbUtils.readJson(NOTE_IDS_ARR);
     if (notes == null) notes = [];
     notes.push(timestampId);
-    insertJson(NOTE_IDS_ARR, notes);
+   DbUtils.insertJson(NOTE_IDS_ARR, notes);
 
     //save note
-    insertJson(timestampId, newNote);
+   DbUtils.insertJson(timestampId, newNote);
   }
 
 
@@ -46,23 +46,23 @@ export default class NoteDaoUtils {
     note.lastUpdate = new Date().getTime();
 
     //update in db
-    insertJson(note.id, note)
+   DbUtils.insertJson(note.id, note)
   }
 
 
   static async deleteNote(note) {
     console.log('deleteNote');
     //remove note
-    remove(note.id);
+    DbUtils.remove(note.id);
 
     //remove note id from noteIdsArray
     let notes = await
-      readJson(NOTE_IDS_ARR);
+      DbUtils.readJson(NOTE_IDS_ARR);
     const index = notes.indexOf(note.id);
     if (index > -1)
       notes.splice(index, 1);
     await
-      insertJson(NOTE_IDS_ARR, notes);
+     DbUtils.insertJson(NOTE_IDS_ARR, notes);
 
   }
 }

@@ -2,52 +2,54 @@ import {AsyncStorage} from 'react-native';
 
 // should be also tested but i don't know how
 
-
+export default class DbUtils {
 
 // exemple:  insertDaata('test', 'YEVHEN');
-export async function insert(key, data) {
-  try {
-    await AsyncStorage.setItem(key.toString(), data);
-    console.log(`write data successful  \'${key}\'`);
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-    console.warn(`error while WRITHING data with \'${key}\'`);
-  }
+  static async insert(key, data) {
+    try {
+      await AsyncStorage.setItem(key.toString(), data);
+      console.log(`write data successful  \'${key}\'`);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+      console.warn(`error while WRITHING data with \'${key}\'`);
+    }
 
-}
+  }
 
 // exemple: const val = await readData('test');
-export async function read(key) {
-  try {
-    // await AsyncStorage.clear();
-    const value = await AsyncStorage.getItem(key.toString());
-    console.log(`read successful \'${key}\'`);
-    console.log(value);
-    return value;
-  } catch (error) {
-    console.log(error);
-    console.warn(`error while READ data with \'${key}\'`);
+  static async read(key) {
+    try {
+      // await AsyncStorage.clear();
+      const value = await AsyncStorage.getItem(key.toString());
+      console.log(`read successful \'${key}\'`);
+      console.log(value);
+      return value;
+    } catch (error) {
+      console.log(error);
+      console.warn(`error while READ data with \'${key}\'`);
+    }
   }
-}
 
-export function remove(key) {
-  AsyncStorage.removeItem(key.toString(), err => {
-    if (err)
-      console.warn(`error while REMOVING data with \'${key}\'`, err)
-    else
-      console.log(`remove successful \'${key}\'`);
-  });
-}
-
-
-// exemple:  insertJson('test', {age: 25}');
-export async function insertJson(key, data) {
-  await insert(key, JSON.stringify(data));
-}
+  static remove(key) {
+    AsyncStorage.removeItem(key.toString(), err => {
+      if (err)
+        console.warn(`error while REMOVING data with \'${key}\'`, err)
+      else
+        console.log(`remove successful \'${key}\'`);
+    });
+  }
 
 
-export async function readJson(key) {
-  let res = await read(key);
-  return JSON.parse(res);
+// exemple: DbUtils.insertJson('test', {age: 25}');
+  static async insertJson(key, data) {
+    await this.insert(key, JSON.stringify(data));
+  }
+
+
+  static async readJson(key) {
+    let res = await this.read(key);
+    return JSON.parse(res);
+  }
+
 }

@@ -1,12 +1,14 @@
 import SHA256 from 'crypto-js/sha256';
 
 
+export default class CryptoUtils {
 //tested
-export function sha256(massage) {
-  return SHA256(massage).toString();
-}
+  static sha256(massage) {
+    return SHA256(massage).toString();
+  }
 
 //tested
-export function sha256x2(massage) {
-  return sha256(sha256(massage));
+  static sha256x2(massage) {
+    return this.sha256(this.sha256(massage));
+  }
 }

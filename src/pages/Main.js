@@ -4,7 +4,7 @@ import Toolbar from "../components/Toolbar";
 import colors from "../Colors";
 import RoundButton from "../components/RoundButton";
 import NoteEditor from "../pages/NoteEditor";
-import {readJson} from "../utils/DbUtils";
+import DbUtils from "../utils/DbUtils";
 import {NOTE_IDS_ARR} from "../Const";
 import ListItem from "../components/ListItem";
 import PopUp from "../components/PopUp";
@@ -31,11 +31,11 @@ export default class Main extends Component<Props> {
 
   async loadNoteList() {
     const noteArr = [];
-    let noteIdArr = await readJson(NOTE_IDS_ARR);
+    let noteIdArr = await DbUtils.readJson(NOTE_IDS_ARR);
     if (noteIdArr == null) return;
 
     for (let id of noteIdArr) {
-      const note = await readJson(id);
+      const note = await DbUtils.readJson(id);
       noteArr.push(note);
     }
     await noteArr.sort((a, b) => b.lastUpdate - a.lastUpdate);
