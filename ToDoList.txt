@@ -21,14 +21,11 @@ Spring: 1
 
     => done 4. add swipe left (behavior like button back)
 
-                LoginPage
 
 
-
+======================================================================================================
 Spring 2:
                 Global
-    => wait for ReactSupporting it  2. scrollIndicator (line on right site) on black backgroung not visible on Android (indicatorStyle='white' only for IOS)
-            waiting till react-native will fix this 'bug' https://github.com/facebook/react-native/issues/19007
 
     1. make functionality for Share Button on NoteEditor and Main Pages.
 
@@ -52,15 +49,22 @@ Spring 2:
 
 
 
-
+======================================================================================================
 For Feature:
+                Global
+
+    1. need wait for ReactSupporting it . scrollIndicator (line on right site) on black backgroung not visible on Android (indicatorStyle='white' only for IOS)
+    waiting till react-native will fix this 'bug' https://github.com/facebook/react-native/issues/19007
+
+    2. tap Sound (as i write understand now Touchable Elements not support it)
 
                 Auth
 
-    1 do Auth with code or FingerPring.
+    1 do Auth with code or FingerPrint.
     2 do Auth SetUp (like if user not has FingerScaner.
 
                 Decentralized Network
 
+                ChronJob
 
                 Cloud Function

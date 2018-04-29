@@ -20,6 +20,7 @@ class ListItem extends Component<Props> {
       text = text.substr(0, indexOfNewLine);
     return text;
   }
+
   //todo make underlayColor null or transparent after longPressTrigert
   // and make it again blue after onShowUnderlay
   render() {
