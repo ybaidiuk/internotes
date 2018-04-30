@@ -16,6 +16,7 @@ import {NOTE_MAX_LENGTH} from "../Const";
 import SquareButton from "../components/SquareButton";
 import NoteDaoUtils from "../utils/NoteDaoUtils";
 import PopUp from "../components/PopUp";
+import Logo from "../components/Logo";
 
 export default class NoteEditor extends Component<Props> {
   constructor(props) {
@@ -74,13 +75,6 @@ export default class NoteEditor extends Component<Props> {
       message: this.state.text,
     }).then(()=>this.setState({showOptions: false}))
 
-    //   .then((succes, err) => {
-    //   console.log("ANSER")
-    //   if (succes)
-    //     console.log(succes);
-    //   else
-    //     console.log(err);
-    // })
   }
 
   render() {
@@ -98,6 +92,9 @@ export default class NoteEditor extends Component<Props> {
         <Toolbar>
           <RoundButton onPress={this.saveOrDeleteAndGoToMain.bind(this)}
                        image={require('../res/ic_arrow_back_white_24dp_1x.png')}/>
+
+          <Logo title='NoteEditor'/>
+
           <RoundButton onPress={this.showOptions.bind(this, true)}
                        image={require('../res/ic_more_vert_white_24dp_1x.png')}/>
         </Toolbar>

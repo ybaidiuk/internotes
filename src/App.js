@@ -9,10 +9,14 @@ import {DrawerNavigator, SwitchNavigator} from "react-navigation";
 import Exemple from "./pages/Exemple";
 import NoteEditor from "./pages/NoteEditor";
 import colors from "./Colors";
+import BackUp from "./pages/BackUp";
 
 const Draver = DrawerNavigator({
   Main: {
     screen: Main,
+  },
+  BackUp: {
+    screen: BackUp,
   },
   Exemple: {
     screen: Exemple,

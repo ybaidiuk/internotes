@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, Vibration, SectionList, StatusBar, StyleSheet, Text, View, Share} from 'react-native';
+import {Image, Vibration, SectionList, StatusBar, StyleSheet, Text, View, Share, BackHandler} from 'react-native';
 import Toolbar from "../components/Toolbar";
 import colors from "../Colors";
 import RoundButton from "../components/RoundButton";
@@ -10,6 +10,7 @@ import ListItem from "../components/ListItem";
 import PopUp from "../components/PopUp";
 import SquareButton from "../components/SquareButton";
 import NoteDaoUtils from "../utils/NoteDaoUtils";
+import Logo from "../components/Logo";
 
 export default class Main extends Component<Props> {
   static navigationOptions = {
@@ -28,6 +29,16 @@ export default class Main extends Component<Props> {
     this.loadNoteList();
   }
 
+  componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', Main.exit);
+  }
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', Main.exit);
+  }
+
+  static exit(){
+    BackHandler.exitApp();
+  }
 
   async loadNoteList() {
     const noteArr = [];
@@ -83,7 +94,7 @@ export default class Main extends Component<Props> {
           <RoundButton onPress={this.toggleDrawer}
                        image={require('../res/ic_menu_white_24dp_1x.png')}/>
 
-          <Text style={s.logo}>Internotes</Text>
+          <Logo title='Internotes'/>
 
           <RoundButton onPress={this.createNote}
                        image={require('../res/ic_add_white_24dp_1x.png')}/>
@@ -109,11 +120,6 @@ const s = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.black,
-  },
-  logo: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: '400'
   },
   separator: {
     height: 2,
