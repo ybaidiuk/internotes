@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Image, Vibration, SectionList, StatusBar, StyleSheet, Text, View} from 'react-native';
+import {Image, Vibration, SectionList, StatusBar, StyleSheet, Text, View, Share} from 'react-native';
 import Toolbar from "../components/Toolbar";
 import colors from "../Colors";
 import RoundButton from "../components/RoundButton";
@@ -61,6 +61,11 @@ export default class Main extends Component<Props> {
     this.loadNoteList();
   }
 
+   share() {
+    Share.share({
+      message: this.state.selectedNote.text,
+    }).then(() => this.setState({showPopUp: false}))
+  };
 
   render() {
     return (
@@ -71,6 +76,7 @@ export default class Main extends Component<Props> {
                visible={this.state.showPopUp}
                style={s.modal}>
           <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)}/>
+          <SquareButton title={'Share'} onPress={this.share.bind(this)}/>
         </PopUp>
 
         <Toolbar>

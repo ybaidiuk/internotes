@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {
   View,
+  Share,
   BackHandler,
   TextInput,
   StatusBar,
@@ -68,6 +69,20 @@ export default class NoteEditor extends Component<Props> {
     this.setState({showOptions: false, text: ''}, this.saveOrDeleteAndGoToMain.bind(this));
   }
 
+  share() {
+    Share.share({
+      message: this.state.text,
+    }).then(()=>this.setState({showOptions: false}))
+
+    //   .then((succes, err) => {
+    //   console.log("ANSER")
+    //   if (succes)
+    //     console.log(succes);
+    //   else
+    //     console.log(err);
+    // })
+  }
+
   render() {
     return (
       <View style={s.container}>
@@ -76,7 +91,7 @@ export default class NoteEditor extends Component<Props> {
                visible={this.state.showOptions}
                style={s.modal}>
           <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)}/>
-          <SquareButton title={'Share'}/>
+          <SquareButton title={'Share'} onPress={this.share.bind(this)}/>
         </PopUp>
 
 
