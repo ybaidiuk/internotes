@@ -83,7 +83,7 @@ export default class NoteEditor extends Component<Props> {
         <StatusBar backgroundColor={colors.darkBlue}/>
         <PopUp onRequestClose={this.showOptions.bind(this, false)}
                visible={this.state.showOptions}
-               style={s.modal}>
+               rightTopCorner>
           <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)}/>
           <SquareButton title={'Share'} onPress={this.share.bind(this)}/>
         </PopUp>
@@ -130,13 +130,4 @@ const s = StyleSheet.create({
     flex: 1,
     color: colors.white
   },
-  modal: {
-    display: 'flex',
-    alignItems: 'flex-end',
-    marginRight: 10,
-    marginTop: Platform.select({
-      ios: 25,
-      android: 10
-    })
-  }
 });

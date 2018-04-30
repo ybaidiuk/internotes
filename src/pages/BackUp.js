@@ -41,7 +41,7 @@ export default class BackUp extends Component<Props> {
 
         <PopUp onRequestClose={() => this.setState({showOption: false})}
                visible={this.state.showOption}
-               style={s.modal}>
+               rightTopCorner>
           <SquareButton title={'Share my QR'}/>
           <SquareButton title={'Scan QR'}/>
         </PopUp>
@@ -83,10 +83,4 @@ const s = StyleSheet.create({
     marginLeft: 15,
     backgroundColor: colors.darkBlue
   },
-  modal: {
-    display: 'flex',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
 });

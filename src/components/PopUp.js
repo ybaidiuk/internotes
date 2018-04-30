@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Modal, StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
+import {Modal, Platform, StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
 import RoundButton from "../components/RoundButton";
 import PropTypes from 'prop-types';
 import colors from "../Colors";
@@ -19,7 +19,7 @@ export default class PopUp extends Component<Props> {
           <View>
             <View style={s.fillDarkBackGround}/>
             <View style={s.absoluteFill}>
-              <View style={this.props.style}>
+              <View style={this.props.rightTopCorner ? s.rightTopCorner: s.center}>
                 {this.props.children}
               </View>
             </View>
@@ -49,5 +49,20 @@ const s = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%'
+  },
+  center: {
+    display: 'flex',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  rightTopCorner: {
+    display: 'flex',
+    alignItems: 'flex-end',
+    marginRight: 10,
+    marginTop: Platform.select({
+      ios: 25,
+      android: 10
+    })
   }
 });

@@ -84,8 +84,7 @@ export default class Main extends Component<Props> {
         <StatusBar backgroundColor={colors.darkBlue}/>
 
         <PopUp onRequestClose={() => this.setState({showPopUp: false})}
-               visible={this.state.showPopUp}
-               style={s.modal}>
+               visible={this.state.showPopUp}>
           <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)}/>
           <SquareButton title={'Share'} onPress={this.share.bind(this)}/>
         </PopUp>
@@ -127,10 +126,4 @@ const s = StyleSheet.create({
     marginLeft: 15,
     backgroundColor: colors.darkBlue
   },
-  modal: {
-    display: 'flex',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
 });
