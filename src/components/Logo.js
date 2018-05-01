@@ -22,7 +22,7 @@ const s = StyleSheet.create({
   logo: {
     color: 'white',
     fontSize: 20,
-    fontWeight: '600'
+    fontWeight: '600',
   },
 });
 

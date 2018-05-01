@@ -10,6 +10,8 @@ import Exemple from "./pages/Exemple";
 import NoteEditor from "./pages/NoteEditor";
 import colors from "./Colors";
 import BackUp from "./pages/BackUp";
+import ScanQR from "./pages/ScanQR";
+import ShareQR from "./pages/ShareQR";
 
 const Draver = DrawerNavigator({
   Main: {
@@ -40,6 +42,8 @@ export default SwitchNavigator(
     Auth: Auth,
     Main: Draver,
     NoteEditor: NoteEditor,
+    ShareQR: ShareQR,
+    ScanQR: ScanQR,
 
     // NoteEditor: StackNavigator({NoteEditor: NoteEditor})
   },

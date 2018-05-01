@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import {Image, Platform, SectionList, Share, StatusBar, StyleSheet, Text, Vibration, View} from 'react-native';
+import {Image, StatusBar, StyleSheet, View} from 'react-native';
 import RoundButton from "../components/RoundButton";
 import PropTypes from 'prop-types';
 import colors from "../Colors";
-import DbUtils from "../utils/DbUtils";
-import NoteDaoUtils from "../utils/NoteDaoUtils";
-import {NOTE_IDS_ARR} from "../Const";
 import PopUp from "../components/PopUp";
 import SquareButton from "../components/SquareButton";
 import Toolbar from "../components/Toolbar";
@@ -28,7 +25,6 @@ export default class BackUp extends Component<Props> {
   }
 
 
-
   toggleDrawer = () => {
     this.props.navigation.navigate('DrawerToggle');
   };
@@ -42,8 +38,8 @@ export default class BackUp extends Component<Props> {
         <PopUp onRequestClose={() => this.setState({showOption: false})}
                visible={this.state.showOption}
                rightTopCorner>
-          <SquareButton title={'Share my QR'}/>
-          <SquareButton title={'Scan QR'}/>
+          <SquareButton title={'Share QR'} onPress={() => this.props.navigation.navigate('ShareQR')}/>
+          <SquareButton title={'Scan QR'} onPress={() => this.props.navigation.navigate('ScanQR')}/>
         </PopUp>
 
         <Toolbar>
@@ -52,19 +48,19 @@ export default class BackUp extends Component<Props> {
 
           <Logo title='BackUp'/>
 
-          <RoundButton onPress={()=>this.setState({showOption: true})}
+          <RoundButton onPress={() => this.setState({showOption: true})}
                        image={require('../res/ic_more_vert_white_24dp_1x.png')}/>
         </Toolbar>
 
         {/*<SectionList todo backUP list */}
-          {/*indicatorStyle='white'*/}
-          {/*renderItem={({item: note, index}) => <ListItem key={index} note={note}*/}
-                                                         {/*onLongPress={this.showPopUp.bind(this)}/>}*/}
-          {/*ItemSeparatorComponent={() => <View style={s.separator}/>}*/}
-          {/*sections={[*/}
-            {/*{data: this.state.noteArr},*/}
-          {/*]}*/}
-          {/*keyExtractor={(item, index) => item + index}*/}
+        {/*indicatorStyle='white'*/}
+        {/*renderItem={({item: note, index}) => <ListItem key={index} note={note}*/}
+        {/*onLongPress={this.showPopUp.bind(this)}/>}*/}
+        {/*ItemSeparatorComponent={() => <View style={s.separator}/>}*/}
+        {/*sections={[*/}
+        {/*{data: this.state.noteArr},*/}
+        {/*]}*/}
+        {/*keyExtractor={(item, index) => item + index}*/}
         {/*/>*/}
       </View>
     );
@@ -76,11 +72,5 @@ const s = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.black,
-  },
-  separator: {
-    height: 2,
-    marginRight: 15,
-    marginLeft: 15,
-    backgroundColor: colors.darkBlue
   },
 });
