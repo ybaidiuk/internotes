@@ -4,7 +4,6 @@ import RoundButton from "../components/RoundButton";
 import colors from "../Colors";
 import Toolbar from "../components/Toolbar";
 import Logo from "../components/Logo";
-import NetworkUtils from "../utils/NetworkUtils";
 
 export default class ShareQR extends Component<Props> {
 
@@ -13,14 +12,10 @@ export default class ShareQR extends Component<Props> {
     this.state = {};
   }
 
-  async componentDidMount(){
+  async componentDidMount() {
     console.log("ShareQR");
-    // const ip = await NetworkUtils.getIp();
-    // console.log(ip)
-    //router      ip 213.147.167.78
-    //subnetwork  ip ARP 192.168.8.101
-  }
 
+  }
 
 
 
