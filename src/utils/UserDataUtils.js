@@ -1,15 +1,17 @@
-import CryptoUtils from "./CryptoUtils";
-import {AUTH_DATA} from "../Const";
-import DbUtils from "./DbUtils";
+import CryptoUtils from './CryptoUtils';
+import {AUTH_DATA} from '../Const';
+import DbUtils from './DbUtils';
 
 export default class UserDataUtils {
-//tested
+  //tested
   static verifyUserData(data) {
-    if (!data ||
+    if (
+      !data ||
       !data.hasOwnProperty('login') ||
       !data.hasOwnProperty('password') ||
       !data.hasOwnProperty('privateKey') ||
-      !data.hasOwnProperty('id'))
+      !data.hasOwnProperty('id')
+    )
       return false;
 
     const privateKey = CryptoUtils.sha256(data.login + data.password);
@@ -34,9 +36,6 @@ export default class UserDataUtils {
   }
 
   static isPassValid(password, password2) {
-    return password.length >= 3 &&
-      password.indexOf(' ') === -1 &&
-      password === password2;
+    return password.length >= 3 && password.indexOf(' ') === -1 && password === password2;
   }
-
 }

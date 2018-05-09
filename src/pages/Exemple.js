@@ -1,20 +1,18 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import RoundButton from "../components/RoundButton";
+import RoundButton from '../components/RoundButton';
 import PropTypes from 'prop-types';
 
 export default class Exemple extends Component<Props> {
-
   constructor(props) {
     super(props);
     this.state = {
       text: '',
-      showOptions: false,
+      showOptions: false
     };
   }
 
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
     return (
@@ -23,15 +21,12 @@ export default class Exemple extends Component<Props> {
       </View>
     );
   }
-
-
 }
 
 RoundButton.propTypes = {
   onPress: PropTypes.func,
-  image: PropTypes.node,
+  image: PropTypes.node
 };
-
 
 const s = StyleSheet.create({
   container: {
@@ -43,8 +38,7 @@ const s = StyleSheet.create({
       ios: 70,
       android: 50
     })
-  },
+  }
 });
-
 
 // export default withNavigation(Example);

@@ -5,6 +5,7 @@ import {
   SectionList,
   StatusBar,
   StyleSheet,
+  Text,
   View,
   Share,
   BackHandler
@@ -60,7 +61,7 @@ export default class Main extends Component<Props> {
   }
 
   toggleDrawer = () => {
-    this.props.navigation.toggleDrawer();
+    this.props.navigation.navigate('DrawerToggle');
   };
 
   createNote = () => {
