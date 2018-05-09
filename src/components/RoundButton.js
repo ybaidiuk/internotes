@@ -3,23 +3,25 @@ import {Image, StyleSheet, TouchableHighlight} from 'react-native';
 import PropTypes from 'prop-types';
 
 export default class RoundButton extends Component<Props> {
-
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <TouchableHighlight style={s.container} onPress={this.props.onPress}
-                          underlayColor='rgba(0,0,0,0.2)'>
-        <Image source={this.props.image}/>
+      <TouchableHighlight
+        style={s.container}
+        onPress={this.props.onPress}
+        underlayColor="rgba(0,0,0,0.2)"
+      >
+        <Image source={this.props.image} />
       </TouchableHighlight>
     );
   }
 }
 RoundButton.propTypes = {
   onPress: PropTypes.func,
-  image: PropTypes.node,
+  image: PropTypes.node
 };
 
 const s = StyleSheet.create({
@@ -29,6 +31,6 @@ const s = StyleSheet.create({
     alignItems: 'center',
     height: 45,
     width: 45,
-    borderRadius: 50,
-  },
+    borderRadius: 50
+  }
 });

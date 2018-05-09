@@ -1,4 +1,4 @@
-export default colors = {
+export default (colors = {
   black: '#00171f',
   darkBlue: '#003459',
   blue: '#007ea7',
@@ -10,4 +10,4 @@ export default colors = {
   gray: '#a8a8a8',
   lightGray: '#e6e6e6',
   white: '#FFFFFF'
-};
+});

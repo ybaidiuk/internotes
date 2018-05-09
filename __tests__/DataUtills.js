@@ -1,4 +1,4 @@
-import DataUtils from "../src/utils/DataUtils";
+import DataUtils from '../src/utils/DataUtils';
 
 it('DataUtills', () => {
   const timestamp = 1524871110094;

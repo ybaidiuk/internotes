@@ -1,10 +1,16 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, TouchableHighlight, TouchableNativeFeedback, View} from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableNativeFeedback,
+  View
+} from 'react-native';
 import PropTypes from 'prop-types';
-import colors from "../Colors";
+import colors from '../Colors';
 
 export default class SquareButton extends Component<Props> {
-
   constructor(props) {
     super(props);
   }
@@ -30,7 +36,7 @@ export default class SquareButton extends Component<Props> {
 }
 SquareButton.propTypes = {
   onPress: PropTypes.func,
-  title: PropTypes.string,
+  title: PropTypes.string
 };
 
 const s = StyleSheet.create({
@@ -45,6 +51,6 @@ const s = StyleSheet.create({
   },
   text: {
     fontSize: 15,
-    color: colors.white,
+    color: colors.white
   }
 });
