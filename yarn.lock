@@ -2095,8 +2095,13 @@ eslint-plugin-react-native@^3.2.1:
     eslint-plugin-react-native-globals "^0.1.1"
 
 eslint-plugin-react@^7.7.0:
+<<<<<<< HEAD
   version "7.8.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.8.2.tgz#e95c9c47fece55d2303d1a67c9d01b930b88a51d"
+=======
+  version "7.8.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.8.1.tgz#6bfb5288227645eb7ca3ba8810b87024e0d6c993"
+>>>>>>> 3f8979f... update drawer (fix bug depend of new react navigation version)
   dependencies:
     doctrine "^2.0.2"
     has "^1.0.1"
@@ -2796,8 +2801,13 @@ http-signature@~1.2.0:
     sshpk "^1.7.0"
 
 husky@^1.0.0-rc.4:
+<<<<<<< HEAD
   version "1.0.0-rc.6"
   resolved "https://registry.yarnpkg.com/husky/-/husky-1.0.0-rc.6.tgz#000f5ffe671015ae8c48da5c52b3390bbba9770d"
+=======
+  version "1.0.0-rc.4"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-1.0.0-rc.4.tgz#3f37031bd3ee0140addfb356c5339790126487eb"
+>>>>>>> 3f8979f... update drawer (fix bug depend of new react navigation version)
   dependencies:
     cosmiconfig "^4.0.0"
     execa "^0.9.0"
