@@ -22,8 +22,8 @@ export default class DbUtils {
     try {
       // await AsyncStorage.clear();
       const value = await AsyncStorage.getItem(key.toString());
-      console.log(`read successful \'${key}\'`);
-      console.log(value);
+      // console.log(`read successful \'${key}\'`);
+      // console.log(value);
       return value;
     } catch (error) {
       console.log(error);
