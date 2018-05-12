@@ -1,25 +1,23 @@
 import React, {Component} from 'react';
 import {Modal, Platform, StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
-import RoundButton from "../components/RoundButton";
+import RoundButton from '../components/RoundButton';
 import PropTypes from 'prop-types';
-import colors from "../Colors";
+import colors from '../Colors';
 
 export default class PopUp extends Component<Props> {
-
   render() {
     return (
       <Modal
         animationType="fade"
         transparent={true}
         visible={this.props.visible}
-        onRequestClose={this.props.onRequestClose}>
-
-
+        onRequestClose={this.props.onRequestClose}
+      >
         <TouchableWithoutFeedback onPress={this.props.onRequestClose}>
           <View>
-            <View style={s.fillDarkBackGround}/>
+            <View style={s.fillDarkBackGround} />
             <View style={s.absoluteFill}>
-              <View style={this.props.rightTopCorner ? s.rightTopCorner: s.center}>
+              <View style={this.props.rightTopCorner ? s.rightTopCorner : s.center}>
                 {this.props.children}
               </View>
             </View>
@@ -28,22 +26,19 @@ export default class PopUp extends Component<Props> {
       </Modal>
     );
   }
-
-
 }
 
 RoundButton.propTypes = {
   visible: PropTypes.bool.isRequired,
   onRequestClose: PropTypes.func.isRequired,
-  style: PropTypes.object,
+  style: PropTypes.object
 };
-
 
 const s = StyleSheet.create({
   fillDarkBackGround: {
     opacity: 0.8,
     backgroundColor: colors.black,
-    height: '100%',
+    height: '100%'
   },
   absoluteFill: {
     position: 'absolute',
@@ -54,7 +49,7 @@ const s = StyleSheet.create({
     display: 'flex',
     height: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   rightTopCorner: {
     display: 'flex',

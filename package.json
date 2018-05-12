@@ -8,6 +8,7 @@
     "log-android": " react-native log-android",
     "ios": "react-native run-ios",
     "log-ios": " react-native log-ios",
+    "lint": "eslint . --fix",
     "devtools": "react-devtools",
     "set-up-port": "adb reverse tcp:8081 tcp:8080",
     "test": "jest"
@@ -19,12 +20,29 @@
     "react-navigation": "2.0.1"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "babel-jest": "22.4.3",
     "babel-preset-react-native": "4.0.0",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-react-native": "^3.2.1",
+    "husky": "^1.0.0-rc.4",
     "jest": "22.4.3",
-    "react-test-renderer": "16.3.2"
+    "lint-staged": "^7.1.0",
+    "prettier": "^1.12.1",
+    "react-test-renderer": "^16.3.2"
   },
   "jest": {
     "preset": "react-native"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   }
 }

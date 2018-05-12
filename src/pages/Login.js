@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
-import {
-  Button, StatusBar,
-  StyleSheet,
-  Text, TextInput,
-  View
-} from 'react-native';
-import colors from "../Colors";
-import AuthSetUp from "./AuthSetUp";
-import UserDataUtils from "../utils/UserDataUtils";
+import {Button, StatusBar, StyleSheet, Text, TextInput, View} from 'react-native';
+import colors from '../Colors';
+import AuthSetUp from './AuthSetUp';
+import UserDataUtils from '../utils/UserDataUtils';
 
 /**
  * on this Page user can LOGIN and BACKUP his notes as well.
@@ -21,10 +16,9 @@ export default class Login extends Component<Props> {
       password2: '',
 
       showLoginWarning: false,
-      showPassWarning: false,
+      showPassWarning: false
     };
   }
-
 
   async onPressLogin() {
     const loginValid = UserDataUtils.isLoginValid(this.state.login);
@@ -34,65 +28,61 @@ export default class Login extends Component<Props> {
     loginValid ? this.setState({showLoginWarning: false}) : this.setState({showLoginWarning: true});
 
     if (loginValid && passValid) {
-      await  UserDataUtils.saveUserData(this.state.login, this.state.password);
+      await UserDataUtils.saveUserData(this.state.login, this.state.password);
       this.props.navigation.navigate('AuthSetUp');
     }
-  };
+  }
 
   render() {
     return (
       <View style={s.container}>
-       <StatusBar backgroundColor={colors.darkBlue}/>
+        <StatusBar backgroundColor={colors.darkBlue} />
 
-        <Text style={s.greeting}>
-          Welcome to Internotes
-        </Text>
+        <Text style={s.greeting}>Welcome to Internotes</Text>
 
-        <Text style={s.greetingSmall}>
-          Create new account or backup old
-        </Text>
+        <Text style={s.greetingSmall}>Create new account or backup old</Text>
 
         {/*Login*/}
-        {this.state.showLoginWarning &&
-        <Text style={s.warning}>Login should have minimum 3 letter without spaces</Text>}
-        <Text style={s.description}>
-          Login:
-        </Text>
+        {this.state.showLoginWarning && (
+          <Text style={s.warning}>Login should have minimum 3 letter without spaces</Text>
+        )}
+        <Text style={s.description}>Login:</Text>
         <TextInput
           underlineColorAndroid={colors.lightBlue}
           style={s.textInput}
           placeholder="Could be your email"
           placeholderTextColor={colors.lightBlue}
-          onChangeText={(text) => {
-            this.setState({login: text})
-          }}/>
-
+          onChangeText={text => {
+            this.setState({login: text});
+          }}
+        />
 
         {/*Password*/}
-        {this.state.showPassWarning &&
-        <Text style={s.warning}>Password should have minimum 3 letters and be same in booth fields</Text>}
-        <Text style={s.description}>
-          Password:
-        </Text>
+        {this.state.showPassWarning && (
+          <Text style={s.warning}>
+            Password should have minimum 3 letters and be same in booth fields
+          </Text>
+        )}
+        <Text style={s.description}>Password:</Text>
         <TextInput
           underlineColorAndroid={colors.lightBlue}
           style={s.textInput}
           secureTextEntry={true}
-          onChangeText={(text) => {
-            this.setState({password: text})
-          }}/>
+          onChangeText={text => {
+            this.setState({password: text});
+          }}
+        />
 
         {/*Repeat Password*/}
-        <Text style={s.description}>
-          Repeat Password:
-        </Text>
+        <Text style={s.description}>Repeat Password:</Text>
         <TextInput
           underlineColorAndroid={colors.lightBlue}
           style={s.textInput}
           secureTextEntry={true}
-          onChangeText={(text) => {
-            this.setState({password2: text})
-          }}/>
+          onChangeText={text => {
+            this.setState({password2: text});
+          }}
+        />
 
         {/*Button*/}
         {/*<View><View/>*/}
@@ -104,22 +94,17 @@ export default class Login extends Component<Props> {
             accessibilityLabel="Learn more about this purple button"
           />
         </View>
-
-
       </View>
     );
   }
-
-
 }
-
 
 const s = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.black,
+    backgroundColor: colors.black
   },
   greeting: {
     maxWidth: '80%',
@@ -151,6 +136,6 @@ const s = StyleSheet.create({
   },
   button: {
     width: '25%',
-    marginTop: 30,
+    marginTop: 30
   }
 });
