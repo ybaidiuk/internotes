@@ -25,7 +25,7 @@ export default class BackUp extends Component<Props> {
   }
 
   toggleDrawer = () => {
-    this.props.navigation.navigate('DrawerToggle');
+    this.props.navigation.toggleDrawer();
   };
 
   render() {
