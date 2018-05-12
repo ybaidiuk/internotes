@@ -19,7 +19,6 @@ export default class AppInit extends Component<Props> {
   async loadUserData() {
     console.log('loadUserData');
     const data = await DbUtils.readJson(AUTH_DATA);
-    console.log(data);
     const dataIsValid = UserDataUtils.verifyUserData(data);
     this.props.navigation.navigate(dataIsValid ? 'Auth' : 'Login');
   }
