@@ -5,7 +5,7 @@ import Login from './pages/Login';
 import AuthSetUp from './pages/AuthSetUp';
 import Auth from './pages/Auth';
 import Main from './pages/Main';
-import {DrawerNavigator, SwitchNavigator} from 'react-navigation';
+import {createDrawerNavigator, createSwitchNavigator} from 'react-navigation';
 import Exemple from './pages/Exemple';
 import NoteEditor from './pages/NoteEditor';
 import colors from './Colors';
@@ -13,7 +13,7 @@ import BackUp from './pages/BackUp';
 import ScanQR from './pages/ScanQR';
 import ShareQR from './pages/ShareQR';
 
-const Draver = DrawerNavigator(
+const Draver = createDrawerNavigator(
   {
     Main: {
       screen: Main
@@ -35,7 +35,7 @@ const Draver = DrawerNavigator(
   }
 );
 
-export default SwitchNavigator(
+export default createSwitchNavigator(
   {
     AppInit: AppInit,
 
