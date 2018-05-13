@@ -8,6 +8,7 @@ import {
   StyleSheet,
   ScrollView,
   Platform,
+  TabBarIOS
 } from 'react-native';
 import colors from "../Colors";
 import Toolbar from "../components/Toolbar";
@@ -17,10 +18,15 @@ import SquareButton from "../components/SquareButton";
 import NoteDaoUtils from "../utils/NoteDaoUtils";
 import PopUp from "../components/PopUp";
 import Logo from "../components/Logo";
+import History from "../entities/History";
 
 export default class NoteEditor extends Component<Props> {
+
+  //region LIFE CYCLE
   constructor(props) {
     super(props);
+
+    this._history = new History();
     this.state = {
       text: '',
       showOptions: false,
@@ -35,14 +41,20 @@ export default class NoteEditor extends Component<Props> {
     BackHandler.addEventListener('hardwareBackPress', this.saveOrDeleteAndGoToMain.bind(this));
   }
 
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.saveOrDeleteAndGoToMain);
+  }
+  //endregion
+
+
+
+  //region EVENT HANDLERS
   fillUpField(note) {
     console.log(note);
     this.setState({text: note.text});
   }
 
-  componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.saveOrDeleteAndGoToMain);
-  }
+
 
   async saveOrDeleteAndGoToMain() {
     console.log("saveOrDeleteAndGoToMain");
@@ -77,6 +89,34 @@ export default class NoteEditor extends Component<Props> {
 
   }
 
+  handleTextChange(text) {
+    this.setState({
+      text:text
+    });
+
+    this._history.pushToStack(text);
+    console.log(this._history.arr);
+  }
+
+  handleUndoEvent() {
+    const text = this._history.undo();
+    this.setState({
+      text:text
+    });
+  }
+
+  handleRedoEvent() {
+    const text = this._history.redo();
+    if (text==null) return;
+
+    this.setState({
+      text:text
+    });
+  }
+  //endregion
+
+
+  //region RENDERING
   render() {
     return (
       <View style={s.container}>
@@ -95,6 +135,14 @@ export default class NoteEditor extends Component<Props> {
 
           <Logo title='NoteEditor'/>
 
+
+          <RoundButton  onPress = {this.handleUndoEvent.bind(this)}
+                        image={require('../res/ic_undo_white_24dp_1x.png')}/>
+
+          <RoundButton  onPress = {this.handleRedoEvent.bind(this)}
+                        image={require('../res/ic_redo_white_24dp_1x.png')}/>
+
+
           <RoundButton onPress={this.showOptions.bind(this, true)}
                        image={require('../res/ic_more_vert_white_24dp_1x.png')}/>
         </Toolbar>
@@ -102,7 +150,7 @@ export default class NoteEditor extends Component<Props> {
           <TextInput
             underlineColorAndroid={colors.lightBlue}
             value={this.state.text}
-            onChangeText={(text) => this.setState({text})}
+            onChangeText={this.handleTextChange.bind(this)}
             style={s.text}
             multiline={true}
             autoCorrect={true}
@@ -115,6 +163,7 @@ export default class NoteEditor extends Component<Props> {
     );
   }
 }
+//endregion
 
 
 const s = StyleSheet.create({

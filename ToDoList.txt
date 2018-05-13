@@ -1,4 +1,4 @@
-Spring: 1
+Sprint: 1
                 Global
 
     => done 1. improve color politic .
@@ -24,7 +24,7 @@ Spring: 1
 
 
 ======================================================================================================
-Spring 2:
+Sprint 2:
                 Global
 
     => done 1. make functionality for Share Button on NoteEditor and Main Pages.
