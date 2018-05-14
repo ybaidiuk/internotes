@@ -34,9 +34,6 @@
     "prettier": "^1.12.1",
     "react-test-renderer": "^16.3.2"
   },
-  "jest": {
-    "preset": "react-native"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
