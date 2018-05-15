@@ -5,7 +5,6 @@ import {
   SectionList,
   StatusBar,
   StyleSheet,
-  Text,
   View,
   Share,
   BackHandler
