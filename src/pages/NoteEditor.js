@@ -96,18 +96,18 @@ export default class NoteEditor extends Component<Props> {
 
   handleUndoEvent() {
     const text = this._history.undo();
-    this.setState({
-      text: text
-    });
+    if (text)
+      this.setState({
+        text: text
+      });
   }
 
   handleRedoEvent() {
     const text = this._history.redo();
-    if (text == null) return;
-
-    this.setState({
-      text: text
-    });
+    if (text)
+      this.setState({
+        text: text
+      });
   }
 
   //endregion

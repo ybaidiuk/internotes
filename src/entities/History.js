@@ -23,7 +23,7 @@ export default class History {
 
   //region TRAVERSING THROUGH STATES
   undo() {
-    if (this.index === -1) return;
+    if (this.index === -1) return null;
     this.index--;
     // console.log(this.index);
     // console.log(this.arr[this.index]);
