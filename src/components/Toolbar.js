@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import colors from "../Colors";
-import ScreenUtils from "../utils/ScreenUtils";
+import colors from '../Colors';
+import ScreenUtils from '../utils/ScreenUtils';
 
 export default class Toolbar extends Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      isPortrait: true,
-    }
+      isPortrait: true
+    };
   }
 
   onLayout = () => {
@@ -31,15 +31,14 @@ export default class Toolbar extends Component<Props> {
 
   render() {
     return (
-      <View style={[s.container, {paddingTop: this.getPaddingTop(), height: this.getHeight()}]}
-            onLayout={this.onLayout}>
+      <View
+        style={[s.container, {paddingTop: this.getPaddingTop(), height: this.getHeight()}]}
+        onLayout={this.onLayout}
+      >
         {this.props.children}
-
       </View>
     );
   }
-
-
 }
 
 const s = StyleSheet.create({
@@ -49,6 +48,6 @@ const s = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: colors.blue,
-    padding: 7,
+    padding: 7
   }
 });

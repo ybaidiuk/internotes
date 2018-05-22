@@ -1,5 +1,5 @@
-import UserDataUtils from "../src/utils/UserDataUtils";
-import CryptoUtils from "../src/utils/CryptoUtils";
+import UserDataUtils from '../src/utils/UserDataUtils';
+import CryptoUtils from '../src/utils/CryptoUtils';
 
 it('verifyUserData', () => {
   expect(UserDataUtils.verifyUserData({})).toBe(false);

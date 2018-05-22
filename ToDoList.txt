@@ -37,7 +37,7 @@ Sprint 2:
 
                 EditorPage
 
-    1. on Note EditorPage (at toolbar middle ) show back and forward buttons .should do  like  Ctrl Z, Ctrl Y.
+    => Roja 1. on Note EditorPage (at toolbar middle ) show back and forward buttons .should do  like  Ctrl Z, Ctrl Y.
 
 
 
@@ -57,6 +57,8 @@ For Feature:
     waiting till react-native will fix this 'bug' https://github.com/facebook/react-native/issues/19007
 
     2. tap Sound (as i write understand now Touchable Elements not support it)
+
+    3. update gradle (needed for react-native-network-info new version)
 
                 Auth
 
