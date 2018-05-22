@@ -20,7 +20,7 @@ import PopUp from '../components/PopUp';
 import SquareButton from '../components/SquareButton';
 import NoteDaoUtils from '../utils/NoteDaoUtils';
 import Logo from '../components/Logo';
-//import NetworkUtils from '../utils/NetworkUtils';
+import NetworkUtils from '../utils/NetworkUtils';
 
 export default class Main extends Component<Props> {
   static navigationOptions = {

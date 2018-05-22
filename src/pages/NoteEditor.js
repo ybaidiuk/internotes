@@ -45,6 +45,7 @@ export default class NoteEditor extends Component<Props> {
 
     this._history.stopTimer();
   }
+
   //endregion
 
   //region EVENT HANDLERS
@@ -108,7 +109,6 @@ export default class NoteEditor extends Component<Props> {
       text: text
     });
   }
-  //endregion
 
   //region RENDERING
   render() {
@@ -131,21 +131,22 @@ export default class NoteEditor extends Component<Props> {
           />
 
           <Logo title="NoteEditor" />
+          <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+            <RoundButton
+              onPress={this.handleUndoEvent.bind(this)}
+              image={require('../res/ic_undo_white_24dp_1x.png')}
+            />
 
-          <RoundButton
-            onPress={this.handleUndoEvent.bind(this)}
-            image={require('../res/ic_undo_white_24dp_1x.png')}
-          />
+            <RoundButton
+              onPress={this.handleRedoEvent.bind(this)}
+              image={require('../res/ic_redo_white_24dp_1x.png')}
+            />
 
-          <RoundButton
-            onPress={this.handleRedoEvent.bind(this)}
-            image={require('../res/ic_redo_white_24dp_1x.png')}
-          />
-
-          <RoundButton
-            onPress={this.showOptions.bind(this, true)}
-            image={require('../res/ic_more_vert_white_24dp_1x.png')}
-          />
+            <RoundButton
+              onPress={this.showOptions.bind(this, true)}
+              image={require('../res/ic_more_vert_white_24dp_1x.png')}
+            />
+          </View>
         </Toolbar>
         <ScrollView indicatorStyle="white">
           <TextInput
