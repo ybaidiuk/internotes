@@ -3,15 +3,14 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start",
     "android": "react-native run-android",
     "log-android": " react-native log-android",
     "ios": "react-native run-ios",
     "log-ios": " react-native log-ios",
-    "lint": "eslint . --fix",
     "devtools": "react-devtools",
+    "test": "jest",
     "set-up-port": "adb reverse tcp:8081 tcp:8080",
-    "test": "jest"
+    "lint": "eslint . --fix"
   },
   "dependencies": {
     "crypto-js": "^3.1.9-1",
