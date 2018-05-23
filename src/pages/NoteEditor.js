@@ -7,8 +7,7 @@ import {
   StatusBar,
   StyleSheet,
   ScrollView,
-  Platform,
-  TabBarIOS
+  Platform
 } from 'react-native';
 import colors from '../Colors';
 import Toolbar from '../components/Toolbar';
@@ -33,6 +32,8 @@ export default class NoteEditor extends Component<Props> {
   }
 
   componentDidMount() {
+    this._history.startTimer(2000, () => this.state.text);
+
     if (this.props.navigation.state.params)
       this.fillUpField(this.props.navigation.state.params.note);
 
@@ -41,6 +42,8 @@ export default class NoteEditor extends Component<Props> {
 
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.saveOrDeleteAndGoToMain);
+
+    this._history.stopTimer();
   }
 
   //endregion
@@ -89,28 +92,23 @@ export default class NoteEditor extends Component<Props> {
     this.setState({
       text: text
     });
-
-    this._history.pushToStack(text);
-    console.log(this._history.arr);
   }
 
   handleUndoEvent() {
     const text = this._history.undo();
-    if (text)
-      this.setState({
-        text: text
-      });
+    this.setState({
+      text: text
+    });
   }
 
   handleRedoEvent() {
     const text = this._history.redo();
-    if (text)
-      this.setState({
-        text: text
-      });
-  }
+    if (text == null) return;
 
-  //endregion
+    this.setState({
+      text: text
+    });
+  }
 
   //region RENDERING
   render() {

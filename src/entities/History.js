@@ -9,14 +9,32 @@ export default class History {
      operation was a push.
      */
     this.index = -1;
+    this.textGetter;
+    this.interval;
   }
 
-  //region ELEMENT MANAGEMENT
-  pushToStack(currentState) {
-    this.arr.splice(this.index + 1);
-    this.arr.push(currentState);
-    this.index++;
-    // console.log(this.index);
+  //region TIMER RELATED
+  startTimer(time, textGetter) {
+    this.textGetter = textGetter;
+    this.interval = setInterval(this.pushToStack.bind(this), time);
+  }
+
+  stopTimer() {
+    clearInterval(this.interval);
+  }
+
+  pushToStack() {
+    const text = this.textGetter();
+    // Check if there are changes
+    if (text != this.arr[this.index]) {
+      // Cut elements after current index, if any
+      this.arr.splice(this.index + 1);
+      //push text to stack
+      this.arr.push(text);
+      this.index += 1;
+    }
+
+    // Stop tracking, if more than X steps
   }
 
   //endregion
