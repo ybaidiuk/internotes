@@ -9,8 +9,6 @@ export default class History {
      operation was a push.
      */
     this.index = -1;
-    this.textGetter;
-    this.interval;
   }
 
   //region TIMER RELATED
@@ -26,7 +24,7 @@ export default class History {
   pushToStack() {
     const text = this.textGetter();
     // Check if there are changes
-    if (text != this.arr[this.index]) {
+    if (text !== this.arr[this.index]) {
       // Cut elements after current index, if any
       this.arr.splice(this.index + 1);
       //push text to stack
