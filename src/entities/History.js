@@ -1,5 +1,5 @@
 export default class History {
-  constructor() {
+  constructor(limit) {
     /**
      stack of history elements
      */
@@ -11,6 +11,7 @@ export default class History {
     this.index = -1;
     this.textGetter;
     this.interval;
+    this.limit = limit;
   }
 
   //region TIMER RELATED
@@ -26,15 +27,19 @@ export default class History {
   pushToStack() {
     const text = this.textGetter();
     // Check if there are changes
-    if (text != this.arr[this.index]) {
-      // Cut elements after current index, if any
-      this.arr.splice(this.index + 1);
-      //push text to stack
-      this.arr.push(text);
-      this.index += 1;
-    }
+    if (text == this.arr[this.index]) return;
 
-    // Stop tracking, if more than X steps
+    // Cut elements after current index, if any
+    this.arr.splice(this.index + 1);
+    //push text to stack
+    this.arr.push(text);
+    this.index += 1;
+    console.log(this.arr);
+
+    // Remove oldest element, if array longer than limit
+    if (this.arr.length > this.limit) {
+      this.arr.shift();
+    }
   }
 
   //endregion

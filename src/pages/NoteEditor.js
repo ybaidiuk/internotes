@@ -24,7 +24,7 @@ export default class NoteEditor extends Component<Props> {
   constructor(props) {
     super(props);
 
-    this._history = new History();
+    this._history = new History(20);
     this.state = {
       text: '',
       showOptions: false
