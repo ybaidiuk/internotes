@@ -12,6 +12,9 @@ import colors from './Colors';
 import BackUp from './pages/BackUp';
 import ScanQR from './pages/ScanQR';
 import ShareQR from './pages/ShareQR';
+import {YellowBox} from 'react-native';
+// todo remove later . react-native use isMounted() itself (since version 55)
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated']);
 
 const Draver = createDrawerNavigator(
   {
