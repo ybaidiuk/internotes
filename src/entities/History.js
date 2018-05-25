@@ -9,8 +9,8 @@ export default class History {
      operation was a push.
      */
     this.index = -1;
-    this.textGetter;
-    this.interval;
+    this.textGetter = null;
+    this.interval = null;
     this.limit = limit;
   }
 
@@ -27,18 +27,19 @@ export default class History {
   pushToStack() {
     const text = this.textGetter();
     // Check if there are changes
-    if (text == this.arr[this.index]) return;
+    if (text === this.arr[this.index]) return;
 
     // Cut elements after current index, if any
     this.arr.splice(this.index + 1);
     //push text to stack
     this.arr.push(text);
-    this.index += 1;
-    console.log(this.arr);
+    this.index++;
+    console.log('has changes', this.arr);
 
     // Remove oldest element, if array longer than limit
-    if (this.arr.length > this.limit) {
+    if (this.arr.length >= this.limit) {
       this.arr.shift();
+      //todo bug after max limit . text always new .
     }
   }
 

@@ -24,7 +24,7 @@ export default class NoteEditor extends Component<Props> {
   constructor(props) {
     super(props);
 
-    this._history = new History(20);
+    this._history = new History(3);
     this.state = {
       text: '',
       showOptions: false
@@ -135,6 +135,8 @@ export default class NoteEditor extends Component<Props> {
           <Logo title="NoteEditor" />
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
             <RoundButton
+              // disable={true}}
+              test={'aass'}
               onPress={this.handleUndoEvent.bind(this)}
               image={require('../res/ic_undo_white_24dp_1x.png')}
             />
