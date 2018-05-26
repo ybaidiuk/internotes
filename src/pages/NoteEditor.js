@@ -7,7 +7,6 @@ import {
   StatusBar,
   StyleSheet,
   ScrollView,
-  Platform
 } from 'react-native';
 import colors from '../Colors';
 import Toolbar from '../components/Toolbar';
@@ -60,10 +59,10 @@ export default class NoteEditor extends Component<Props> {
       this.props.navigation.state.params && this.props.navigation.state.params.note;
 
     if (noteFromProps && this.state.text.length === 0)
-      //if updatedText empty remove
+    //if updatedText empty remove
       await NoteDaoUtils.deleteNote(noteFromProps);
     else if (noteFromProps)
-      //if update
+    //if update
       await NoteDaoUtils.updateNote(this.state.text, noteFromProps);
     //if create new
     else await NoteDaoUtils.insertNote(this.state.text);
@@ -116,14 +115,14 @@ export default class NoteEditor extends Component<Props> {
   render() {
     return (
       <View style={s.container}>
-        <StatusBar backgroundColor={colors.darkBlue} />
+        <StatusBar backgroundColor={colors.darkBlue}/>
         <PopUp
           onRequestClose={this.showOptions.bind(this, false)}
           visible={this.state.showOptions}
           rightTopCorner
         >
-          <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)} />
-          <SquareButton title={'Share'} onPress={this.share.bind(this)} />
+          <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)}/>
+          <SquareButton title={'Share'} onPress={this.share.bind(this)}/>
         </PopUp>
 
         <Toolbar>
@@ -135,8 +134,6 @@ export default class NoteEditor extends Component<Props> {
           <Logo title="NoteEditor" />
           <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
             <RoundButton
-              // disable={true}}
-              test={'aass'}
               onPress={this.handleUndoEvent.bind(this)}
               image={require('../res/ic_undo_white_24dp_1x.png')}
             />

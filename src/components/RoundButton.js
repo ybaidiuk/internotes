@@ -26,7 +26,6 @@ export default class RoundButton extends Component<Props> {
 RoundButton.propTypes = {
   onPress: PropTypes.func,
   image: PropTypes.node,
-  // test: PropTypes.number, todo
   disable: PropTypes.bool
 };
 
