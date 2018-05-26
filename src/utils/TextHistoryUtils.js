@@ -1,4 +1,7 @@
-export default class History {
+/**
+ * realisation of redo and undo logic.
+ */
+export default class TextHistoryUtils {
   constructor(limit) {
     /**
      stack of history elements
@@ -34,13 +37,13 @@ export default class History {
     //push text to stack
     this.arr.push(text);
     this.index++;
-    console.log('has changes', this.arr);
+    // console.log('has changes', this.arr);
 
     // Remove oldest element, if array longer than limit
     if (this.arr.length > this.limit + 1) {
       this.arr.shift();
       this.index--;
-      console.log('shift ', this.arr);
+      // console.log('shift ', this.arr);
     }
   }
 
