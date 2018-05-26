@@ -4,14 +4,15 @@ import RoundButton from '../components/RoundButton';
 import PropTypes from 'prop-types';
 
 export default class Exemple extends Component<Props> {
+
+  static propTypes = {
+    title: PropTypes.string
+  };
+
   render() {
     return <Text style={s.logo}>{this.props.title}</Text>;
   }
 }
-
-RoundButton.propTypes = {
-  title: PropTypes.string
-};
 
 const s = StyleSheet.create({
   logo: {

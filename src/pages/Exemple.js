@@ -4,6 +4,14 @@ import RoundButton from '../components/RoundButton';
 import PropTypes from 'prop-types';
 
 export default class Exemple extends Component<Props> {
+
+  static defaultProps = {};
+
+  static propTypes = {
+    onPress: PropTypes.func,
+    image: PropTypes.node
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +20,8 @@ export default class Exemple extends Component<Props> {
     };
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+  }
 
   render() {
     return (
@@ -22,11 +31,6 @@ export default class Exemple extends Component<Props> {
     );
   }
 }
-
-RoundButton.propTypes = {
-  onPress: PropTypes.func,
-  image: PropTypes.node
-};
 
 const s = StyleSheet.create({
   container: {

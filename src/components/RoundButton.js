@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 import colors from '../Colors';
 
 export default class RoundButton extends Component<Props> {
-  // static propTypes = {
-  // }; //todo test if we can use this syntax
+  static propTypes = {
+    onPress: PropTypes.func,
+    image: PropTypes.node,
+    disable: PropTypes.bool
+  };
 
   constructor(props) {
     super(props);
@@ -18,15 +21,10 @@ export default class RoundButton extends Component<Props> {
         onPress={this.props.disable ? null : this.props.onPress}
         underlayColor="rgba(0,0,0,0.2)"
       >
-        <Image tintColor={this.props.disable && colors.black} source={this.props.image} />
+        <Image tintColor={this.props.disable && colors.black} source={this.props.image}/>
       </TouchableHighlight>
     );
   }
-}
-RoundButton.propTypes = {
-  onPress: PropTypes.func,
-  image: PropTypes.node,
-  disable: PropTypes.bool
 };
 
 const s = StyleSheet.create({

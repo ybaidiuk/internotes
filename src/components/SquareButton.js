@@ -11,6 +11,12 @@ import PropTypes from 'prop-types';
 import colors from '../Colors';
 
 export default class SquareButton extends Component<Props> {
+
+  static propTypes = {
+    onPress: PropTypes.func,
+    title: PropTypes.string
+  };
+
   constructor(props) {
     super(props);
   }
@@ -34,10 +40,6 @@ export default class SquareButton extends Component<Props> {
       );
   }
 }
-SquareButton.propTypes = {
-  onPress: PropTypes.func,
-  title: PropTypes.string
-};
 
 const s = StyleSheet.create({
   container: {

@@ -5,6 +5,12 @@ import PropTypes from 'prop-types';
 import colors from '../Colors';
 
 export default class PopUp extends Component<Props> {
+  static propTypes = {
+    visible: PropTypes.bool.isRequired,
+    onRequestClose: PropTypes.func.isRequired,
+    style: PropTypes.object
+  };
+
   render() {
     return (
       <Modal
@@ -15,7 +21,7 @@ export default class PopUp extends Component<Props> {
       >
         <TouchableWithoutFeedback onPress={this.props.onRequestClose}>
           <View>
-            <View style={s.fillDarkBackGround} />
+            <View style={s.fillDarkBackGround}/>
             <View style={s.absoluteFill}>
               <View style={this.props.rightTopCorner ? s.rightTopCorner : s.center}>
                 {this.props.children}
@@ -27,12 +33,6 @@ export default class PopUp extends Component<Props> {
     );
   }
 }
-
-RoundButton.propTypes = {
-  visible: PropTypes.bool.isRequired,
-  onRequestClose: PropTypes.func.isRequired,
-  style: PropTypes.object
-};
 
 const s = StyleSheet.create({
   fillDarkBackGround: {
