@@ -17,7 +17,7 @@
     "prop-types": "15.6.1",
     "react": "16.4.0",
     "react-native": "0.55.4",
-    "react-navigation": "2.0.2"
+    "react-navigation": "2.0.3"
   },
   "devDependencies": {
     "babel-eslint": "8.2.3",
@@ -28,8 +28,7 @@
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "7.8.2",
     "eslint-plugin-react-native": "^3.2.1",
-    "rxjs-compat": "6.2.0",
-    "husky": "1.0.0-rc.6",
+    "husky": "0.14.3",
     "jest": "23.0.0",
     "lint-staged": "7.1.2",
     "prettier": "^1.12.1",
@@ -41,6 +40,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,css,md}": ["prettier --write", "git add"]
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
