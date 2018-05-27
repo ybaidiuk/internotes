@@ -6,13 +6,13 @@ import AuthSetUp from './pages/AuthSetUp';
 import Auth from './pages/Auth';
 import Main from './pages/Main';
 import {createDrawerNavigator, createSwitchNavigator} from 'react-navigation';
-import Exemple from './pages/Exemple';
 import NoteEditor from './pages/NoteEditor';
 import colors from './Colors';
 import BackUp from './pages/BackUp';
 import ScanQR from './pages/ScanQR';
 import ShareQR from './pages/ShareQR';
 import {YellowBox} from 'react-native';
+import Logs from "./pages/Logs";
 // todo remove later . react-native use isMounted() itself (since version 55)
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated']);
 
@@ -24,8 +24,8 @@ const Draver = createDrawerNavigator(
     BackUp: {
       screen: BackUp
     },
-    Exemple: {
-      screen: Exemple
+    Logs: {
+      screen: Logs
     }
   },
   {

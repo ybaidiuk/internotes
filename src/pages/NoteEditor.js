@@ -16,14 +16,14 @@ import SquareButton from '../components/SquareButton';
 import NoteDaoUtils from '../utils/NoteDaoUtils';
 import PopUp from '../components/PopUp';
 import Logo from '../components/Logo';
-import TextHistoryUtils from '../utils/TextHistoryUtils';
+import TextHistoryService from '../services/TextHistoryService';
 
 export default class NoteEditor extends Component<Props> {
   //region LIFE CYCLE
   constructor(props) {
     super(props);
 
-    this._history = new TextHistoryUtils(20);
+    this._history = new TextHistoryService(20);
     this.state = {
       text: '',
       showOptions: false

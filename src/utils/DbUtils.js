@@ -16,6 +16,7 @@ export default class DbUtils {
   }
 
   // exemple: const val = await readData('test');
+  // if not exist return null
   static async read(key) {
     try {
       // await AsyncStorage.clear();
@@ -41,8 +42,9 @@ export default class DbUtils {
     await this.insert(key, JSON.stringify(data));
   }
 
+
   static async readJson(key) {
     let res = await this.read(key);
-    return JSON.parse(res);
+    return JSON.parse(res);//if not exist return null
   }
 }

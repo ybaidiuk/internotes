@@ -1,7 +1,7 @@
 /**
  * realisation of redo and undo logic.
  */
-export default class TextHistoryUtils {
+export default class TextHistoryService {
   constructor(limit) {
     /**
      stack of history elements
