@@ -6,7 +6,7 @@ import colors from '../Colors';
 export default class RoundButton extends Component<Props> {
   static propTypes = {
     onPress: PropTypes.func,
-    image: PropTypes.node,
+    image: PropTypes.node,      //require('../res/ic_menu_white_24dp_1x.png')
     disable: PropTypes.bool
   };
 

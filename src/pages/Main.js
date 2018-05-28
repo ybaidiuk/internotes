@@ -20,26 +20,31 @@ import PopUp from '../components/PopUp';
 import SquareButton from '../components/SquareButton';
 import NoteDaoUtils from '../utils/NoteDaoUtils';
 import Logo from '../components/Logo';
+import BackgroundService from "../services/BackgroundService";
 
 export default class Main extends Component<Props> {
   static navigationOptions = {
     drawerLabel: 'Main',
     drawerIcon: ({tintColor}) => (
-      <Image source={require('../res/ic_home_black_24dp_1x.png')} style={{tintColor: tintColor}} />
+      <Image source={require('../res/ic_home_black_24dp_1x.png')} style={{tintColor: tintColor}}/>
     )
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {noteArr: [], showPopUp: false, selectedNote: null};
-    this.loadNoteList();
-  }
+  state = {
+    noteArr: [],
+    showPopUp: false,
+    selectedNote: null
+  };
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', Main.exit);
-    //console.log('try to init NetworkUtils');
-    //  NetworkUtils.send('send step  NetworkUtils');
+    this.loadNoteList();
+    // call method BackgroundService.service every 15 min
+    BackgroundService.init(); //
+    // i call it directly also because i don't wont to wait 15min for first call from background
+    BackgroundService.service();
   }
+
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', Main.exit);
   }
@@ -89,14 +94,14 @@ export default class Main extends Component<Props> {
   render() {
     return (
       <View style={s.container}>
-        <StatusBar backgroundColor={colors.darkBlue} />
+        <StatusBar backgroundColor={colors.darkBlue}/>
 
         <PopUp
           onRequestClose={() => this.setState({showPopUp: false})}
           visible={this.state.showPopUp}
         >
-          <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)} />
-          <SquareButton title={'Share'} onPress={this.share.bind(this)} />
+          <SquareButton title={'Delete'} onPress={this.deleteNote.bind(this)}/>
+          <SquareButton title={'Share'} onPress={this.share.bind(this)}/>
         </PopUp>
 
         <Toolbar>
@@ -105,7 +110,7 @@ export default class Main extends Component<Props> {
             image={require('../res/ic_menu_white_24dp_1x.png')}
           />
 
-          <Logo title="Internotes" />
+          <Logo title="Internotes"/>
 
           <RoundButton
             onPress={this.createNote}
@@ -116,9 +121,9 @@ export default class Main extends Component<Props> {
         <SectionList
           indicatorStyle="white"
           renderItem={({item: note, index}) => (
-            <ListItem key={index} note={note} onLongPress={this.showPopUp.bind(this)} />
+            <ListItem key={index} note={note} onLongPress={this.showPopUp.bind(this)}/>
           )}
-          ItemSeparatorComponent={() => <View style={s.separator} />}
+          ItemSeparatorComponent={() => <View style={s.separator}/>}
           sections={[{data: this.state.noteArr}]}
           keyExtractor={(item, index) => item + index}
         />

@@ -20,5 +20,23 @@ allprojects {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url "$rootDir/../node_modules/react-native/android"
         }
+
+        //start: need for react-native-background-fetch
+        maven {
+            url 'https://maven.google.com'
+        }
+        maven {
+            url "$rootDir/../node_modules/react-native-background-fetch/android/libs"
+        }
+        //end
+
     }
 }
+
+//start: need for react-native-background-fetch
+ext {
+    compileSdkVersion = 23
+    targetSdkVersion = 22
+    buildToolsVersion = "23.0.1"
+}
+//end

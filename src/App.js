@@ -14,7 +14,7 @@ import ShareQR from './pages/ShareQR';
 import {YellowBox} from 'react-native';
 import Logs from "./pages/Logs";
 // todo remove later . react-native use isMounted() itself (since version 55)
-YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated']);
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Class RCTCxxModule', 'Module RCTImageLoader']);
 
 const Draver = createDrawerNavigator(
   {

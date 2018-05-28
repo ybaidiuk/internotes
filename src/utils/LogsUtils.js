@@ -2,9 +2,11 @@ import DbUtils from "./DbUtils";
 import * as Const from "../Const";
 
 export default class LogsUtils {
+
   static async addLog(text) {
     let logsArr = await this.getLogs();
-    logsArr.push(new Date(), text);
+    logsArr.unshift(new Date() +  text);
+    logsArr.splice(1000);
     DbUtils.insertJson(Const.LOGS, logsArr);
   }
 
