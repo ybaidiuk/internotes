@@ -22,34 +22,31 @@ Sprint: 1
     => done 4. add swipe left (behavior like button back)
 
 
-
+DONE.
 ======================================================================================================
 Sprint 2:
                 Global
 
     => done 1. make functionality for Share Button on NoteEditor and Main Pages.
 
-    => wait till network 2. add title to noteIdsArr till 30 symbols. (refactor Main , NoteEditor Pages for This  , share Button on Main )
-
-    3. add QR Code Generator on Left Side that can show/read ip of Device.
-
-    4. EncryptionUtil
-
                 EditorPage
 
-    => Roja 1. on Note EditorPage (at toolbar middle ) show back and forward buttons .should do  like  Ctrl Z, Ctrl Y.
+    => done => Roja 1. on Note EditorPage (at toolbar middle ) show back and forward buttons .should do  like  Ctrl Z, Ctrl Y.
 
 
+DONE.
+======================================================================================================
+Sprint 3:
+    -> add title to noteIdsArr till 30 symbols. (refactor Main , NoteEditor Pages for This  , share Button on Main )
 
+    -> encrypting of text.
 
-
-
-
-
-
-
+    
 
 ======================================================================================================
+
+
+add title to noteIdsArr till 30 symbols. (refactor Main , NoteEditor Pages for This  , share Button on Main )
 For Feature:
                 Global
 
@@ -58,7 +55,8 @@ For Feature:
 
     2. tap Sound (as i write understand now Touchable Elements not support it)
 
-    3. update gradle (needed for react-native-network-info new version)
+    3. Server Spring Boot
+
 
                 Auth
 
@@ -66,7 +64,3 @@ For Feature:
     2 do Auth SetUp (like if user not has FingerScaner.
 
                 Decentralized Network
-
-                ChronJob
-
-                Cloud Function

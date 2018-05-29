@@ -1,4 +1,4 @@
-# internotes
+# internotes ![image](icon.png)
 
 This app now in developing state.
 The main goal is to create decentralized app for notice.
