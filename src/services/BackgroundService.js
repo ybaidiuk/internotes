@@ -1,5 +1,5 @@
 import BackgroundFetch from "react-native-background-fetch";
-import LogsUtils from "../utils/LogsUtils";
+import LogsUtils, {LOG_TYPE} from "../utils/LogsUtils";
 
 /**
  * call service function every 15 min.
@@ -30,8 +30,8 @@ export default class BackgroundService {
    * simulate on ios : adb shell cmd jobscheduler run -f com.internotes 999
    * simulate service on android :  adb shell cmd jobscheduler run -f com.internotes 999
    */
-  static service() {
-    LogsUtils.addLog('backgroundJob call');
+  static async service() {
+    await LogsUtils.addLog(LOG_TYPE.INFO, ' backgroundJob call');
   }
 
 
@@ -51,8 +51,8 @@ export default class BackgroundService {
     });
   }
 
-  static error(err) {
-    LogsUtils.addLog('ERROR BackgroundFetch failed to start');
+  static async error(err) {
+    await LogsUtils.addLog(LOG_TYPE.ERROR, 'ERROR BackgroundFetch failed to start');
   }
 
 }

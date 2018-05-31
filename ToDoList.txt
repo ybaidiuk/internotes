@@ -50,14 +50,16 @@ add title to noteIdsArr till 30 symbols. (refactor Main , NoteEditor Pages for T
 For Feature:
                 Global
 
-    1. need wait for ReactSupporting it . scrollIndicator (line on right site) on black backgroung not visible on Android (indicatorStyle='white' only for IOS)
+    1. need wait for ReactSupporting it . scrollIndicator (line on right site) on black background not visible on Android (indicatorStyle='white' only for IOS)
     waiting till react-native will fix this 'bug' https://github.com/facebook/react-native/issues/19007
 
     2. tap Sound (as i write understand now Touchable Elements not support it)
 
     3. Server Spring Boot
 
-    4. do StackNavigetor for Main, edit screens and invoke update with onTransitionEnd props. https://reactnavigation.org/docs/en/stack-navigator.html
+    4. do StackNavigetor for Main, edit screens and invoke update with onTransitionEnd props.
+    https://reactnavigation.org/docs/en/stack-navigator.html
+    https://github.com/react-navigation/react-navigation/issues/4395
 
 
                 Auth

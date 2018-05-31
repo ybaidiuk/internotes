@@ -20,7 +20,10 @@ class ListItem extends Component<Props> {
   }
 
   //todo make underlayColor null or transparent after longPressTrigert
+  // small bug
   // and make it again blue after onShowUnderlay
+  // коли примаєш довго палець і появляється попАп вікно то ячека все ще світиться іншим кольовом
+  // а має сатати така сама як всі інші.
   render() {
     return (
       <TouchableHighlight

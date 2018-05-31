@@ -42,7 +42,7 @@ export default class Main extends Component<Props> {
     // call method BackgroundService.service every 15 min
     BackgroundService.init();
     // i call it directly also because i don't wont to wait 15min for first call from background
-    //BackgroundService.service(); //todo now disable for debug
+    // BackgroundService.service(); //todo enable for release .
   }
 
   componentWillUnmount() {
