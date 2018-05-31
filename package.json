@@ -9,7 +9,7 @@
     "log-ios": " react-native log-ios",
     "devtools": "react-devtools",
     "test": "jest",
-    "set-up-port": "adb reverse tcp:8081 tcp:8080",
+    "set-up-port": "adb reverse tcp:8081 tcp:8081",
     "lint": "eslint . --fix"
   },
   "dependencies": {
@@ -30,9 +30,9 @@
     "eslint-plugin-react": "7.8.2",
     "eslint-plugin-react-native": "^3.2.1",
     "husky": "0.14.3",
-    "jest": "23.0.1",
+    "jest": "23.1.0",
     "lint-staged": "7.1.2",
-    "prettier": "1.13.0",
+    "prettier": "1.13.3",
     "react-test-renderer": "16.4.0"
   },
   "husky": {

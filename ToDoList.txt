@@ -57,6 +57,8 @@ For Feature:
 
     3. Server Spring Boot
 
+    4. do StackNavigetor for Main, edit screens and invoke update with onTransitionEnd props. https://reactnavigation.org/docs/en/stack-navigator.html
+
 
                 Auth
 
