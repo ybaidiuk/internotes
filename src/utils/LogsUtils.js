@@ -9,8 +9,8 @@ export const LOG_TYPE = {
 export default class LogsUtils {
 
   //exemple : await LogsUtils.addLog(LOG_TYPE.INFO, 'some text');
-  static async addLog(logType, text) {
-    let logsArr = await this.getLogs();
+  static async add(logType, text) {
+    let logsArr = await this.get();
     const newLog = {
       logType: logType,
       date: new Date(),
@@ -24,8 +24,13 @@ export default class LogsUtils {
 
   }
 
-  static async getLogs() {
+  static async get() {
     const logsArr = await DbUtils.readJson(Const.LOGS);
     return logsArr ? logsArr : [];
   }
+
+  static async clear() {
+    await DbUtils.remove(Const.LOGS);
+  }
+
 }

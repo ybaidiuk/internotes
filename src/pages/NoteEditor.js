@@ -131,8 +131,8 @@ export default class NoteEditor extends Component<Props> {
             image={require('../res/ic_arrow_back_white_24dp_1x.png')}
           />
 
-          <Logo title="NoteEditor" />
-          <View style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+          <Logo title="NoteEditor"/>
+          <View style={{flexDirection: 'row'}}>
             <RoundButton
               onPress={this.handleUndoEvent.bind(this)}
               image={require('../res/ic_undo_white_24dp_1x.png')}

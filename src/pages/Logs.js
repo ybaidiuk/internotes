@@ -14,8 +14,12 @@ export default class Logs extends Component<Props> {
     };
   }
 
-  async componentDidMount() {
-    const logsArr = await LogsUtils.getLogs();
+  componentDidMount() {
+   this.loadLogs();
+  }
+
+  async loadLogs(){
+    const logsArr = await LogsUtils.get();
     this.setState({logsArr: logsArr});
   }
 
@@ -55,7 +59,17 @@ export default class Logs extends Component<Props> {
             image={require('../res/ic_menu_white_24dp_1x.png')}
           />
           <Logo title="Logs: "/>
-          <View style={{width: 45}}/>
+          <View style={{flexDirection: 'row'}}>
+            <RoundButton
+              onPress={this.loadLogs.bind(this)}
+              image={require('../res/baseline_refresh_white_24dp.png')}
+            />
+            <RoundButton
+              onPress={()=>{LogsUtils.clear(); this.loadLogs()}}
+              image={require('../res/baseline_clear_white_24dp.png')}
+            />
+          </View>
+
         </Toolbar>
         <SectionList
           renderItem={Logs.createItem}

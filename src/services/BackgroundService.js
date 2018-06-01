@@ -31,7 +31,7 @@ export default class BackgroundService {
    * simulate service on android :  adb shell cmd jobscheduler run -f com.internotes 999
    */
   static async service() {
-    await LogsUtils.addLog(LOG_TYPE.INFO, ' backgroundJob call');
+    await LogsUtils.add(LOG_TYPE.INFO, ' backgroundJob call');
   }
 
 
@@ -52,7 +52,7 @@ export default class BackgroundService {
   }
 
   static async error(err) {
-    await LogsUtils.addLog(LOG_TYPE.ERROR, 'ERROR BackgroundFetch failed to start');
+    await LogsUtils.add(LOG_TYPE.ERROR, 'ERROR BackgroundFetch failed to start');
   }
 
 }
