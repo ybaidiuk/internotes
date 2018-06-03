@@ -13,8 +13,8 @@ export default class BackgroundService {
         startOnBoot: true,         // <-- Android-only
         enableHeadless: true       // use for background job react native (Headless) functionality (android)
       },
-      () => {
-        this.service();
+      async () => {
+        await this.service();
         BackgroundFetch.finish(BackgroundFetch.FETCH_RESULT_NEW_DATA);
       },
       this.error
@@ -31,7 +31,7 @@ export default class BackgroundService {
    * simulate service on android :  adb shell cmd jobscheduler run -f com.internotes 999
    */
   static async service() {
-    await LogsUtils.add(LOG_TYPE.INFO, ' backgroundJob call');
+    await LogsUtils.add(LOG_TYPE.INFO, 'backgroundJob call');
   }
 
 

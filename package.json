@@ -1,12 +1,12 @@
 {
   "name": "internotes",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "log-android": " react-native log-android",
+    "log-android": "react-native log-android",
     "ios": "react-native run-ios",
-    "log-ios": " react-native log-ios",
+    "log-ios": "react-native log-ios",
     "devtools": "react-devtools",
     "test": "jest",
     "set-up-port": "adb reverse tcp:8081 tcp:8081",
