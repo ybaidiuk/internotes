@@ -21,11 +21,6 @@ export default class BackgroundService {
     );
   }
 
-
-  static stop() {
-    BackgroundFetch.stop();
-  }
-
   /**
    * simulate on ios : adb shell cmd jobscheduler run -f com.internotes 999
    * simulate service on android :  adb shell cmd jobscheduler run -f com.internotes 999
@@ -34,6 +29,9 @@ export default class BackgroundService {
     await LogsUtils.add(LOG_TYPE.INFO, 'backgroundJob call');
   }
 
+  static stop() {
+    BackgroundFetch.stop();
+  }
 
   static status() {
     BackgroundFetch.status((status) => {
