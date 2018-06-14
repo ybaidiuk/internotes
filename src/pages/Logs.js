@@ -4,6 +4,7 @@ import LogsUtils, {LOG_TYPE} from "../utils/LogsUtils";
 import Toolbar from "../components/Toolbar";
 import Logo from "../components/Logo";
 import RoundButton from "../components/RoundButton";
+import DataUtils from "../utils/DataUtils";
 
 export default class Logs extends Component<Props> {
 
@@ -15,20 +16,19 @@ export default class Logs extends Component<Props> {
   }
 
   componentDidMount() {
-   this.loadLogs();
+    this.loadLogs();
   }
 
-  async loadLogs(){
+  async loadLogs() {
     const logsArr = await LogsUtils.get();
     this.setState({logsArr: logsArr});
   }
 
   static createItem({item}) {
     return <View>
-
       <View style={{flexDirection: 'row'}}>
         {Logs.getLogTypeColor(item.logType)}
-        <Text> {item.date}</Text>
+        <Text> {DataUtils.timeStampToFormatedData(item.date)}</Text>
       </View>
       <Text> {item.massage}</Text>
     </View>
@@ -65,7 +65,10 @@ export default class Logs extends Component<Props> {
               image={require('../res/baseline_refresh_white_24dp.png')}
             />
             <RoundButton
-              onPress={()=>{LogsUtils.clear(); this.loadLogs()}}
+              onPress={() => {
+                LogsUtils.clear();
+                this.loadLogs()
+              }}
               image={require('../res/baseline_clear_white_24dp.png')}
             />
           </View>
