@@ -17,14 +17,14 @@ export default class Toolbar extends Component<Props> {
 
   getPaddingTop = () => {
     return Platform.select({
-      ios: this.state.isPortrait ? 25 : null,
+      ios: this.state.isPortrait ? 40 : null,
       android: null
     });
   };
 
   getHeight = () => {
     return Platform.select({
-      ios: this.state.isPortrait ? 65 : 50,
+      ios: this.state.isPortrait ? 80 : 50,
       android: 50
     });
   };

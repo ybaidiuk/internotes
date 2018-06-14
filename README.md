@@ -45,4 +45,6 @@ official link for setUp https://facebook.github.io/react-native/docs/running-on-
 5.  pres play button (on xcode)
 6.  Shake your device to open the Developer menu,
 7.  enable life reload
-8.  (i got problem with this) in console "react-native log-ios" (but i get :No active iOS device found)
+8.  for logging you need change 'localhost' in ./node_modules/react-native/Libraries/WebSocket/RCTWebSocketExecutor.m 
+    to you IP and then select "Debug JS Remotely" from the Developer Menu. 
+    (https://facebook.github.io/react-native/docs/debugging.html)

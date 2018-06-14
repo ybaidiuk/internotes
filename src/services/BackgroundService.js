@@ -23,7 +23,7 @@ export default class BackgroundService {
 
   /**
    * show logs : adb logcat *:S ReactNative:V ReactNativeJS:V TSBackgroundFetch:V
-   * simulate on ios : adb shell cmd jobscheduler run -f com.internotes 999
+   * simulate on ios : in XCode using Debug->Simulate Background Fetch
    * simulate service on android :  adb shell cmd jobscheduler run -f com.internotes 999
    */
   static async service() {
