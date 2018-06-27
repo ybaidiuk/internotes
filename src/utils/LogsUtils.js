@@ -10,6 +10,7 @@ export default class LogsUtils {
 
   //exemple : await LogsUtils.addLog(LOG_TYPE.INFO, 'some text');
   static async add(logType, text) {
+    console.log('log:' + text);
     let logsArr = await this.get();
     const newLog = {
       logType: logType,

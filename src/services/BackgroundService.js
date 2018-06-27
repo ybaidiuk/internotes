@@ -1,5 +1,6 @@
 import BackgroundFetch from "react-native-background-fetch";
 import LogsUtils, {LOG_TYPE} from "../utils/LogsUtils";
+import {getWebSocket} from "./WebSocketService";
 
 /**
  * call service function every 15 min.
@@ -22,16 +23,25 @@ export default class BackgroundService {
   }
 
   /**
+   * service should check every 16 min connection with Server duering Websocket.
+   * if connection is close add log about it and create connection again.
+   *
+   * Debug info:
    * show logs : adb logcat *:S ReactNative:V ReactNativeJS:V TSBackgroundFetch:V
    * simulate on ios : in XCode using Debug->Simulate Background Fetch
    * simulate service on android :  adb shell cmd jobscheduler run -f com.internotes 999
    */
-  static async service() {
-    await LogsUtils.add(LOG_TYPE.INFO, 'backgroundJob call');
+  static async service(ignoreLog) {
+    if (ignoreLog === undefined || !ignoreLog)
+      await LogsUtils.add(LOG_TYPE.INFO, 'backgroundJob call');
+    //
+    getWebSocket().checkConnection();
+
   }
 
   static stop() {
     BackgroundFetch.stop();
+
   }
 
   static status() {

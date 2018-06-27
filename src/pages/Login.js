@@ -3,6 +3,7 @@ import {Button, StatusBar, StyleSheet, Text, TextInput, View} from 'react-native
 import colors from '../Colors';
 import AuthSetUp from './AuthSetUp';
 import UserDataUtils from '../utils/UserDataUtils';
+import BackgroundService from "../services/BackgroundService";
 
 /**
  * on this Page user can LOGIN and BACKUP his notes as well.
@@ -18,6 +19,7 @@ export default class Login extends Component<Props> {
       showLoginWarning: false,
       showPassWarning: false
     };
+    BackgroundService.stop();
   }
 
   async onPressLogin() {
